@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Iniciar Sesión</title>
+    <link rel="stylesheet" href="/css/Inicio-sesion.css">
+</head>
+<body>
+
+<div class="login-modal">
+    <div class="close-btn">&times;</div>
+    <h2>INICIAR SESIÓN</h2>
+    <form action="#" class="login-form">
+        <label for="email">Correo electrónico</label>
+        <input type="email" id="email" placeholder="Correo electrónico" required>
+        
+        <label for="password">Contraseña</label>
+        <div class="password-container">
+            <input type="password" id="password" placeholder="Contraseña" required>
+            <span class="toggle-password">&#128065;</span>
+        </div>
+
+        <div class="remember-me">
+            <input type="checkbox" id="remember">
+            <label for="remember">Recuérdame</label>
+        </div>
+
+        <!-- Placeholder para CAPTCHA -->
+        <div class="captcha-placeholder">
+            <p>No soy un robot</p>
+        </div>
+
+        <button type="submit" class="login-btn">Entrar</button>
+
+        <a href="#" class="recover-link">Recuperar contraseña</a>
+        <p class="register-text">¿No tienes una cuenta? <a href="#" class="register-link">Regístrate aquí</a></p>
+        <a href="#" class="create-account">Crear una cuenta</a>
+    </form>
+</div>
+
+</body>
+</html>
