@@ -1,0 +1,136 @@
+// Variables (se pueden agregar si deseas una mayor personalización de colores y tamaños)
+$primary-color: #4a89dc;
+$secondary-color: #102a4c;
+$background-color: #0c1a33;
+$font-family: Arial, sans-serif;
+$border-radius: 8px;
+$font-size-small: 14px;
+$font-size-medium: 16px;
+$font-size-large: 24px;
+
+// Reseteo de estilos generales
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: $font-family;
+}
+
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: $background-color;
+}
+
+.login-modal {
+    background-color: $secondary-color;
+    width: 300px;
+    padding: 20px;
+    border-radius: $border-radius;
+    position: relative;
+    color: #fff;
+    text-align: center;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.close-btn {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    font-size: $font-size-large;
+    cursor: pointer;
+    color: $primary-color;
+}
+
+h2 {
+    font-size: $font-size-large;
+    margin-bottom: 10px;
+}
+
+.login-form {
+    label {
+        display: block;
+        text-align: left;
+        font-size: $font-size-small;
+        margin: 15px 0 5px;
+    }
+
+    input[type="email"],
+    input[type="password"] {
+        width: 100%;
+        padding: 8px;
+        margin: 5px 0;
+        border: none;
+        border-bottom: 1px solid $primary-color;
+        background: transparent;
+        color: #fff;
+        font-size: $font-size-medium;
+    }
+}
+
+.password-container {
+    position: relative;
+
+    .toggle-password {
+        position: absolute;
+        right: 10px;
+        top: 50%;
+        transform: translateY(-50%);
+        cursor: pointer;
+        color: $primary-color;
+    }
+}
+
+.remember-me {
+    display: flex;
+    align-items: center;
+    margin: 15px 0;
+    font-size: $font-size-small;
+
+    input[type="checkbox"] {
+        margin-right: 10px;
+    }
+}
+
+.captcha-placeholder {
+    background-color: #fff;
+    color: #333;
+    padding: 10px;
+    margin: 15px 0;
+    font-size: $font-size-small;
+    border-radius: 4px;
+}
+
+.login-btn {
+    width: 100%;
+    background-color: $primary-color;
+    color: #fff;
+    padding: 10px;
+    margin-top: 15px;
+    border: none;
+    cursor: pointer;
+    font-size: $font-size-medium;
+    border-radius: 4px;
+}
+
+.recover-link,
+.register-text a,
+.create-account {
+    display: block;
+    color: $primary-color;
+    text-decoration: none;
+    margin-top: 10px;
+    font-size: $font-size-small;
+}
+
+.register-text {
+    margin-top: 20px;
+}
+
+.recover-link:hover,
+.register-link:hover,
+.create-account:hover {
+    text-decoration: underline;
+}
