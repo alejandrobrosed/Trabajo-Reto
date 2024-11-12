@@ -134,3 +134,77 @@ h2 {
 .create-account:hover {
     text-decoration: underline;
 }
+
+// Variables
+$primary-color: #0A1C3A;
+$text-color: #fff;
+$hover-color: #555;
+$icon-hover-color: #ddd;
+$font-size: 16px;
+$icon-font-size: 20px;
+$gap-large: 150px;
+$gap-medium: 15px;
+
+// Reseteo de estilos generales
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+}
+
+header {
+    background-color: $primary-color;
+    padding: 10px 20px;
+
+    nav {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+
+        .logo {
+            img {
+                width: 100px;
+                height: auto;
+            }
+        }
+
+        .nav-links {
+            list-style: none;
+            display: flex;
+            gap: $gap-large;
+
+            li {
+                a {
+                    color: $text-color;
+                    text-decoration: none;
+                    font-size: $font-size;
+                    padding: 8px 12px;
+
+                    &:hover {
+                        background-color: $hover-color;
+                        border-radius: 4px;
+                    }
+                }
+            }
+        }
+
+        .icons {
+            display: flex;
+            gap: $gap-medium;
+
+            a {
+                color: $text-color;
+                font-size: $icon-font-size;
+                text-decoration: none;
+
+                &:hover {
+                    color: $icon-hover-color;
+                }
+            }
+        }
+    }
+}
