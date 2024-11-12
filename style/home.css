@@ -49,6 +49,52 @@ header nav .icons a:hover {
   color: #ddd;
 }
 
-
+.carrusel {
+  display: flex;
+  align-items: center;
+  position: relative;
+  width: 80%;
+  margin: auto;
+  background-color: #0a1c3a;
+  border-radius: 8px;
+  overflow: hidden;
+}
+.carrusel__contenedor {
+  display: flex;
+  transition: transform 0.5s ease;
+  width: 100%;
+}
+.carrusel__elemento {
+  min-width: 100%;
+  background-color: #f0f0f0;
+}
+.carrusel__elemento img {
+  width: 100%;
+  height: auto;
+  border-radius: 4px;
+}
+.carrusel__control {
+  background-color: #4a89dc;
+  border: none;
+  color: #fff;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  cursor: pointer;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 24px;
+  transition: background-color 0.3s ease;
+}
+.carrusel__control:hover {
+  background-color: black;
+}
+.carrusel__control--izquierda {
+  left: 10px;
+}
+.carrusel__control--derecha {
+  right: 10px;
+}
 
 /*# sourceMappingURL=home.css.map */

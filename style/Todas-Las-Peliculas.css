@@ -1,0 +1,57 @@
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background-color: #0c1a33;
+  color: #cccccc;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+}
+
+.galeria {
+  width: 90%;
+  max-width: 1200px;
+  padding: 20px;
+  text-align: center;
+}
+.galeria__titulo {
+  color: #ffffff;
+  font-size: 1.5em;
+  margin-bottom: 50px;
+  position: relative;
+}
+.galeria__titulo:after {
+  content: "";
+  display: block;
+  width: 100px;
+  height: 3px;
+  background-color: #4a89dc;
+  margin: 10px auto 0;
+}
+.galeria__contenedor {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 50px;
+}
+
+.pelicula {
+  background-color: #102a4c;
+  border-radius: 8px;
+  overflow: hidden;
+  text-align: center;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  padding-bottom: 10px;
+}
+.pelicula img {
+  width: 100%;
+  display: block;
+  border-bottom: 2px solid #4a89dc;
+}
+.pelicula__titulo {
+  color: #ffffff;
+  font-size: 1em;
+  margin-top: 10px;
+}
+
+/*# sourceMappingURL=Todas-Las-Peliculas.css.map */

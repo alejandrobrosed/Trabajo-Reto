@@ -1,0 +1,79 @@
+
+
+
+// Variables
+$color-fondo: #0c1a33;
+$color-titulo: #ffffff;
+$color-linea: #4a89dc;
+$color-texto: #cccccc;
+$color-tarjeta-fondo: #102a4c;
+$border-radius: 8px;
+$font-size-titulo: 1.5em;
+$font-size-pelicula: 1em;
+$padding-galeria: 20px;
+$gap-galeria: 50px; // Espacio entre tarjetas
+
+// Estilos Generales
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background-color: $color-fondo;
+  color: $color-texto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+}
+
+// Sección de galería
+.galeria {
+  width: 90%;
+  max-width: 1200px;
+  padding: $padding-galeria;
+  text-align: center;
+
+  &__titulo {
+    color: $color-titulo;
+    font-size: $font-size-titulo;
+    margin-bottom: $gap-galeria;
+    position: relative;
+
+    &:after {
+      content: "";
+      display: block;
+      width: 100px;
+      height: 3px;
+      background-color: $color-linea;
+      margin: 10px auto 0;
+    }
+  }
+
+  // Contenedor de las tarjetas de películas
+  &__contenedor {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr); // 4 columnas fijas
+    gap: $gap-galeria;
+  }
+}
+
+// Estilos para cada tarjeta de película
+.pelicula {
+  background-color: $color-tarjeta-fondo;
+  border-radius: $border-radius;
+  overflow: hidden;
+  text-align: center;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  padding-bottom: 10px;
+
+  img {
+    width: 100%;
+    display: block;
+    border-bottom: 2px solid $color-linea;
+  }
+
+  &__titulo {
+    color: $color-titulo;
+    font-size: $font-size-pelicula;
+    margin-top: 10px;
+  }
+}
