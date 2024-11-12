@@ -6,132 +6,22 @@
 }
 
 body {
+  font-family: Arial, sans-serif;
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 100vh;
-  background-color: #0c1a33;
-}
-
-.login-modal {
-  background-color: #102a4c;
-  width: 300px;
-  padding: 20px;
-  border-radius: 8px;
-  position: relative;
-  color: #fff;
-  text-align: center;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-}
-
-.close-btn {
-  position: absolute;
-  top: 10px;
-  right: 10px;
-  font-size: 24px;
-  cursor: pointer;
-  color: #4a89dc;
-}
-
-h2 {
-  font-size: 24px;
-  margin-bottom: 10px;
-}
-
-.login-form label {
-  display: block;
-  text-align: left;
-  font-size: 14px;
-  margin: 15px 0 5px;
-}
-.login-form input[type=email],
-.login-form input[type=password] {
-  width: 100%;
-  padding: 8px;
-  margin: 5px 0;
-  border: none;
-  border-bottom: 1px solid #4a89dc;
-  background: transparent;
-  color: #fff;
-  font-size: 16px;
-}
-
-.password-container {
-  position: relative;
-}
-.password-container .toggle-password {
-  position: absolute;
-  right: 10px;
-  top: 50%;
-  transform: translateY(-50%);
-  cursor: pointer;
-  color: #4a89dc;
-}
-
-.remember-me {
-  display: flex;
-  align-items: center;
-  margin: 15px 0;
-  font-size: 14px;
-}
-.remember-me input[type=checkbox] {
-  margin-right: 10px;
-}
-
-.captcha-placeholder {
-  background-color: #fff;
-  color: #333;
-  padding: 10px;
-  margin: 15px 0;
-  font-size: 14px;
-  border-radius: 4px;
-}
-
-.login-btn {
-  width: 100%;
-  background-color: #4a89dc;
-  color: #fff;
-  padding: 10px;
-  margin-top: 15px;
-  border: none;
-  cursor: pointer;
-  font-size: 16px;
-  border-radius: 4px;
-}
-
-.recover-link,
-.register-text a,
-.create-account {
-  display: block;
-  color: #4a89dc;
-  text-decoration: none;
-  margin-top: 10px;
-  font-size: 14px;
-}
-
-.register-text {
-  margin-top: 20px;
-}
-
-.recover-link:hover,
-.register-link:hover,
-.create-account:hover {
-  text-decoration: underline;
-}
-
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
-
-body {
-  font-family: Arial, sans-serif;
+  height: 100%;
+  margin-top: 60px;
 }
 
 header {
   background-color: #0A1C3A;
   padding: 10px 20px;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
 }
 header nav {
   display: flex;
@@ -168,6 +58,103 @@ header nav .icons a {
 }
 header nav .icons a:hover {
   color: #ddd;
+}
+
+.login-modal {
+  background-color: #102a4c;
+  width: 300px;
+  padding: 20px;
+  border-radius: 8px;
+  position: relative;
+  color: #fff;
+  text-align: center;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  margin-top: 150px;
+}
+.login-modal .close-btn {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  font-size: 24px;
+  cursor: pointer;
+  color: #4a89dc;
+}
+.login-modal h2 {
+  font-size: 24px;
+  margin-bottom: 10px;
+}
+.login-modal .login-form label {
+  display: block;
+  text-align: left;
+  font-size: 14px;
+  margin: 15px 0 5px;
+}
+.login-modal .login-form input[type=email],
+.login-modal .login-form input[type=password] {
+  width: 100%;
+  padding: 8px;
+  margin: 5px 0;
+  border: none;
+  border-bottom: 1px solid #4a89dc;
+  background: transparent;
+  color: #fff;
+  font-size: 16px;
+}
+.login-modal .password-container {
+  position: relative;
+}
+.login-modal .password-container .toggle-password {
+  position: absolute;
+  right: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  cursor: pointer;
+  color: #4a89dc;
+}
+.login-modal .remember-me {
+  display: flex;
+  align-items: center;
+  margin: 15px 0;
+  font-size: 14px;
+}
+.login-modal .remember-me input[type=checkbox] {
+  margin-right: 10px;
+}
+.login-modal .captcha-placeholder {
+  background-color: #fff;
+  color: #333;
+  padding: 10px;
+  margin: 15px 0;
+  font-size: 14px;
+  border-radius: 4px;
+}
+.login-modal .login-btn {
+  width: 100%;
+  background-color: #4a89dc;
+  color: #fff;
+  padding: 10px;
+  margin-top: 15px;
+  border: none;
+  cursor: pointer;
+  font-size: 16px;
+  border-radius: 4px;
+}
+.login-modal .recover-link,
+.login-modal .register-text a,
+.login-modal .create-account {
+  display: block;
+  color: #4a89dc;
+  text-decoration: none;
+  margin-top: 10px;
+  font-size: 14px;
+}
+.login-modal .recover-link:hover,
+.login-modal .register-text a:hover,
+.login-modal .create-account:hover {
+  text-decoration: underline;
+}
+.login-modal .register-text {
+  margin-top: 20px;
 }
 
 /*# sourceMappingURL=inicio-sesion.css.map */
