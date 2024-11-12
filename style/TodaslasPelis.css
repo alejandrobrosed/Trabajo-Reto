@@ -1,0 +1,52 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Arial, sans-serif;
+}
+
+header {
+  background-color: #0A1C3A;
+  padding: 10px 20px;
+}
+header nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+header nav .logo img {
+  width: 100px;
+  height: auto;
+}
+header nav .nav-links {
+  list-style: none;
+  display: flex;
+  gap: 150px;
+}
+header nav .nav-links li a {
+  color: #fff;
+  text-decoration: none;
+  font-size: 16px;
+  padding: 8px 12px;
+}
+header nav .nav-links li a:hover {
+  background-color: #555;
+  border-radius: 4px;
+}
+header nav .icons {
+  display: flex;
+  gap: 15px;
+}
+header nav .icons a {
+  color: #fff;
+  font-size: 20px;
+  text-decoration: none;
+}
+header nav .icons a:hover {
+  color: #ddd;
+}
+
+/*# sourceMappingURL=TodaslasPelis.css.map */
