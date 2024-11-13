@@ -152,4 +152,106 @@ body {
   opacity: 1;
 }
 
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+}
+
+.carousel {
+  position: relative;
+  width: 90%;
+  max-width: 800px;
+  overflow: hidden;
+  background-color: #1e2a3a;
+  color: #fff;
+  margin-top: 6%;
+  border-radius: 8px;
+}
+.carousel .carousel__track-container {
+  overflow: hidden;
+  width: 100%;
+}
+.carousel .carousel__track {
+  display: flex;
+  transition: transform 0.5s ease-in-out;
+}
+.carousel .carousel__slide {
+  min-width: 100%;
+  position: relative;
+  text-align: center;
+}
+.carousel .carousel__slide img {
+  width: 100%;
+  height: 500px;
+  object-fit: cover;
+}
+.carousel .carousel__slide .carousel__caption {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+}
+.carousel .carousel__slide .carousel__caption h2 {
+  font-size: 1.8rem;
+  font-weight: bold;
+  margin-bottom: 0.5rem;
+}
+.carousel .carousel__slide .carousel__caption .carousel__button-buy {
+  padding: 0.4rem 0.8rem;
+  font-size: 1rem;
+  color: #fff;
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid #fff;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+.carousel .carousel__slide .carousel__caption .carousel__button-buy:hover {
+  background-color: #fff;
+  color: #0A1C3A;
+}
+.carousel .carousel__button {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background-color: rgba(0, 0, 0, 0.5);
+  color: #fff;
+  border: none;
+  font-size: 1.5rem;
+  cursor: pointer;
+  padding: 0.3rem;
+}
+.carousel .carousel__button--left {
+  left: 10px;
+}
+.carousel .carousel__button--right {
+  right: 10px;
+}
+.carousel .carousel__indicators {
+  display: flex;
+  justify-content: center;
+  padding: 1rem 0;
+}
+.carousel .carousel__indicators .carousel__indicator {
+  width: 10px;
+  height: 10px;
+  margin: 0 5px;
+  background-color: #fff;
+  border-radius: 50%;
+  cursor: pointer;
+  opacity: 0.5;
+  transition: opacity 0.3s ease;
+}
+.carousel .carousel__indicators .carousel__indicator.active {
+  opacity: 1;
+}
+
 /*# sourceMappingURL=home.css.map */
