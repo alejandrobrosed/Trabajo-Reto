@@ -99,7 +99,7 @@ body {
 }
 .carousel .carousel__slide img {
   width: 100%;
-  height: 500px;
+  height: 600px;
   object-fit: cover;
 }
 .carousel .carousel__slide .carousel__caption {
