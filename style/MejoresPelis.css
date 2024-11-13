@@ -46,11 +46,7 @@ body {
   color: white;
 }
 .movies .movie img {
-<<<<<<< HEAD
-  width: 320px;
-=======
-  width: 185px;
->>>>>>> 67de6329db8c622b65638c1078fadbe788c0f700
+  width: 200px;
   height: 270px;
   border-radius: 8px;
 }
