@@ -7,7 +7,7 @@
 
 body {
   font-family: Arial, sans-serif;
-  display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
   height: 100%;
@@ -61,6 +61,71 @@ header nav .icons a:hover {
 }
 
 body {
+  color: #fff;
+  font-family: Arial, sans-serif;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 175vh;
+  justify-content: space-between;
+}
+
+.container {
+  text-align: center;
+}
+
+.back {
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  color: #fff;
+  text-decoration: none;
+  font-size: 14px;
+}
+
+.title {
+  font-size: 2em;
+  margin-bottom: 50px;
+  text-transform: uppercase;
+  border-bottom: 2px solid #fff;
+  display: inline-block;
+}
+
+.movies {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  margin: 50px 0;
+}
+.movies .movie {
+  text-align: center;
+  color: #fff;
+}
+.movies .movie img {
+  width: 320px;
+  height: 270px;
+  border-radius: 8px;
+}
+.movies .movie p {
+  margin-top: 10px;
+  font-size: 20px;
+  text-transform: uppercase;
+}
+
+.all-movies {
+  color: #fff;
+  border: none;
+  padding: 10px 20px;
+  font-size: 20px;
+  cursor: pointer;
+  text-transform: uppercase;
+  text-decoration: none;
+}
+.all-movies:hover {
+  background-color: #555;
+}
+
+body {
   margin: 0;
   font-family: Arial, sans-serif;
   background-color: #0c1a33;
@@ -83,6 +148,7 @@ body {
   font-size: 1.5em;
   margin-bottom: 50px;
   position: relative;
+  z-index: -1;
 }
 .galeria__titulo:after {
   content: "";
