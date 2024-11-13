@@ -1,36 +1,34 @@
 const track = document.querySelector('.carousel__track');
 const indicators = document.querySelectorAll('.carousel__indicator');
+const slideWidth = track.querySelector('.carousel__slide').offsetWidth;
 let currentIndex = 0;
-const slideCount = 5;
-const intervalTime = 10000;
+const slideCount = indicators.length;
+const intervalTime = 8000; // Reducimos el tiempo del intervalo a 8s
 
 function moveToSlide(index) {
-    currentIndex = index;
+    currentIndex = (index + slideCount) % slideCount;
     updateCarousel();
-    updateIndicators();
 }
 
 function moveLeft() {
-    currentIndex = (currentIndex - 1 + slideCount) % slideCount;
-    updateCarousel();
-    updateIndicators();
+    moveToSlide(currentIndex - 1);
 }
 
 function moveRight() {
-    currentIndex = (currentIndex + 1) % slideCount;
-    updateCarousel();
-    updateIndicators();
+    moveToSlide(currentIndex + 1);
 }
 
 function updateCarousel() {
-    const slideWidth = track.querySelector('.carousel__slide').getBoundingClientRect().width;
     track.style.transform = `translateX(-${slideWidth * currentIndex}px)`;
-}
-
-function updateIndicators() {
-    indicators.forEach((indicator, index) => {
-        indicator.classList.toggle('active', index === currentIndex);
+    indicators.forEach((indicator, i) => {
+        indicator.classList.toggle('active', i === currentIndex);
     });
 }
 
+// Auto-avanza el carrusel
 setInterval(moveRight, intervalTime);
+
+// Eventos en los indicadores
+indicators.forEach((indicator, i) => {
+    indicator.addEventListener('click', () => moveToSlide(i));
+});

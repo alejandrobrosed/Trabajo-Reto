@@ -11,133 +11,82 @@ body {
   height: 100%;
 }
 
-header {
-  background-color: #0A1C3A;
-  padding: 10px 20px;
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-}
-header nav {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-}
-header nav .logo img {
-  width: 100px;
-  height: auto;
-}
-header nav .nav-links {
-  list-style: none;
-  display: flex;
-  gap: 150px;
-}
-header nav .nav-links li a {
-  color: #fff;
-  text-decoration: none;
-  font-size: 16px;
-  padding: 8px 12px;
-}
-header nav .nav-links li a:hover {
-  background-color: #555;
-  border-radius: 4px;
-}
-header nav .icons {
-  display: flex;
-  gap: 15px;
-}
-header nav .icons a {
-  color: #fff;
-  font-size: 20px;
-  text-decoration: none;
-}
-header nav .icons a:hover {
-  color: #ddd;
-}
-
 .carousel {
   position: relative;
-  width: 80%;
+  width: 90%;
   max-width: 800px;
   overflow: hidden;
   background-color: #1e2a3a;
   color: #fff;
   margin-top: 6%;
+  border-radius: 8px;
 }
-
-.carousel__track-container {
+.carousel .carousel__track-container {
   overflow: hidden;
   width: 100%;
 }
-
-.carousel__track {
+.carousel .carousel__track {
   display: flex;
   transition: transform 0.5s ease-in-out;
 }
-
-.carousel__slide {
+.carousel .carousel__slide {
   min-width: 100%;
   position: relative;
   text-align: center;
 }
-.carousel__slide img {
+.carousel .carousel__slide img {
   width: 100%;
-  height: auto;
+  height: 500px;
+  object-fit: cover;
 }
-.carousel__slide .carousel__caption {
+.carousel .carousel__slide .carousel__caption {
   position: absolute;
   top: 50%;
-  left: 10%;
-  transform: translateY(-50%);
-  text-align: left;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
 }
-.carousel__slide .carousel__caption h2 {
-  font-size: 2.5rem;
+.carousel .carousel__slide .carousel__caption h2 {
+  font-size: 1.8rem;
   font-weight: bold;
-  margin-bottom: 1rem;
+  margin-bottom: 0.5rem;
 }
-.carousel__slide .carousel__caption .carousel__button-buy {
-  padding: 0.5rem 1rem;
+.carousel .carousel__slide .carousel__caption .carousel__button-buy {
+  padding: 0.4rem 0.8rem;
   font-size: 1rem;
   color: #fff;
-  background: none;
-  border: 2px solid #fff;
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid #fff;
   cursor: pointer;
   transition: background-color 0.3s ease;
 }
-.carousel__slide .carousel__caption .carousel__button-buy:hover {
+.carousel .carousel__slide .carousel__caption .carousel__button-buy:hover {
   background-color: #fff;
-  color: #000;
+  color: #0A1C3A;
 }
-
-.carousel__button {
+.carousel .carousel__button {
   position: absolute;
   top: 50%;
   transform: translateY(-50%);
   background-color: rgba(0, 0, 0, 0.5);
   color: #fff;
   border: none;
-  font-size: 2rem;
+  font-size: 1.5rem;
   cursor: pointer;
-  padding: 0.5rem;
-  z-index: 1;
+  padding: 0.3rem;
 }
-.carousel__button--left {
+.carousel .carousel__button--left {
   left: 10px;
 }
-.carousel__button--right {
+.carousel .carousel__button--right {
   right: 10px;
 }
-
-.carousel__indicators {
+.carousel .carousel__indicators {
   display: flex;
   justify-content: center;
   padding: 1rem 0;
 }
-
-.carousel__indicator {
+.carousel .carousel__indicators .carousel__indicator {
   width: 10px;
   height: 10px;
   margin: 0 5px;
@@ -147,7 +96,7 @@ header nav .icons a:hover {
   opacity: 0.5;
   transition: opacity 0.3s ease;
 }
-.carousel__indicator.active {
+.carousel .carousel__indicators .carousel__indicator.active {
   opacity: 1;
 }
 
