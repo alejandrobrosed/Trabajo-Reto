@@ -20,68 +20,75 @@ $header-height: 110px;
 body {
     font-family: Arial, sans-serif;
     background-color: $primary-color;
+    background-image: url('/imagenes/fondo.jpg'); 
+    background-size: cover; 
+    background-position: center; 
+    background-repeat: no-repeat; 
     color: $text-color;
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 100vh;
+    height: 80vh;
     flex-direction: column;
 }
 
 header {
     background-color: $primary-color;
     padding: 10px 20px;
+    position: fixed;
     top: 0;
     left: 0;
     width: 100%;
-    height: $header-height;
-    z-index: 1;
-    
+    height: 11%; 
+  
     nav {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+  
+      .logo {
+        img {
+          width: 100px;
+          height: auto;
+        }
+      }
+  
+      .nav-links {
+        list-style: none;
         display: flex;
-        align-items: center;
-        justify-content: space-between;
-
-        .logo img {
-            width: 100px;
-            height: auto;
-        }
-
-        .nav-links {
-            list-style: none;
-            display: flex;
-            gap: $gap-large;
-
-            li a {
-                color: $text-color;
-                text-decoration: none;
-                font-size: $font-size;
-                padding: 8px 12px;
-
-                &:hover {
-                    background-color: $hover-color;
-                    border-radius: 4px;
-                }
+        gap: $gap-large;
+  
+        li {
+          a {
+            color: $text-color;
+            text-decoration: none;
+            font-size: $font-size;
+            padding: 8px 12px;
+  
+            &:hover {
+              background-color: $hover-color;
+              border-radius: 4px;
             }
+          }
         }
-
-        .icons {
-            display: flex;
-            gap: $gap-medium;
-
-            a {
-                color: $text-color;
-                font-size: $icon-font-size;
-                text-decoration: none;
-
-                &:hover {
-                    color: $icon-hover-color;
-                }
-            }
+      }
+  
+      .icons {
+        display: flex;
+        gap: $gap-medium;
+  
+        a {
+          color: $text-color;
+          font-size: $icon-font-size;
+          text-decoration: none;
+  
+          &:hover {
+            color: $icon-hover-color;
+          }
         }
+      }
     }
-}
-
+  }
 .carousel {
     position: relative;
     width: $carousel-width;
@@ -186,21 +193,31 @@ header {
 }
 
 .contenedor-bienvenida {
-    text-align: center;
+    position: relative;
     max-width: 700px;
-    padding: 20px;
+    text-align: center;
     margin-top: 10px;
     margin-bottom: -328px;
 
-    h1 {
-        font-size: 2em;
-        margin-bottom: 15px;
-    }
+    .bienvenida-overlay {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        color: white; // Color del texto encima de la imagen
+        padding: 20px;
+        border-radius: 8px;
+        width: 100%;
 
-    p {
-        font-size: 1em;
-        line-height: 1.5;
-        margin-bottom: 20px;
+        h1 {
+            font-size: 2em;
+            margin-bottom: 10px;
+        }
+
+        p {
+            font-size: 1em;
+            line-height: 1.5;
+        }
     }
 
     .imagen-cine {

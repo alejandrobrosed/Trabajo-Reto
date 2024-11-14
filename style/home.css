@@ -7,22 +7,26 @@
 body {
   font-family: Arial, sans-serif;
   background-color: #0A1C3A;
+  background-image: url("/imagenes/fondo.jpg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
   color: #fff;
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 100vh;
+  height: 80vh;
   flex-direction: column;
 }
 
 header {
   background-color: #0A1C3A;
   padding: 10px 20px;
+  position: fixed;
   top: 0;
   left: 0;
   width: 100%;
-  height: 110px;
-  z-index: 1;
+  height: 11%;
 }
 header nav {
   display: flex;
@@ -151,20 +155,29 @@ header nav .icons a:hover {
 }
 
 .contenedor-bienvenida {
-  text-align: center;
+  position: relative;
   max-width: 700px;
-  padding: 20px;
+  text-align: center;
   margin-top: 10px;
   margin-bottom: -328px;
 }
-.contenedor-bienvenida h1 {
-  font-size: 2em;
-  margin-bottom: 15px;
+.contenedor-bienvenida .bienvenida-overlay {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: white;
+  padding: 20px;
+  border-radius: 8px;
+  width: 100%;
 }
-.contenedor-bienvenida p {
+.contenedor-bienvenida .bienvenida-overlay h1 {
+  font-size: 2em;
+  margin-bottom: 10px;
+}
+.contenedor-bienvenida .bienvenida-overlay p {
   font-size: 1em;
   line-height: 1.5;
-  margin-bottom: 20px;
 }
 .contenedor-bienvenida .imagen-cine {
   width: 100%;
