@@ -1,0 +1,121 @@
+// Variables
+$primary-color: #0A1C3A;
+$text-color: #fff;
+$hover-color: #555;
+$icon-hover-color: #ddd;
+$font-size: 16px;
+$icon-font-size: 20px;
+$gap-large: 150px;
+$gap-medium: 15px;
+$header-height: 60px; // Nueva variable para definir la altura del header
+
+header {
+    background-color: $primary-color;
+    padding: 10px 20px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%; 
+  
+    nav {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+  
+      .logo {
+        img {
+          width: 100px;
+          height: auto;
+        }
+      }
+  
+      .nav-links {
+        list-style: none;
+        display: flex;
+        gap: $gap-large;
+  
+        li {
+          a {
+            color: $text-color;
+            text-decoration: none;
+            font-size: $font-size;
+            padding: 8px 12px;
+  
+            &:hover {
+              background-color: $hover-color;
+              border-radius: 4px;
+            }
+          }
+        }
+      }
+  
+      .icons {
+        display: flex;
+        gap: $gap-medium;
+  
+        a {
+          color: $text-color;
+          font-size: $icon-font-size;
+          text-decoration: none;
+  
+          &:hover {
+            color: $icon-hover-color;
+          }
+        }
+      }
+    }
+  }
+body {
+    font-family: Arial, sans-serif;
+    background-color: #0a0e27;
+    color: #ffffff;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+  }
+  
+  .container {
+    max-width: 1000px;
+    padding: 20px;
+    text-align: center;
+  }
+  
+  .about {
+    margin-bottom: 40px;
+  
+    h1 {
+      font-size: 28px;
+      font-weight: bold;
+      letter-spacing: 2px;
+      margin-bottom: 20px;
+      border-bottom: 1px solid #2e62b0;
+      display: inline-block;
+      padding-bottom: 10px;
+    }
+  
+    p {
+      font-size: 16px;
+      line-height: 1.6;
+      margin: 20px 0;
+      text-align: justify;
+    }
+  }
+  
+  .images {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+  
+    img {
+      width: 100%;
+      max-width: 450px;
+      height: auto;
+      border-radius: 10px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+    }
+  }
+  

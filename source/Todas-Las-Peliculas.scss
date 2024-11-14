@@ -7,7 +7,8 @@ $font-size: 16px;
 $icon-font-size: 20px;
 $gap-large: 150px;
 $gap-medium: 15px;
-$header-height: 60px; // Nueva variable para definir la altura del header
+$header-height: 60px; 
+$button-color: #007bff; 
 
 // Reseteo de estilos generales
 * {
@@ -83,7 +84,7 @@ header {
     }
   }
 }
-//Mejores Peliculas
+
 body {
   color: $text-color;
   font-family: Arial, sans-serif;
@@ -122,12 +123,13 @@ body {
   margin: 50px 0;
 
   .movie {
+    position: relative; 
     text-align: center; 
     color: $text-color;
 
     img {
-      width: 320px;
-      height: 270px;
+      width: 260px;
+      height: 315px;
       border-radius: 8px;
     }
 
@@ -136,9 +138,25 @@ body {
       font-size: 20px;
       text-transform: uppercase;
     }
+
+    .play-icon {
+      position: absolute;
+      top: 10px;
+      left: 10px;
+      background-color: $button-color;
+      color: $text-color;
+      font-size: 18px;
+      padding: 5px 10px;
+      border-radius: 50%;
+      cursor: pointer;
+      transition: background-color 0.3s;
+
+      &:hover {
+        background-color: lighten($button-color, 15%);
+      }
+    }
   }
 }
-
 .all-movies {
   color: $text-color;
   border: none;
@@ -164,24 +182,20 @@ $border-radius: 8px;
 $font-size-titulo: 1.5em;
 $font-size-pelicula: 1em;
 $padding-galeria: 20px;
-$gap-galeria: 50px; // Espacio entre tarjetas
+$gap-galeria: 50px; 
 
-// Estilos Generales
+
 body {
-  margin: 0;
   font-family: Arial, sans-serif;
   background-color: $color-fondo;
   color: $color-texto;
-  display: flex;
-  justify-content: center;
   align-items: center;
-  min-height: 100vh;
 }
 
-// Sección de galería
+
 .galeria {
   margin-top: 50px;
-  width: 90%;
+  width: 100%;
   max-width: 1200px;
   padding: $padding-galeria;
   text-align: center;
@@ -205,7 +219,6 @@ body {
     }
   }
 
-  // Contenedor de las tarjetas de películas
   &__contenedor {
     display: grid;
     grid-template-columns: repeat(4, 1fr); // 4 columnas fijas
@@ -213,7 +226,7 @@ body {
   }
 }
 
-// Estilos para cada tarjeta de película
+
 .pelicula {
   background-color: $color-tarjeta-fondo;
   border-radius: $border-radius;
@@ -226,6 +239,7 @@ body {
     width: 100%;
     display: block;
     border-bottom: 2px solid $color-linea;
+    height: 315px;
   }
 
   &__titulo {

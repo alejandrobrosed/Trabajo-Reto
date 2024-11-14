@@ -28,78 +28,91 @@
             </div>
         </nav>
     </header>
-    <div class="container">
-        <h1 class="title">MEJORES PELICULAS</h1>
-        <div class="movies">
-            <div class="movie">
+    <section class="galeria">
+        <h1 class="galeria__titulo">MEJORES PELICULAS</h1>
+            <div class="movies">
+              <div class="movie">
                 <img src="/imagenes/joker-2-poster-660d1344c56e8.avif" alt="El Joker">
+                <div class="play-icon" data-video-url="https://youtu.be/X5wPqyTudWk" onclick="openVideo(this)">▶</div>
                 <p>El Joker</p>
-            </div>
-            <div class="movie">
+              </div>
+              <div class="movie">
                 <img src="/imagenes/01.jpg" alt="El Llanto">
+                <div class="play-icon" data-video-url="https://youtu.be/shVB3GVJs_o" onclick="openVideo(this)">▶</div>
                 <p>El Llanto</p>
-            </div>
-            <div class="movie">
+              </div>
+              <div class="movie">
                 <img src="/imagenes/Venom_El_aultimo_baile-716994196-large.jpg" alt="Venom">
+                <div class="play-icon" data-video-url="https://youtu.be/wuXjTZjYZQY" onclick="openVideo(this)">▶</div>
                 <p>Venom</p>
-            </div>
-            <div class="movie">
-                <img src="/imagenes/images.jpg" alt="Terrifier">
+              </div>
+              <div class="movie">
+                <img src="/imagenes/Peli-15" alt="Terrifier">
+                <div class="play-icon" data-video-url="https://youtu.be/hoSkNQtMNWc" onclick="openVideo(this)">▶</div>
                 <p>Terrifier</p>
+              </div>
             </div>
-        </div>
-    </div>
+          <script>
+            function openVideo(element) {
+              const videoUrl = element.getAttribute('data-video-url');
+              if (videoUrl) {
+                window.open(videoUrl, '_blank'); // Abre el URL del video en una nueva pestaña
+              } else {
+                console.error("URL del video no encontrada");
+              }
+            }
+          </script>
     <section class="galeria">
         <h1 class="galeria__titulo">TODAS LAS PELÍCULAS</h1>
         <div class="galeria__contenedor">
             <!-- Tarjetas de películas (reemplaza las imágenes con las que necesites) -->
             <div class="pelicula">
-                <img src="/imagenes/carrsuel1.webp" alt="El Llanto">
-                <p class="pelicula__titulo">EL LLANTO</p>
+                <img src="/imagenes/Peli-13" alt="El Llanto">
+                <p class="pelicula__titulo">ROBOT SALVAJE</p>
             </div>
             <div class="pelicula">
-                <img src="/imagenes/carrsuel1.webp" alt="Terrifier">
+                <img src="/imagenes/Peli-14" alt="Terrifier">
+                <p class="pelicula__titulo">RED ONE</p>
+            </div>
+            <div class="pelicula">
+                <img src="/imagenes/Peli-15" alt="Venom">
                 <p class="pelicula__titulo">TERRIFIER</p>
             </div>
             <div class="pelicula">
-                <img src="/imagenes/carrsuel1.webp" alt="Venom">
-                <p class="pelicula__titulo">VENOM</p>
+                <img src="/imagenes/Peli-16" alt="El Joker">
+                <p class="pelicula__titulo">SEÑOR DE LOS ANILLOS</p>
             </div>
             <div class="pelicula">
-                <img src="/imagenes/carrsuel1.webp" alt="El Joker">
-                <p class="pelicula__titulo">EL JOKER</p>
+                <img src="/imagenes/Peli-5" alt="Robot Salvaje">
+                <p class="pelicula__titulo">GLADIATOR</p>
             </div>
             <div class="pelicula">
-                <img src="/imagenes/carrsuel1.webp" alt="Robot Salvaje">
-                <p class="pelicula__titulo">ROBOT SALVAJE</p>
+                <img src="/imagenes/Peli-6" alt="Robot Salvaje">
+                <p class="pelicula__titulo">NUNCA TE SUELTES</p>
             </div>
             <div class="pelicula">
-                <img src="/imagenes/carrsuel1.webp" alt="Robot Salvaje">
-                <p class="pelicula__titulo">ROBOT SALVAJE</p>
+                <img src="/imagenes/Peli-7" alt="Robot Salvaje">
+                <p class="pelicula__titulo">WICKED</p>
             </div>
             <div class="pelicula">
-                <img src="/imagenes/carrsuel1.webp" alt="Robot Salvaje">
-                <p class="pelicula__titulo">ROBOT SALVAJE</p>
+                <img src="/imagenes/Peli-8" alt="Robot Salvaje">
+                <p class="pelicula__titulo">VAIANA 2</p>
             </div>
             <div class="pelicula">
-                <img src="/imagenes/carrsuel1.webp" alt="Robot Salvaje">
-                <p class="pelicula__titulo">ROBOT SALVAJE</p>
+                <img src="/imagenes/Peli-9" alt="Robot Salvaje">
+                <p class="pelicula__titulo">GUERRERA ROHIRRIM</p>
             </div>
             <div class="pelicula">
-                <img src="/imagenes/carrsuel1.webp" alt="Robot Salvaje">
-                <p class="pelicula__titulo">ROBOT SALVAJE</p>
+                <img src="/imagenes/Peli-10" alt="Robot Salvaje">
+                <p class="pelicula__titulo">AMANECE EN SEMANA</p>
             </div>
             <div class="pelicula">
-                <img src="/imagenes/carrsuel1.webp" alt="Robot Salvaje">
-                <p class="pelicula__titulo">ROBOT SALVAJE</p>
+                <img src="/imagenes/Peli-11" alt="Robot Salvaje">
+                <p class="pelicula__titulo">EL BAÑO DEL DIABLO</p>
             </div>
             <div class="pelicula">
-                <img src="/imagenes/carrsuel1.webp" alt="Robot Salvaje">
-                <p class="pelicula__titulo">ROBOT SALVAJE</p>
-            </div>
-            <div class="pelicula">
-                <img src="/imagenes/carrsuel1.webp" alt="Robot Salvaje">
-                <p class="pelicula__titulo">ROBOT SALVAJE</p>
+                <img src="/imagenes/Peli-12" alt="Robot Salvaje">
+                <p class="pelicula__titulo">BITELCHUS</p>
             </div>
             <!-- Repetimos las tarjetas para llenar la galería -->
             <!-- Agrega más tarjetas aquí según sea necesario -->
