@@ -5,7 +5,7 @@ header {
   top: 0;
   left: 0;
   width: 100%;
-  height: 100%;
+  height: 11%;
 }
 header nav {
   display: flex;
@@ -60,12 +60,12 @@ body {
   max-width: 1000px;
   padding: 20px;
   text-align: center;
+  margin-top: 100px;
 }
-
-.about {
+.container .about {
   margin-bottom: 40px;
 }
-.about h1 {
+.container .about h1 {
   font-size: 28px;
   font-weight: bold;
   letter-spacing: 2px;
@@ -74,19 +74,18 @@ body {
   display: inline-block;
   padding-bottom: 10px;
 }
-.about p {
+.container .about p {
   font-size: 16px;
   line-height: 1.6;
   margin: 20px 0;
   text-align: justify;
 }
-
-.images {
+.container .images {
   display: flex;
   justify-content: center;
   gap: 20px;
 }
-.images img {
+.container .images img {
   width: 100%;
   max-width: 450px;
   height: auto;
