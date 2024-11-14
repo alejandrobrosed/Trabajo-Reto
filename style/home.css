@@ -13,13 +13,11 @@ body {
   align-items: center;
   height: 100vh;
   flex-direction: column;
-  padding-top: 110px;
 }
 
 header {
   background-color: #0A1C3A;
   padding: 10px 20px;
-  position: fixed;
   top: 0;
   left: 0;
   width: 100%;
@@ -88,7 +86,7 @@ header nav .icons a:hover {
 }
 .carousel .carousel__slide img {
   width: 100%;
-  height: 500px;
+  height: 510px;
   object-fit: cover;
 }
 .carousel .carousel__slide .carousel__caption {
