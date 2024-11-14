@@ -1,0 +1,38 @@
+# Dependencias de Node
+node_modules/
+# Cachés de paquetes
+.pnpm/
+# Cache de Yarn
+.yarn-integrity
+.yarn-cache/
+
+# Archivos de log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Entornos de producción
+.env
+.env.local
+.env.*.local
+
+# Archivos de compilación
+dist/
+build/
+
+# Archivos de testing
+coverage/
+*.lcov
+
+# Directorios de caché
+.cache/
+.parcel-cache/
+
+# Archivos de configuración de IDEs
+.idea/
+.vscode/
+*.sublime-workspace
+
+# Archivos del sistema
+.DS_Store
+Thumbs.db
