@@ -13,20 +13,20 @@ body {
   background-repeat: no-repeat;
   color: #fff;
   display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 80vh;
   flex-direction: column;
+  align-items: center;
+  min-height: 100vh;
 }
 
 header {
   background-color: #0A1C3A;
-  padding: 10px 20px;
+  padding: 20px 20px;
   position: fixed;
   top: 0;
   left: 0;
   width: 100%;
-  height: 11%;
+  height: 110px;
+  z-index: 10;
 }
 header nav {
   display: flex;
@@ -72,8 +72,9 @@ header nav .icons a:hover {
   overflow: hidden;
   background-color: #1e2a3a;
   color: #fff;
-  margin-top: 6%;
+  margin-top: 140px;
   border-radius: 8px;
+  z-index: 1;
 }
 .carousel .carousel__track-container {
   overflow: hidden;
@@ -154,20 +155,77 @@ header nav .icons a:hover {
   opacity: 1;
 }
 
-.contenedor-bienvenida {
-  position: relative;
-  max-width: 700px;
+.container {
   text-align: center;
+  margin-top: 280px;
+}
+.container .title {
+  font-size: 2em;
+  margin-bottom: 50px;
+  text-transform: uppercase;
+  border-bottom: 2px solid #fff;
+  display: inline-block;
+}
+
+.movies {
+  display: flex;
+  justify-content: center;
+  gap: 30px;
+  margin: 50px 0;
+}
+.movies .movie {
+  position: relative;
+  text-align: center;
+  color: #fff;
+}
+.movies .movie img {
+  width: 260px;
+  height: 315px;
+  border-radius: 8px;
+}
+.movies .movie p {
   margin-top: 10px;
-  margin-bottom: -328px;
+  font-size: 20px;
+  text-transform: uppercase;
+}
+.movies .movie .play-icon {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  background-color: #007bff;
+  color: #fff;
+  font-size: 18px;
+  padding: 5px 10px;
+  border-radius: 50%;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+.movies .movie .play-icon:hover {
+  background-color: #4da3ff;
+}
+
+.all-movies {
+  color: #fff;
+  border: none;
+  padding: 10px 20px;
+  font-size: 20px;
+  cursor: pointer;
+  text-transform: uppercase;
+  text-decoration: none;
+  margin-top: 20px;
+}
+.all-movies:hover {
+  background-color: #555;
+}
+
+.contenedor-bienvenida {
+  text-align: center;
+  margin-top: 140px;
+  margin-bottom: 50px;
 }
 .contenedor-bienvenida .bienvenida-overlay {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  color: white;
-  padding: 20px;
+  color: #fff;
+  padding: 30px;
   border-radius: 8px;
   width: 100%;
 }
@@ -177,12 +235,13 @@ header nav .icons a:hover {
 }
 .contenedor-bienvenida .bienvenida-overlay p {
   font-size: 1em;
-  line-height: 1.5;
+  line-height: 1.8;
 }
 .contenedor-bienvenida .imagen-cine {
   width: 100%;
   max-width: 600px;
   border-radius: 8px;
+  margin-bottom: 20px;
 }
 
 /*# sourceMappingURL=home.css.map */

@@ -30,38 +30,39 @@
     </header>
     <section class="galeria">
         <h1 class="galeria__titulo">MEJORES PELICULAS</h1>
-            <div class="movies">
-              <div class="movie">
+        <div class="movies">
+            <div class="movie">
                 <img src="/imagenes/joker-2-poster-660d1344c56e8.avif" alt="El Joker">
                 <div class="play-icon" data-video-url="https://youtu.be/X5wPqyTudWk" onclick="openVideo(this)">▶</div>
                 <p>El Joker</p>
-              </div>
-              <div class="movie">
+            </div>
+            <div class="movie">
                 <img src="/imagenes/01.jpg" alt="El Llanto">
                 <div class="play-icon" data-video-url="https://youtu.be/shVB3GVJs_o" onclick="openVideo(this)">▶</div>
                 <p>El Llanto</p>
-              </div>
-              <div class="movie">
+            </div>
+            <div class="movie">
                 <img src="/imagenes/Venom_El_aultimo_baile-716994196-large.jpg" alt="Venom">
                 <div class="play-icon" data-video-url="https://youtu.be/wuXjTZjYZQY" onclick="openVideo(this)">▶</div>
                 <p>Venom</p>
-              </div>
-              <div class="movie">
+            </div>
+            <div class="movie">
                 <img src="/imagenes/Peli-15" alt="Terrifier">
                 <div class="play-icon" data-video-url="https://youtu.be/hoSkNQtMNWc" onclick="openVideo(this)">▶</div>
                 <p>Terrifier</p>
-              </div>
             </div>
-          <script>
+        </div>
+        <script>
             function openVideo(element) {
-              const videoUrl = element.getAttribute('data-video-url');
-              if (videoUrl) {
-                window.open(videoUrl, '_blank'); // Abre el URL del video en una nueva pestaña
-              } else {
-                console.error("URL del video no encontrada");
-              }
+                const videoUrl = element.getAttribute('data-video-url');
+                if (videoUrl) {
+                    window.open(videoUrl, '_blank'); // Abre el URL del video en una nueva pestaña
+                } else {
+                    console.error("URL del video no encontrada");
+                }
             }
-          </script>
+        </script>
+    </section>
     <section class="galeria">
         <h1 class="galeria__titulo">TODAS LAS PELÍCULAS</h1>
         <div class="galeria__contenedor">

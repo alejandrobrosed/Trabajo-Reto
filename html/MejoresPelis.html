@@ -1,11 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Mejores Películas</title>
   <link rel="stylesheet" href="/style/MejoresPelis.css">
 </head>
+
 <body>
   <section class="galeria">
     <h1 class="galeria__titulo">MEJORES PELICULAS</h1>
@@ -32,17 +34,19 @@
       </div>
     </div>
     <a href="/html/Home.html" class="all-movies">TODAS LAS PELICULAS</a>
-  </div>
+    </div>
 
-  <script>
-    function openVideo(element) {
-      const videoUrl = element.getAttribute('data-video-url');
-      if (videoUrl) {
-        window.open(videoUrl, '_blank'); // Abre el URL del video en una nueva pestaña
-      } else {
-        console.error("URL del video no encontrada");
+    <script>
+      function openVideo(element) {
+        const videoUrl = element.getAttribute('data-video-url');
+        if (videoUrl) {
+          window.open(videoUrl, '_blank'); // Abre el URL del video en una nueva pestaña
+        } else {
+          console.error("URL del video no encontrada");
+        }
       }
-    }
-  </script>
+    </script>
+  </section>
 </body>
+
 </html>

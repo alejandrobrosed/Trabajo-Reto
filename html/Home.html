@@ -49,7 +49,8 @@
                     </div>
                 </li>
                 <li class="carousel__slide">
-                    <img src="/imagenes/terrifier-2-la-pelicula-que-causa-vomitos-y-desmayos-ya-tiene-fecha-de-estreno-en-colombia-1094203.jpg" alt="Pelicula 3">
+                    <img src="/imagenes/terrifier-2-la-pelicula-que-causa-vomitos-y-desmayos-ya-tiene-fecha-de-estreno-en-colombia-1094203.jpg"
+                        alt="Pelicula 3">
                     <div class="carousel__caption">
                         <h2>Terrifier 3</h2>
                         <button class="carousel__button-buy">¡Compra ya tus entradas!</button>
@@ -81,17 +82,56 @@
             <span class="carousel__indicator" onclick="moveToSlide(4)"></span>
         </div>
     </div>
-
+    <!-- todas las peliculas -->
+    <section class="galeria">
+        <h1 class="galeria__titulo">MEJORES PELICULAS</h1>
+        <div class="movies">
+            <div class="movie">
+                <img src="/imagenes/joker-2-poster-660d1344c56e8.avif" alt="El Joker">
+                <div class="play-icon" data-video-url="https://youtu.be/X5wPqyTudWk" onclick="openVideo(this)">▶</div>
+                <p>El Joker</p>
+            </div>
+            <div class="movie">
+                <img src="/imagenes/01.jpg" alt="El Llanto">
+                <div class="play-icon" data-video-url="https://youtu.be/shVB3GVJs_o" onclick="openVideo(this)">▶</div>
+                <p>El Llanto</p>
+            </div>
+            <div class="movie">
+                <img src="/imagenes/Venom_El_aultimo_baile-716994196-large.jpg" alt="Venom">
+                <div class="play-icon" data-video-url="https://youtu.be/wuXjTZjYZQY" onclick="openVideo(this)">▶</div>
+                <p>Venom</p>
+            </div>
+            <div class="movie">
+                <img src="/imagenes/Peli-15" alt="Terrifier">
+                <div class="play-icon" data-video-url="https://youtu.be/hoSkNQtMNWc" onclick="openVideo(this)">▶</div>
+                <p>Terrifier</p>
+            </div>
+        </div>
+        <script>
+            function openVideo(element) {
+                const videoUrl = element.getAttribute('data-video-url');
+                if (videoUrl) {
+                    window.open(videoUrl, '_blank'); // Abre el URL del video en una nueva pestaña
+                } else {
+                    console.error("URL del video no encontrada");
+                }
+            }
+        </script>
+    </section>
+    <!-- bienvenida -->
     <div class="contenedor-bienvenida">
         <div class="bienvenida-overlay">
             <h1>Bienvenidos a Todocine</h1>
-            <p>Bienvenidos a Todocine, un cine que cuenta con más de 50 años de experiencia en el mundillo cinematográfico,
+            <p>Bienvenidos a Todocine, un cine que cuenta con más de 50 años de experiencia en el mundillo
+                cinematográfico,
                 que cuenta con los mejores recursos para brindar una experiencia inolvidable</p>
         </div>
-        <img src="/imagenes/360_F_848946071_uv37uDNJfQ1Hq7Pa9aHzWikEo3T5uhED.jpg" alt="Sala de cine" class="imagen-cine">
+        <img src="/imagenes/360_F_848946071_uv37uDNJfQ1Hq7Pa9aHzWikEo3T5uhED.jpg" alt="Sala de cine"
+            class="imagen-cine">
     </div>
-    
+
 
 </body>
 <script src="/js/carrusel.js"></script>
+
 </html>
