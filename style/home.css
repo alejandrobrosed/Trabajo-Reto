@@ -155,22 +155,78 @@ header nav .icons a:hover {
   opacity: 1;
 }
 
-.container {
+.galeria {
+  margin-top: 50px;
+  width: 100%;
+  max-width: 1200px;
+  padding: 20px;
   text-align: center;
-  margin-top: 280px;
 }
-.container .title {
-  font-size: 2em;
+.galeria__titulo {
+  color: #ffffff;
+  font-size: 1.5em;
   margin-bottom: 50px;
+  position: relative;
+  z-index: -1;
+}
+.galeria__titulo:after {
+  content: "";
+  display: block;
+  width: 100px;
+  height: 3px;
+  background-color: #4a89dc;
+  margin: 10px auto 0;
+}
+.galeria__contenedor {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 50px;
+}
+
+.all-movies {
+  color: #fff;
+  border: none;
+  padding: 10px 20px;
+  font-size: 20px;
+  cursor: pointer;
   text-transform: uppercase;
-  border-bottom: 2px solid #fff;
-  display: inline-block;
+  text-decoration: none;
+  margin-top: 20px;
+}
+.all-movies:hover {
+  background-color: #555;
+}
+
+.contenedor-bienvenida {
+  text-align: center;
+  margin-top: 140px;
+  margin-bottom: 50px;
+}
+.contenedor-bienvenida .bienvenida-overlay {
+  color: #fff;
+  padding: 30px;
+  border-radius: 8px;
+  width: 100%;
+}
+.contenedor-bienvenida .bienvenida-overlay h1 {
+  font-size: 2em;
+  margin-bottom: 10px;
+}
+.contenedor-bienvenida .bienvenida-overlay p {
+  font-size: 1em;
+  line-height: 1.8;
+}
+.contenedor-bienvenida .imagen-cine {
+  width: 100%;
+  max-width: 600px;
+  border-radius: 8px;
+  margin-bottom: 20px;
 }
 
 .movies {
   display: flex;
   justify-content: center;
-  gap: 30px;
+  gap: 20px;
   margin: 50px 0;
 }
 .movies .movie {
@@ -212,36 +268,9 @@ header nav .icons a:hover {
   cursor: pointer;
   text-transform: uppercase;
   text-decoration: none;
-  margin-top: 20px;
 }
 .all-movies:hover {
   background-color: #555;
-}
-
-.contenedor-bienvenida {
-  text-align: center;
-  margin-top: 140px;
-  margin-bottom: 50px;
-}
-.contenedor-bienvenida .bienvenida-overlay {
-  color: #fff;
-  padding: 30px;
-  border-radius: 8px;
-  width: 100%;
-}
-.contenedor-bienvenida .bienvenida-overlay h1 {
-  font-size: 2em;
-  margin-bottom: 10px;
-}
-.contenedor-bienvenida .bienvenida-overlay p {
-  font-size: 1em;
-  line-height: 1.8;
-}
-.contenedor-bienvenida .imagen-cine {
-  width: 100%;
-  max-width: 600px;
-  border-radius: 8px;
-  margin-bottom: 20px;
 }
 
 /*# sourceMappingURL=home.css.map */
