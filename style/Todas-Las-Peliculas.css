@@ -6,7 +6,9 @@
 }
 
 body {
-  font-family: Arial, sans-serif;
+  background-color: #0c1a33;
+  color: #cccccc;
+  display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
@@ -59,16 +61,6 @@ header nav .icons a {
 }
 header nav .icons a:hover {
   color: #ddd;
-}
-
-body {
-  color: #fff;
-  font-family: Arial, sans-serif;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 175vh;
-  justify-content: space-between;
 }
 
 .container {
@@ -140,13 +132,6 @@ body {
 }
 .all-movies:hover {
   background-color: #555;
-}
-
-body {
-  font-family: Arial, sans-serif;
-  background-color: #0c1a33;
-  color: #cccccc;
-  align-items: center;
 }
 
 .galeria {
