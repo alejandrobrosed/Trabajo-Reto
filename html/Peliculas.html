@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Galería de Películas</title>
+    <link rel="stylesheet" href="/style/Todas-Las-Peliculas.css">
+</head>
+
+<body>
+    <header>
+        <nav>
+            <div class="logo">
+                <a href="/html/Home.html"><img src="/imagenes/logo.png" alt="Logo"></a>
+            </div>
+            <ul class="nav-links">
+                <li><a href="/html/Home.html">Inicio</a></li>
+                <li><a href="/html/Todas-Las-Peliculas.html">Películas</a></li>
+                <li><a href="/html/Ofertas.html">Promociones</a></li>
+                <li><a href="/html/Sobre-Nosotros.html">Sobre Nosotros</a></li>
+                <li><a href="/html/Trabaja-Nosotros.html">Trabaja con nosotros</a></li>
+                <li><a href="/html/Inicio-sesion.html">Iniciar Sesion</a></li>
+            </ul>
+            <div class="icons">
+                <a href="#"><i class="fas fa-map-marker-alt"></i></a>
+                <a href="#"><i class="fas fa-search"></i></a>
+            </div>
+        </nav>
+    </header>
+
+    <section class="galeria">
+        <h1 class="galeria__titulo">MEJORES PELICULAS</h1>
+        <div class="movies">
+            <!-- Contenido fijo -->
+            <div class="movie">
+                <img src="/imagenes/joker-2-poster-660d1344c56e8.avif" alt="El Joker">
+                <div class="play-icon" data-video-url="https://youtu.be/X5wPqyTudWk" onclick="openVideo(this)">▶</div>
+                <p>El Joker</p>
+            </div>
+            <!-- Más contenido fijo aquí -->
+        </div>
+    </section>
+
+    <section class="galeria">
+        <h1 class="galeria__titulo">TODAS LAS PELÍCULAS</h1>
+        <div class="galeria__contenedor" id="galeria-contenedor">
+            <!-- Las películas se cargarán dinámicamente aquí -->
+        </div>
+    </section>
+
+    <script>
+        // Lógica para abrir videos
+        function openVideo(element) {
+            const videoUrl = element.getAttribute('data-video-url');
+            if (videoUrl) {
+                window.open(videoUrl, '_blank'); // Abre el URL del video en una nueva pestaña
+            } else {
+                console.error("URL del video no encontrada");
+            }
+        }
+
+        // Llamada al endpoint para cargar las películas
+        function cargarPeliculas() {
+            fetch('https://localhost:7259/api/PeliculaPrincipal', {
+                method: 'GET',
+                headers: {
+                    'Content-Type': 'application/json'
+                }
+            })
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error('Error en la respuesta: ' + response.statusText);
+                }
+                return response.json(); // Parsear la respuesta JSON
+            })
+            .then(data => {
+                mostrarPeliculas(data); // Mostrar las películas en la galería
+            })
+            .catch(error => {
+                console.error('Error al cargar las películas:', error);
+                document.getElementById('galeria-contenedor').innerHTML = '<p>Error al cargar las películas.</p>';
+            });
+        }
+
+        // Mostrar las películas en la sección "TODAS LAS PELÍCULAS"
+        function mostrarPeliculas(peliculas) {
+            const contenedor = document.getElementById('galeria-contenedor');
+            contenedor.innerHTML = ''; // Limpiar contenido existente
+
+            if (peliculas.length === 0) {
+                contenedor.innerHTML = '<p>No hay películas disponibles.</p>';
+                return;
+            }
+
+            peliculas.forEach(pelicula => {
+                const tarjeta = `
+                    <div class="pelicula">
+                        <img src="/imagenes/${pelicula.imagenUrl}" alt="${pelicula.titulo}">
+                        <p class="pelicula__titulo">${pelicula.titulo}</p>
+                        <p class="pelicula__detalle"><strong>Duración:</strong> ${pelicula.duracion} minutos</p>
+                        <p class="pelicula__detalle"><strong>Director:</strong> ${pelicula.director}</p>
+                    </div>
+                `;
+                contenedor.innerHTML += tarjeta;
+            });
+        }
+
+        // Cargar las películas al cargar la página
+        document.addEventListener('DOMContentLoaded', cargarPeliculas);
+    </script>
+</body>
+
+</html>
