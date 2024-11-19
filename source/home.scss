@@ -204,93 +204,79 @@ header {
 
 // "Mejores Peliculas" Section
 // Variables
+// "Mejores Películas" Section (Mobile-First)
+// Variables
 $color-fondo: #0c1a33;
 $color-titulo: #ffffff;
 $color-linea: #4a89dc;
 $color-texto: #cccccc;
 $color-tarjeta-fondo: #102a4c;
 $border-radius: 8px;
-$font-size-titulo: 1.5em;
-$font-size-pelicula: 1em;
-$padding-galeria: 20px;
-$gap-galeria: 50px; 
+$font-size-titulo: 1.2em; // Reducido para móviles
+$font-size-pelicula: 0.9em; // Reducido para móviles
+$padding-galeria: 10px; // Ajustado para móviles
+$gap-galeria: 20px; // Menor espacio para móviles
+
 .galeria {
-    margin-top: 50px;
-    width: 100%;
-    max-width: 1200px;
-    padding: $padding-galeria;
-    text-align: center;
-    
-  
-    &__titulo {
-      color: $color-titulo;
-      font-size: $font-size-titulo;
-      margin-bottom: $gap-galeria;
-      position: relative;
-      z-index: -1;
-  
-  
-      &:after {
-        content: "";
-        display: block;
-        width: 100px;
-        height: 3px;
-        background-color: $color-linea;
-        margin: 10px auto 0;
-      }
-    }
-  
-    &__contenedor {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr); // 4 columnas fijas
-      gap: $gap-galeria;
+  margin-top: 40px;
+  width: 100%;
+  max-width: 100%; // Ocupa todo el ancho en móviles
+  padding: $padding-galeria;
+  text-align: center;
+
+  &__titulo {
+    color: $color-titulo;
+    font-size: $font-size-titulo;
+    margin-bottom: 20px; // Espaciado reducido para móviles
+    position: relative;
+
+    &:after {
+      content: "";
+      display: block;
+      width: 80px; // Más pequeño para móviles
+      height: 2px;
+      background-color: $color-linea;
+      margin: 10px auto 0;
     }
   }
 
-.all-movies {
-    color: $text-color;
-    border: none;
-    padding: 10px 20px;
-    font-size: 20px;
-    cursor: pointer;
-    text-transform: uppercase;
-    text-decoration: none;
-    margin-top: 20px;
+  &__contenedor {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr); // Dos columnas en móviles
+    gap: $gap-galeria;
 
-    &:hover {
-        background-color: $hover-color;
+    .tarjeta {
+      background-color: $color-tarjeta-fondo;
+      padding: 10px; // Padding reducido para móviles
+      border-radius: $border-radius;
+      text-align: center;
+
+      img {
+        width: 100%;
+        border-radius: $border-radius;
+      }
+
+      p {
+        font-size: $font-size-pelicula;
+        color: $color-texto;
+      }
     }
+  }
 }
 
-// Welcome Section
-.contenedor-bienvenida {
-    text-align: center;
-    margin-top: $section-spacing;
-    margin-bottom: 50px;
+.all-movies {
+  color: $color-titulo;
+  border: none;
+  padding: 8px 16px; // Botón más pequeño en móviles
+  font-size: 0.9em; // Fuente reducida para móviles
+  cursor: pointer;
+  text-transform: uppercase;
+  text-decoration: none;
+  margin-top: 20px;
 
-    .bienvenida-overlay {
-        color: $text-color;
-        padding: 30px;
-        border-radius: 8px;
-        width: 100%;
-
-        h1 {
-            font-size: 2em;
-            margin-bottom: 10px;
-        }
-
-        p {
-            font-size: 1em;
-            line-height: 1.8;
-        }
-    }
-
-    .imagen-cine {
-        width: 100%;
-        max-width: 600px;
-        border-radius: 8px;
-        margin-bottom: 20px;
-    }
+  &:hover {
+    background-color: $hover-color;
+  }
 }
 .movies {
     display: flex;
@@ -333,17 +319,35 @@ $gap-galeria: 50px;
       }
     }
   }
-  .all-movies {
-    color: $text-color;
-    border: none;
-    padding: 10px 20px;
-    font-size: 20px;
-    cursor: pointer;
-    text-transform: uppercase;
-    text-decoration: none;
-  
-    &:hover {
-      background-color: $hover-color;
-      
+
+// Welcome Section
+.contenedor-bienvenida {
+    text-align: center;
+    margin-top: $section-spacing;
+    margin-bottom: 50px;
+
+    .bienvenida-overlay {
+        color: $text-color;
+        padding: 30px;
+        border-radius: 8px;
+        width: 100%;
+
+        h1 {
+            font-size: 2em;
+            margin-bottom: 10px;
+        }
+
+        p {
+            font-size: 1em;
+            line-height: 1.8;
+        }
     }
-  }
+
+    .imagen-cine {
+        width: 100%;
+        max-width: 600px;
+        border-radius: 8px;
+        margin-bottom: 20px;
+    }
+}
+
