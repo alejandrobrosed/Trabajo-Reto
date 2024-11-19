@@ -16,7 +16,7 @@
             </div>
             <ul class="nav-links">
                 <li><a href="/html/Home.html">Inicio</a></li>
-                <li><a href="/html/Todas-Las-Peliculas.html">Películas</a></li>
+                <li><a href="/html/Peliculas.html">Películas</a></li>
                 <li><a href="/html/Ofertas.html">Promociones</a></li>
                 <li><a href="/html/Sobre-Nosotros.html">Sobre Nosotros</a></li>
                 <li><a href="/html/Trabaja-Nosotros.html">Trabaja con nosotros</a></li>
@@ -30,17 +30,13 @@
     </header>
 
     <section class="galeria">
-        <h1 class="galeria__titulo">MEJORES PELICULAS</h1>
-        <div class="movies">
-            <!-- Contenido fijo -->
-            <div class="movie">
-                <img src="/imagenes/joker-2-poster-660d1344c56e8.avif" alt="El Joker">
-                <div class="play-icon" data-video-url="https://youtu.be/X5wPqyTudWk" onclick="openVideo(this)">▶</div>
-                <p>El Joker</p>
-            </div>
-            <!-- Más contenido fijo aquí -->
+        <h1 class="galeria__titulo">MEJORES PELÍCULAS</h1>
+        <div id="mejores-peliculas" class="movies">
+            <!-- Las mejores películas se cargarán aquí dinámicamente -->
         </div>
     </section>
+
+    <script src="/js/Peliculas.js"></script>
 
     <section class="galeria">
         <h1 class="galeria__titulo">TODAS LAS PELÍCULAS</h1>

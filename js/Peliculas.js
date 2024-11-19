@@ -1,5 +1,5 @@
-// Realizar la llamada AJAX
-function cargarPeliculas() {
+// Función para cargar las mejores películas desde el backend
+function cargarMejoresPeliculas() {
     fetch('https://localhost:7259/api/PeliculaPrincipal', {
         method: 'GET',
         headers: {
@@ -10,19 +10,20 @@ function cargarPeliculas() {
         if (!response.ok) {
             throw new Error('Error en la respuesta: ' + response.statusText);
         }
-        return response.json();
+        return response.json(); // Parsear la respuesta JSON
     })
     .then(data => {
-        mostrarPeliculas(data);
+        mostrarMejoresPeliculas(data); // Renderizar las mejores películas
     })
     .catch(error => {
-        console.error('Error en la solicitud:', error);
-        document.getElementById('peliculas-container').innerHTML = '<p>Error al cargar las películas.</p>';
+        console.error('Error al cargar las mejores películas:', error);
+        document.getElementById('mejores-peliculas').innerHTML = '<p>Error al cargar las mejores películas.</p>';
     });
 }
 
-function mostrarPeliculas(peliculas) {
-    const contenedor = document.getElementById('galeria-contenedor');
+// Función para mostrar las mejores películas en el HTML
+function mostrarMejoresPeliculas(peliculas) {
+    const contenedor = document.getElementById('mejores-peliculas');
     contenedor.innerHTML = ''; // Limpiar contenido existente
 
     if (peliculas.length === 0) {
@@ -30,13 +31,14 @@ function mostrarPeliculas(peliculas) {
         return;
     }
 
-    peliculas.forEach(pelicula => {
+    const mejoresPeliculas = peliculas.slice(0, 5); // Seleccionar las primeras 5 películas
+
+    mejoresPeliculas.forEach(pelicula => {
         const tarjeta = `
-            <div class="pelicula">
+            <div class="movie">
                 <img src="/imagenes/${pelicula.imagenUrl}" alt="${pelicula.titulo}">
-                <p class="pelicula__titulo">${pelicula.titulo}</p>
-                <p class="pelicula__detalle"><strong>Duración:</strong> ${pelicula.duracion} minutos</p>
-                <p class="pelicula__detalle"><strong>Director:</strong> ${pelicula.director}</p>
+                <div class="play-icon" data-video-url="${pelicula.videoUrl}" onclick="openVideo(this)">▶</div>
+                <p>${pelicula.titulo}</p>
             </div>
         `;
         contenedor.innerHTML += tarjeta;
@@ -44,5 +46,5 @@ function mostrarPeliculas(peliculas) {
 }
 
 
-// Ejecutar la función al cargar el DOM
-document.addEventListener('DOMContentLoaded', cargarPeliculas);
+// Llamar la función al cargar el DOM
+document.addEventListener('DOMContentLoaded', cargarMejoresPeliculas);
