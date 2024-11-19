@@ -1,0 +1,140 @@
+$color-fondo: #0a0a2a;
+$color-texto: #ffffff;
+$color-resaltado: #c0c0c0;
+
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background-color: $color-fondo;
+  color: $color-texto;
+}
+
+.contenedor-principal {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px;
+}
+
+.cabecera {
+  text-align: center;
+
+  .titulo {
+    font-size: 2rem;
+    margin: 0;
+  }
+
+  .subtitulo {
+    font-size: 1.5rem;
+    margin: 10px 0;
+  }
+}
+
+.contenido {
+  width: 100%;
+  max-width: 600px;
+
+  .seccion-entradas {
+    background-color: $color-fondo;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+
+    .introducir-codigo {
+      font-size: 1rem;
+      margin-bottom: 20px;
+    }
+
+    .tabla-entradas {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+
+      .fila {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        background-color: $color-resaltado;
+        padding: 10px;
+        border-radius: 5px;
+
+        .articulo {
+          flex: 2;
+        }
+
+        .precio,
+        .subtotal {
+          flex: 1;
+          text-align: center;
+        }
+
+        .cantidad {
+          flex: 1;
+          display: flex;
+          align-items: center;
+          justify-content: space-around;
+
+          .btn-menos,
+          .btn-mas {
+            background-color: $color-fondo;
+            color: $color-texto;
+            border: none;
+            border-radius: 50%;
+            width: 25px;
+            height: 25px;
+            cursor: pointer;
+
+            &:hover {
+              background-color: lighten($color-fondo, 10%);
+            }
+          }
+
+          .numero {
+            font-size: 1rem;
+          }
+        }
+      }
+    }
+
+    .total {
+      margin-top: 20px;
+      display: flex;
+      justify-content: space-between;
+
+      .etiqueta-total {
+        font-weight: bold;
+      }
+
+      .precio-total {
+        font-size: 1.2rem;
+      }
+    }
+  }
+}
+
+.pie {
+  margin-top: 20px;
+  width: 100%;
+  max-width: 600px;
+  text-align: center;
+
+  .menu {
+    list-style: none;
+    padding: 0;
+    margin: 10px 0;
+
+    li {
+      display: inline;
+      margin: 0 10px;
+
+      a {
+        color: $color-texto;
+        text-decoration: none;
+
+        &:hover {
+          text-decoration: underline;
+        }
+      }
+    }
+  }
+}

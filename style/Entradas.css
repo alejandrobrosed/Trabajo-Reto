@@ -1,0 +1,120 @@
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background-color: #0a0a2a;
+  color: #ffffff;
+}
+
+.contenedor-principal {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px;
+}
+
+.cabecera {
+  text-align: center;
+}
+.cabecera .titulo {
+  font-size: 2rem;
+  margin: 0;
+}
+.cabecera .subtitulo {
+  font-size: 1.5rem;
+  margin: 10px 0;
+}
+
+.contenido {
+  width: 100%;
+  max-width: 600px;
+}
+.contenido .seccion-entradas {
+  background-color: #0a0a2a;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+.contenido .seccion-entradas .introducir-codigo {
+  font-size: 1rem;
+  margin-bottom: 20px;
+}
+.contenido .seccion-entradas .tabla-entradas {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.contenido .seccion-entradas .tabla-entradas .fila {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #c0c0c0;
+  padding: 10px;
+  border-radius: 5px;
+}
+.contenido .seccion-entradas .tabla-entradas .fila .articulo {
+  flex: 2;
+}
+.contenido .seccion-entradas .tabla-entradas .fila .precio,
+.contenido .seccion-entradas .tabla-entradas .fila .subtotal {
+  flex: 1;
+  text-align: center;
+}
+.contenido .seccion-entradas .tabla-entradas .fila .cantidad {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+}
+.contenido .seccion-entradas .tabla-entradas .fila .cantidad .btn-menos,
+.contenido .seccion-entradas .tabla-entradas .fila .cantidad .btn-mas {
+  background-color: #0a0a2a;
+  color: #ffffff;
+  border: none;
+  border-radius: 50%;
+  width: 25px;
+  height: 25px;
+  cursor: pointer;
+}
+.contenido .seccion-entradas .tabla-entradas .fila .cantidad .btn-menos:hover,
+.contenido .seccion-entradas .tabla-entradas .fila .cantidad .btn-mas:hover {
+  background-color: #141453;
+}
+.contenido .seccion-entradas .tabla-entradas .fila .cantidad .numero {
+  font-size: 1rem;
+}
+.contenido .seccion-entradas .total {
+  margin-top: 20px;
+  display: flex;
+  justify-content: space-between;
+}
+.contenido .seccion-entradas .total .etiqueta-total {
+  font-weight: bold;
+}
+.contenido .seccion-entradas .total .precio-total {
+  font-size: 1.2rem;
+}
+
+.pie {
+  margin-top: 20px;
+  width: 100%;
+  max-width: 600px;
+  text-align: center;
+}
+.pie .menu {
+  list-style: none;
+  padding: 0;
+  margin: 10px 0;
+}
+.pie .menu li {
+  display: inline;
+  margin: 0 10px;
+}
+.pie .menu li a {
+  color: #ffffff;
+  text-decoration: none;
+}
+.pie .menu li a:hover {
+  text-decoration: underline;
+}
+
+/*# sourceMappingURL=Entradas.css.map */

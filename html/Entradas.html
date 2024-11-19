@@ -3,36 +3,80 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Red One - Tus Entradas</title>
+  <title>Tus Entradas</title>
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-  <header class="encabezado">
-    <div class="contenido-encabezado">
-      <span class="atras">Atrás</span>
-      <h1 class="titulo">TUS ENTRADAS</h1>
-      <div class="informacion">
-        <span>CINE</span> | <span>SESIÓN 07 nov, 19:40</span>
-      </div>
-    </div>
-  </header>
+  <div class="contenedor-principal">
+    <header class="cabecera">
+      <h1 class="titulo">RED ONE</h1>
+      <h2 class="subtitulo">TUS ENTRADAS</h2>
+    </header>
 
-  <footer class="pie">
-    <div class="enlaces-pie">
-      <a href="#">Quiénes somos</a>
-      <a href="#">Trabaja con nosotros</a>
-      <a href="#">Cine Delux</a>
-      <a href="#">Atención al cliente</a>
-    </div>
-    <div class="enlaces-pie">
-      <a href="#">Términos y condiciones</a>
-      <a href="#">Políticas de privacidad</a>
-    </div>
-    <div class="redes-sociales">
-      <a href="#">Instagram</a>
-      <a href="#">Facebook</a>
-      <a href="#">TikTok</a>
-    </div>
-  </footer>
+    <main class="contenido">
+      <div class="seccion-entradas">
+        <p class="introducir-codigo">Introduce tu código promocional</p>
+        <div class="tabla-entradas">
+          <div class="fila">
+            <span class="articulo">Normal</span>
+            <span class="precio">8,90 €</span>
+            <div class="cantidad">
+              <button class="btn-menos">-</button>
+              <span class="numero">0</span>
+              <button class="btn-mas">+</button>
+            </div>
+            <span class="subtotal">0,00 €</span>
+          </div>
+          <div class="fila">
+            <span class="articulo">Menores 13</span>
+            <span class="precio">6,90 €</span>
+            <div class="cantidad">
+              <button class="btn-menos">-</button>
+              <span class="numero">0</span>
+              <button class="btn-mas">+</button>
+            </div>
+            <span class="subtotal">0,00 €</span>
+          </div>
+          <div class="fila">
+            <span class="articulo">Carnet Joven</span>
+            <span class="precio">6,90 €</span>
+            <div class="cantidad">
+              <button class="btn-menos">-</button>
+              <span class="numero">0</span>
+              <button class="btn-mas">+</button>
+            </div>
+            <span class="subtotal">0,00 €</span>
+          </div>
+          <div class="fila">
+            <span class="articulo">Mayores 65</span>
+            <span class="precio">6,90 €</span>
+            <div class="cantidad">
+              <button class="btn-menos">-</button>
+              <span class="numero">0</span>
+              <button class="btn-mas">+</button>
+            </div>
+            <span class="subtotal">0,00 €</span>
+          </div>
+        </div>
+        <div class="total">
+          <span class="etiqueta-total">Total:</span>
+          <span class="precio-total">0,00 €</span>
+        </div>
+      </div>
+    </main>
+
+    <footer class="pie">
+      <ul class="menu">
+        <li><a href="#">Quiénes somos</a></li>
+        <li><a href="#">Trabaja con nosotros</a></li>
+        <li><a href="#">Cine Delux</a></li>
+        <li><a href="#">Atención al cliente</a></li>
+      </ul>
+      <ul class="menu">
+        <li><a href="#">Términos y condiciones</a></li>
+        <li><a href="#">Políticas de privacidad</a></li>
+      </ul>
+    </footer>
+  </div>
 </body>
 </html>

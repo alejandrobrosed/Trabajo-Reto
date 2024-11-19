@@ -29,7 +29,6 @@ body {
         background-color: #888;
       }
   
-      .available {}
       .occupied::after {
         content: "⛔";
       }
