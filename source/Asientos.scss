@@ -55,6 +55,12 @@ body {
         border-radius: 5px;
         cursor: pointer;
         background-color: #888; 
+
+        &.selected {
+          background-color: #ADD8E6; // Azul claro
+          border: 2px solid #87CEEB; // Opcional: resalta el borde
+          box-sizing: border-box; // Asegura que el tamaño no cambie
+        }
   
         &.occupied::after { 
           content: "⛔";
@@ -63,6 +69,7 @@ body {
           display: flex;
           align-items: center;
           justify-content: center;
+          box-sizing: border-box;
         }
   
         &.vip::after { 
@@ -72,6 +79,7 @@ body {
           display: flex;
           align-items: center;
           justify-content: center;
+          box-sizing: border-box;
         }
       }
     }
@@ -102,4 +110,5 @@ body {
     margin-bottom: 15px;
     visibility: hidden; 
   }
+  
   

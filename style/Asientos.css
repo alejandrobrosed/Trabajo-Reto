@@ -52,6 +52,11 @@ body {
   cursor: pointer;
   background-color: #888;
 }
+.seat-selection .seats .seat.selected {
+  background-color: #ADD8E6;
+  border: 2px solid #87CEEB;
+  box-sizing: border-box;
+}
 .seat-selection .seats .seat.occupied::after {
   content: "⛔";
   color: white;
@@ -67,6 +72,7 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
+  box-sizing: border-box;
 }
 .seat-selection .controls {
   margin-top: 20px;
