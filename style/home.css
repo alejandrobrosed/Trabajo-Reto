@@ -7,7 +7,7 @@
 body {
   font-family: Arial, sans-serif;
   background-color: #0A1C3A;
-  background-image: url("/imagenes/");
+  background-image: url("/imagenes/fondo.jpg");
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
@@ -156,38 +156,51 @@ header nav .icons a:hover {
 }
 
 .galeria {
-  margin-top: 50px;
+  margin-top: 40px;
   width: 100%;
-  max-width: 1200px;
-  padding: 20px;
+  max-width: 100%;
+  padding: 10px;
   text-align: center;
 }
 .galeria__titulo {
   color: #ffffff;
-  font-size: 1.5em;
-  margin-bottom: 50px;
+  font-size: 1.2em;
+  margin-bottom: 20px;
   position: relative;
-  z-index: -1;
 }
 .galeria__titulo:after {
   content: "";
   display: block;
-  width: 100px;
-  height: 3px;
+  width: 80px;
+  height: 2px;
   background-color: #4a89dc;
   margin: 10px auto 0;
 }
 .galeria__contenedor {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 50px;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 20px;
+}
+.galeria__contenedor .tarjeta {
+  background-color: #102a4c;
+  padding: 10px;
+  border-radius: 8px;
+  text-align: center;
+}
+.galeria__contenedor .tarjeta img {
+  width: 100%;
+  border-radius: 8px;
+}
+.galeria__contenedor .tarjeta p {
+  font-size: 0.9em;
+  color: #cccccc;
 }
 
 .all-movies {
-  color: #fff;
+  color: #ffffff;
   border: none;
-  padding: 10px 20px;
-  font-size: 20px;
+  padding: 8px 16px;
+  font-size: 0.9em;
   cursor: pointer;
   text-transform: uppercase;
   text-decoration: none;
@@ -195,32 +208,6 @@ header nav .icons a:hover {
 }
 .all-movies:hover {
   background-color: #555;
-}
-
-.contenedor-bienvenida {
-  text-align: center;
-  margin-top: 140px;
-  margin-bottom: 50px;
-}
-.contenedor-bienvenida .bienvenida-overlay {
-  color: #fff;
-  padding: 30px;
-  border-radius: 8px;
-  width: 100%;
-}
-.contenedor-bienvenida .bienvenida-overlay h1 {
-  font-size: 2em;
-  margin-bottom: 10px;
-}
-.contenedor-bienvenida .bienvenida-overlay p {
-  font-size: 1em;
-  line-height: 1.8;
-}
-.contenedor-bienvenida .imagen-cine {
-  width: 100%;
-  max-width: 600px;
-  border-radius: 8px;
-  margin-bottom: 20px;
 }
 
 .movies {
@@ -260,17 +247,30 @@ header nav .icons a:hover {
   background-color: #4da3ff;
 }
 
-.all-movies {
-  color: #fff;
-  border: none;
-  padding: 10px 20px;
-  font-size: 20px;
-  cursor: pointer;
-  text-transform: uppercase;
-  text-decoration: none;
+.contenedor-bienvenida {
+  text-align: center;
+  margin-top: 140px;
+  margin-bottom: 50px;
 }
-.all-movies:hover {
-  background-color: #555;
+.contenedor-bienvenida .bienvenida-overlay {
+  color: #fff;
+  padding: 30px;
+  border-radius: 8px;
+  width: 100%;
+}
+.contenedor-bienvenida .bienvenida-overlay h1 {
+  font-size: 2em;
+  margin-bottom: 10px;
+}
+.contenedor-bienvenida .bienvenida-overlay p {
+  font-size: 1em;
+  line-height: 1.8;
+}
+.contenedor-bienvenida .imagen-cine {
+  width: 100%;
+  max-width: 600px;
+  border-radius: 8px;
+  margin-bottom: 20px;
 }
 
-/*# sourceMappingURL=Home.css.map */
+/*# sourceMappingURL=home.css.map */
