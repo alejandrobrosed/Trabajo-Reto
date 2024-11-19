@@ -31,20 +31,20 @@ function mostrarMejoresPeliculas(peliculas) {
         return;
     }
 
-    // Seleccionar las primeras 5 películas como "mejores"
-    const mejoresPeliculas = peliculas.slice(0, 5);
+    const mejoresPeliculas = peliculas.slice(0, 5); // Seleccionar las primeras 5 películas
 
     mejoresPeliculas.forEach(pelicula => {
         const tarjeta = `
             <div class="movie">
                 <img src="/imagenes/${pelicula.imagenUrl}" alt="${pelicula.titulo}">
-                <div class="play-icon" data-video-url="#" onclick="alert('Trailer no disponible');">▶</div>
+                <div class="play-icon" data-video-url="${pelicula.videoUrl}" onclick="openVideo(this)">▶</div>
                 <p>${pelicula.titulo}</p>
             </div>
         `;
         contenedor.innerHTML += tarjeta;
     });
 }
+
 
 // Llamar la función al cargar el DOM
 document.addEventListener('DOMContentLoaded', cargarMejoresPeliculas);
