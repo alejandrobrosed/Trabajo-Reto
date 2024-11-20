@@ -1,0 +1,58 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+  body {
+    font-family: Arial, sans-serif;
+    background-color: #0a0a2a;
+    color: #f1f1f1;
+    padding: 80px;
+  }
+  
+  .container {
+    display: flex;
+    flex-wrap: wrap;
+  }
+  
+  .column {
+    flex: 1;
+    min-width: 300px; // Asegura que las columnas se ajusten en pantallas pequeñas
+    border-radius: 8px;
+    margin-top: 15px;
+    text-align: justify;
+  }
+  
+  .image-column {
+    display: flex;
+    align-items: center;
+  }
+  
+  .image-column img {
+    max-width: 100%;
+    border-radius: 8px;
+  }
+  
+  .synopsis-column h1 {
+    margin-bottom: 20px;
+    font-size: 24px;
+    text-transform: uppercase;
+  }
+  
+  .synopsis-column p {
+    line-height: 1.6;
+  }
+  
+  .info-column ul {
+    list-style: none;
+  }
+  
+  .info-column li {
+    margin-bottom: 10px;
+  }
+  
+  .info-column strong {
+    color: #58a6ff;
+  }
+  
