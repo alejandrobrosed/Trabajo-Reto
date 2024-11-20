@@ -34,15 +34,49 @@ function mostrarMejoresPeliculas(peliculas) {
     const mejoresPeliculas = peliculas.slice(0, 5); // Seleccionar las primeras 5 películas
 
     mejoresPeliculas.forEach(pelicula => {
-        const tarjeta = `
-            <div class="movie">
-                <img src="/imagenes/${pelicula.imagenUrl}" alt="${pelicula.titulo}">
-                <div class="play-icon" data-video-url="${pelicula.videoUrl}" onclick="openVideo(this)">▶</div>
-                <p>${pelicula.titulo}</p>
-            </div>
+        const tarjeta = document.createElement('div');
+        tarjeta.classList.add('movie');
+        tarjeta.innerHTML = `
+            <img src="/imagenes/${pelicula.imagenUrl}" alt="${pelicula.titulo}">
+            <div class="play-icon" data-video-url="${pelicula.videoUrl}" onclick="openVideo(this)">▶</div>
+            <p>${pelicula.titulo}</p>
         `;
-        contenedor.innerHTML += tarjeta;
+
+        // Agregar evento para guardar la película seleccionada en el localStorage
+        tarjeta.addEventListener('click', () => {
+            const peliculaSeleccionada = {
+                titulo: pelicula.titulo,
+                duracion: pelicula.duracion,
+                director: pelicula.director,
+                imagenUrl: pelicula.imagenUrl,
+                videoUrl: pelicula.videoUrl || null
+            };
+
+            // Guardar en el localStorage
+            localStorage.setItem('peliculaSeleccionada', JSON.stringify(peliculaSeleccionada));
+
+            // Redirigir a la página principal (opcional)
+            window.location.href = '/html/Horarios.html'; // Cambia la ruta según corresponda
+        });
+
+        contenedor.appendChild(tarjeta);
     });
+}
+
+function obtenerPeliculaSeleccionada() {
+    const peliculaSeleccionada = localStorage.getItem('peliculaSeleccionada');
+    if (peliculaSeleccionada) {
+        return JSON.parse(peliculaSeleccionada);
+    }
+    return null; // Si no hay ninguna película seleccionada
+}
+
+// Ejemplo: Mostrar la película seleccionada en la consola
+const pelicula = obtenerPeliculaSeleccionada();
+if (pelicula) {
+    console.log('Película seleccionada:', pelicula);
+} else {
+    console.log('No se ha seleccionado ninguna película.');
 }
 
 

@@ -98,6 +98,23 @@
                         <p class="pelicula__detalle"><strong>Director:</strong> ${pelicula.director}</p>
                     </div>
                 `;
+                
+
+                tarjeta.addEventListener('click', () => {
+                    const peliculaSeleccionada = {
+                        titulo: pelicula.titulo,
+                        duracion: pelicula.duracion,
+                        director: pelicula.director,
+                        imagenUrl: pelicula.imagenUrl,
+                        videoUrl: pelicula.videoUrl || null
+                    };
+        
+                    // Guardar en el localStorage
+                    localStorage.setItem('peliculaSeleccionada', JSON.stringify(peliculaSeleccionada));
+        
+                    // Redirigir a la página principal (opcional)
+                    window.location.href = '/html/Horarios.html'; // Cambia la ruta según corresponda
+                });
                 contenedor.innerHTML += tarjeta;
             });
         }
