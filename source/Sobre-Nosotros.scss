@@ -2,92 +2,182 @@
 $primary-color: #0A1C3A;
 $text-color: #fff;
 $hover-color: #555;
-$icon-hover-color: #ddd;
-$font-size: 16px;
-$icon-font-size: 20px;
+$carousel-width: 90%;
+$carousel-max-width: 800px;
+$button-color: #007bff;
+$font-size-titulo: 1.5em;
+$font-size-pelicula: 1em;
+$padding-galeria: 20px;
+$section-spacing: 140px; // Increased spacing between sections
+
+// Global Styles
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  background-color: $primary-color;
+  background-size: cover;
+  background-position: center;
+  color: $text-color;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-height: 100vh;
+}
+
+// Variables del Header
+$primary-color: #0c1a33;
+$text-color: #ffffff;
+$hover-color: #4a89dc;
+$icon-hover-color: lighten($hover-color, 10%);
+$header-height: 80px;
 $gap-large: 150px;
 $gap-medium: 15px;
-$header-height: 60px; // Nueva variable para definir la altura del header
+$font-size: 1rem; // Tamaño de fuente para el texto del menú
+$icon-font-size: 1.2rem; // Tamaño de fuente para íconos
+$logo-width: 80px; // Tamaño del logo
 
+
+// Header
 header {
-    background-color: $primary-color;
-    padding: 10px 20px;
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 11%; 
-  
-    nav {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-  
-      .logo {
-        img {
-          width: 100px;
-          height: auto;
-        }
+  background-color: $primary-color;
+  padding: 15px 20px;
+  position: fixed;
+  top: -2px;
+  left: 0;
+  width: 100%;
+  height: $header-height;
+  z-index: 10;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+
+  nav {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    .logo {
+      img {
+        width: 80px;
+        height: auto;
       }
-  
-      .nav-links {
-        list-style: none;
-        display: flex;
-        gap: $gap-large;
-  
-        li {
-          a {
-            color: $text-color;
-            text-decoration: none;
-            font-size: $font-size;
-            padding: 8px 12px;
-  
-            &:hover {
-              background-color: $hover-color;
-              border-radius: 4px;
-            }
-          }
-        }
+    }
+
+    .menu-toggle {
+      display: block; // Visible en móviles
+      font-size: $icon-font-size;
+      color: $text-color;
+      cursor: pointer;
+
+      &:hover {
+        color: $icon-hover-color;
       }
-  
-      .icons {
-        display: flex;
-        gap: $gap-medium;
-  
+    }
+
+    .nav-links {
+      list-style: none;
+      display: none; // Oculto en móviles
+      flex-direction: column;
+      gap: $gap-medium;
+      position: absolute;
+      top: $header-height;
+      left: 0;
+      background-color: $primary-color;
+      width: 100%;
+      padding: 20px;
+      transform: translateY(-100%);
+      transition: transform 0.3s ease;
+
+      li {
+        text-align: center;
+
         a {
           color: $text-color;
-          font-size: $icon-font-size;
           text-decoration: none;
-  
+          font-size: $font-size;
+          padding: 10px 15px;
+          display: block;
+
           &:hover {
-            color: $icon-hover-color;
+            background-color: $hover-color;
+            border-radius: 4px;
           }
         }
       }
     }
+
+    .nav-links.active {
+      display: flex;
+      transform: translateY(0); // Desplegado
+    }
+
+    .icons {
+      display: none; // Oculto en móviles
+      gap: $gap-medium;
+
+      a {
+        color: $text-color;
+        font-size: $icon-font-size;
+        text-decoration: none;
+
+        &:hover {
+          color: $icon-hover-color;
+        }
+      }
+    }
   }
-body {
-    font-family: Arial, sans-serif;
-    background-color: #0a0e27;
-    color: #ffffff;
-    margin: 0;
-    padding: 0;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    min-height: 100vh;
+}
+
+// Estilos para pantallas grandes
+@media (min-width: 768px) {
+  header {
+    padding: 20px 40px;
+    height: auto;
+
+    nav {
+      .menu-toggle {
+        display: none; // Ocultar el menú hamburguesa
+      }
+
+      .nav-links {
+        display: flex; // Mostrar enlaces en fila
+        flex-direction: row;
+        position: static;
+        transform: none;
+        background-color: transparent;
+        gap: $gap-large;
+        padding: 0;
+
+        li {
+          a {
+            font-size: $font-size;
+            padding: 8px 12px;
+          }
+        }
+      }
+
+      .icons {
+        display: flex; // Mostrar íconos en escritorio
+      }
+    }
   }
-  
-  .container {
-    max-width: 1000px;
-    padding: 20px;
-    text-align: center;
-    margin-top: 100px;
-  }
-  
+}
+
+
+// Container for content
+.container {
+  max-width: 1000px;
+  padding: 20px;
+  text-align: center;
+  margin-top: $header-height;
+
   .about {
+    margin-top: 20px;
     margin-bottom: 40px;
-  
+
     h1 {
       font-size: 28px;
       font-weight: bold;
@@ -97,7 +187,7 @@ body {
       display: inline-block;
       padding-bottom: 10px;
     }
-  
+
     p {
       font-size: 16px;
       line-height: 1.6;
@@ -105,12 +195,13 @@ body {
       text-align: justify;
     }
   }
-  
+
+  // Images Section
   .images {
     display: flex;
     justify-content: center;
     gap: 20px;
-  
+
     img {
       width: 100%;
       max-width: 450px;
@@ -119,4 +210,5 @@ body {
       box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
     }
   }
-  
+
+}
