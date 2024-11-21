@@ -19,14 +19,8 @@ body {
 .column {
   flex: 1;
   min-width: 300px;
-  border-radius: 8px;
   margin-top: 15px;
   text-align: justify;
-}
-
-.image-column {
-  display: flex;
-  align-items: center;
 }
 
 .image-column img {
@@ -54,6 +48,45 @@ body {
 
 .info-column strong {
   color: #58a6ff;
+}
+
+/* Estilos para los horarios */
+.horarios {
+  margin-top: 20px;
+}
+.horarios h2 {
+  font-size: 20px;
+  margin-bottom: 10px;
+}
+.horarios .botones {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+.horarios .botones .horario {
+  padding: 10px 15px;
+  font-size: 14px;
+  font-weight: bold;
+  color: #fff;
+  background-color: #1a1a40;
+  border: 1px solid #3a3a60;
+  border-radius: 5px;
+  cursor: pointer;
+  text-align: center;
+  transition: background-color 0.3s;
+}
+.horarios .botones .horario:hover {
+  background-color: #4e4edc;
+}
+.horarios .botones .horario .tag {
+  display: inline-block;
+  background-color: #4e4edc;
+  padding: 3px 6px;
+  margin-left: 5px;
+  border-radius: 3px;
+  font-size: 12px;
+  color: #fff;
+  text-transform: uppercase;
 }
 
 /*# sourceMappingURL=Horarios.css.map */
