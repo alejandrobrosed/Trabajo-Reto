@@ -15,12 +15,12 @@ $logo-width: 80px; // Tamaño del logo
 // Header
 header {
   background-color: $primary-color;
-  padding: 15px 20px;
+  padding: 15px 5%;
   position: fixed;
   top: -2px;
   left: 0;
-  width: 100%;
-  height: $header-height;
+  width: 90%;
+  height: 80px;
   z-index: 10;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 
