@@ -1,22 +1,28 @@
-// Variables
-$primary-color: #0A1C3A;
-$text-color: #fff;
-$hover-color: #555;
-$icon-hover-color: #ddd;
-$font-size: 16px;
-$icon-font-size: 20px;
+
+// Variables del Header
+$primary-color: #0c1a33;
+$text-color: #ffffff;
+$hover-color: #4a89dc;
+$icon-hover-color: lighten($hover-color, 10%);
+$header-height: 80px;
 $gap-large: 150px;
 $gap-medium: 15px;
-$header-height: 60px; // Nueva variable para definir la altura del header
+$font-size: 1rem; // Tamaño de fuente para el texto del menú
+$icon-font-size: 1.2rem; // Tamaño de fuente para íconos
+$logo-width: 80px; // Tamaño del logo
 
+
+// Header
 header {
   background-color: $primary-color;
-  padding: 10px 20px;
+  padding: 15px 5%;
   position: fixed;
-  top: 0;
+  top: -2px;
   left: 0;
-  width: 100%;
-  height: 11%;
+  width: 90%;
+  height: 80px;
+  z-index: 10;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 
   nav {
     display: flex;
@@ -25,22 +31,45 @@ header {
 
     .logo {
       img {
-        width: 100px;
+        width: 80px;
         height: auto;
+      }
+    }
+
+    .menu-toggle {
+      display: block; // Visible en móviles
+      font-size: $icon-font-size;
+      color: $text-color;
+      cursor: pointer;
+
+      &:hover {
+        color: $icon-hover-color;
       }
     }
 
     .nav-links {
       list-style: none;
-      display: flex;
-      gap: $gap-large;
+      display: none; // Oculto en móviles
+      flex-direction: column;
+      gap: $gap-medium;
+      position: absolute;
+      top: $header-height;
+      left: 0;
+      background-color: $primary-color;
+      width: 100%;
+      padding: 20px;
+      transform: translateY(-100%);
+      transition: transform 0.3s ease;
 
       li {
+        text-align: center;
+
         a {
           color: $text-color;
           text-decoration: none;
           font-size: $font-size;
-          padding: 8px 12px;
+          padding: 10px 15px;
+          display: block;
 
           &:hover {
             background-color: $hover-color;
@@ -50,8 +79,13 @@ header {
       }
     }
 
-    .icons {
+    .nav-links.active {
       display: flex;
+      transform: translateY(0); // Desplegado
+    }
+
+    .icons {
+      display: none; // Oculto en móviles
       gap: $gap-medium;
 
       a {
@@ -67,6 +101,40 @@ header {
   }
 }
 
+// Estilos para pantallas grandes
+@media (min-width: 768px) {
+  header {
+    padding: 20px 40px;
+    height: auto;
+
+    nav {
+      .menu-toggle {
+        display: none; // Ocultar el menú hamburguesa
+      }
+
+      .nav-links {
+        display: flex; // Mostrar enlaces en fila
+        flex-direction: row;
+        position: static;
+        transform: none;
+        background-color: transparent;
+        gap: $gap-large;
+        padding: 0;
+
+        li {
+          a {
+            font-size: $font-size;
+            padding: 8px 12px;
+          }
+        }
+      }
+
+      .icons {
+        display: flex; // Mostrar íconos en escritorio
+      }
+    }
+  }
+}
 body {
   font-family: Arial, sans-serif;
   background-color: #0a0e27;
