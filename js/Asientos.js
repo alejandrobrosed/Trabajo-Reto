@@ -1,100 +1,135 @@
-const seatsContainer = document.querySelector('.seats');
-const selectedSeatsDisplay = document.getElementById('selected-seats');
-const messageElement = document.getElementById('message'); // Referencia al contenedor de mensajes
-const continueButton = document.querySelector('.continue'); // Referencia al botón "Continuar"
+// URL base del API
+const apiUrl = "https://localhost:7259/api/Asiento";
 
-let selectedSeats = [];
+// Contenedor de asientos
+const seatsContainer = document.querySelector(".seats");
+// Lista de asientos seleccionados
+let selectedSeats = []; // Arreglo para almacenar asientos seleccionados
 
-const totalOccupiedSeats = 8;
+function toggleSeatSelection(seatElement) {
+    // Obtener los valores de fila y número de los atributos de datos
+    const seatRow = seatElement.getAttribute('data-fila');
+    const seatNumber = seatElement.getAttribute('data-numero');
 
+    // Verificar si los valores se obtienen correctamente
+    console.log(`Fila: ${seatRow}, Número: ${seatNumber}`);
+
+    // Verificar si los valores son correctos
+    if (!seatRow || !seatNumber) {
+        console.error('Error: No se pudo obtener el atributo data-fila o data-numero');
+        return;
+    }
+
+    // Crear el ID del asiento basado en fila y número
+    const seatId = `${seatRow}-${seatNumber}`;
+    console.log(`ID del asiento: ${seatId}`);
+
+    if (selectedSeats.includes(seatId)) {
+        // Si ya está seleccionado, quitarlo
+        selectedSeats = selectedSeats.filter(seat => seat !== seatId);
+        seatElement.classList.remove('selected');
+    } else {
+        // Si no está seleccionado, agregarlo
+        selectedSeats.push(seatId);
+        seatElement.classList.add('selected');
+    }
+
+    // Actualizar el texto de las butacas seleccionadas
+    updateSelectedSeats();
+}
+
+function updateSelectedSeats() {
+    const selectedSeatsText = selectedSeats.join(", ");
+    console.log(`Butacas seleccionadas: ${selectedSeatsText}`);
+    document.getElementById("selected-seats").innerText = selectedSeatsText;
+}
+
+// Mostrar mensajes al usuario
 function showMessage(message) {
-    messageElement.textContent = message;
-    messageElement.style.visibility = 'visible';
-
-    setTimeout(() => {
-        messageElement.style.visibility = 'hidden';
-    }, 3000); 
+    const messageElement = document.getElementById("message");
+    messageElement.innerText = message;
 }
 
-function createSeats() {
-    const rows = 15;
-    const cols = 10;
-    let occupiedCount = 0; 
-
-    for (let row = 1; row <= rows; row++) {
-        for (let col = 1; col <= cols; col++) {
-            const seat = document.createElement('div');
-            seat.classList.add('seat');
-
-            if (row === 7 || row === 8) {
-                seat.classList.add('vip');
-            }
-            else if (occupiedCount < totalOccupiedSeats && Math.random() < 0.1) {
-                seat.classList.add('occupied');
-                occupiedCount++;
-            }
-            else {
-                seat.classList.add('available');
-            }
-
-            seat.addEventListener('click', () => toggleSeatSelection(seat, row, col));
-
-            seatsContainer.appendChild(seat);
+// Cargar asientos desde el backend
+async function loadSeatsFromBackend() {
+    try {
+        const response = await fetch(apiUrl);
+        if (!response.ok) {
+            throw new Error("Error al cargar los asientos");
         }
+
+        const seatsData = await response.json();
+        console.log("Datos de asientos cargados:", seatsData); // Verificar los datos
+        populateSeats(seatsData);
+    } catch (error) {
+        console.error("Error al cargar los asientos:", error);
+        showMessage("No se pudo cargar los asientos. Intente de nuevo más tarde.");
     }
 }
 
-function toggleSeatSelection(seat, row, col) {
-    if (seat.classList.contains('occupied')) {
-        // Mostrar mensaje para asiento ocupado
-        showMessage("Este asiento está ocupado, por favor seleccione otro asiento.");
-    } else if (seat.classList.contains('vip')) {
-        // Mostrar mensaje para asiento VIP
-        showMessage("Asiento VIP seleccionado. ¡Disfrute de la máxima comodidad!");
-        seat.classList.toggle('selected');
-        updateSelectedSeats(row, col, seat);
-    } else if (seat.classList.contains('available')) {
-        seat.classList.toggle('selected');
-        updateSelectedSeats(row, col, seat);
-    }
+// Poblar los asientos en el DOM
+function populateSeats(seatsData) {
+    console.log("Datos de asientos:", seatsData); // Verifica que todos los asientos estén aquí
+    seatsContainer.innerHTML = ""; // Limpiar el contenedor antes de agregar nuevos asientos
 
-    updateContinueButtonState();
+    seatsData.forEach(seat => {
+        const seatElement = document.createElement('div');
+        seatElement.classList.add('seat');
+
+        // Asignar clases según el estado
+        if (seat.Estado === "Ocupado") {
+            seatElement.classList.add('occupied');
+        } else if (seat.Estado === "Disponible") {
+            seatElement.classList.add('available');
+        }
+
+        // Asignar clases adicionales para asientos VIP
+        if (seat.Fila === "VIP") {
+            seatElement.classList.add('vip');
+        }
+
+        // Asignar los datos para la fila y número como atributos `data-`
+        seatElement.setAttribute('data-fila', seat.Fila);
+        seatElement.setAttribute('data-numero', seat.Numero);
+
+        // Agregar evento para seleccionar el asiento
+        seatElement.addEventListener('click', () => toggleSeatSelection(seatElement));
+
+        // Agregar asiento al contenedor
+        seatsContainer.appendChild(seatElement);
+    });
 }
 
-function updateSelectedSeats(row, col, seat) {
-    const seatPosition = `${row}-${col}`;
+// Enviar asientos seleccionados al backend
+async function sendSelectedSeatsToBackend() {
+    const selectedSeatsData = selectedSeats.map(seat => {
+        const [fila, numero] = seat.split("-");
+        return {
+            Fila: fila,
+            Numero: parseInt(numero),
+            Estado: "Seleccionado"
+        };
+    });
 
-    if (seat.classList.contains('selected')) {
-        selectedSeats.push(seatPosition);
-    } else {
-        selectedSeats = selectedSeats.filter(s => s !== seatPosition);
+    try {
+        const response = await fetch(`${apiUrl}/seleccionados`, {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify(selectedSeatsData)
+        });
+
+        if (!response.ok) {
+            throw new Error("Error al enviar los asientos seleccionados");
+        }
+
+        showMessage("Asientos seleccionados enviados con éxito");
+    } catch (error) {
+        console.error("Error al enviar los asientos seleccionados:", error);
+        showMessage("No se pudo enviar los asientos seleccionados. Intente de nuevo más tarde.");
     }
-
-    updateSelectedSeatsDisplay();
 }
 
-function updateSelectedSeatsDisplay() {
-    selectedSeatsDisplay.textContent = selectedSeats.join(', ');
-}
-
-function updateContinueButtonState() {
-    if (selectedSeats.length > 0) {
-        continueButton.disabled = false;
-    } else {
-        continueButton.disabled = true;
-    }
-}
-continueButton.addEventListener('click', () => {
-    if (selectedSeats.length === 0) {
-        showMessage("Por favor, seleccione un asiento antes de continuar.");
-    } else {
-        console.log("Asientos seleccionados:", selectedSeats);
-    }
-});
-
-createSeats();
-document.getElementById('continue-btn').addEventListener('click', function () {
-    if (!this.disabled) {
-        window.location.href = '/html/Home.html';
-    }
-});
+// Cargar asientos al inicializar la página
+loadSeatsFromBackend();
