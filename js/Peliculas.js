@@ -1,4 +1,27 @@
-// Función para cargar las mejores películas desde el backend
+// Llamada al endpoint para cargar todas las películas
+function cargarTodasLasPeliculas() {
+    fetch('https://localhost:7259/api/PeliculaPrincipal', {
+        method: 'GET',
+        headers: {
+            'Content-Type': 'application/json'
+        }
+    })
+    .then(response => {
+        if (!response.ok) {
+            throw new Error('Error en la respuesta: ' + response.statusText);
+        }
+        return response.json(); // Parsear la respuesta JSON
+    })
+    .then(data => {
+        mostrarPeliculas(data, 'galeria-contenedor'); // Renderizar todas las películas
+    })
+    .catch(error => {
+        console.error('Error al cargar las películas:', error);
+        document.getElementById('galeria-contenedor').innerHTML = '<p>Error al cargar las películas.</p>';
+    });
+}
+
+// Llamada al endpoint para cargar las mejores películas
 function cargarMejoresPeliculas() {
     fetch('https://localhost:7259/api/PeliculaPrincipal', {
         method: 'GET',
@@ -13,7 +36,8 @@ function cargarMejoresPeliculas() {
         return response.json(); // Parsear la respuesta JSON
     })
     .then(data => {
-        mostrarMejoresPeliculas(data); // Renderizar las mejores películas
+        const mejoresPeliculas = data.slice(0, 5); // Seleccionar las primeras 5 películas
+        mostrarPeliculas(mejoresPeliculas, 'mejores-peliculas'); // Renderizar las mejores películas
     })
     .catch(error => {
         console.error('Error al cargar las mejores películas:', error);
@@ -21,9 +45,9 @@ function cargarMejoresPeliculas() {
     });
 }
 
-// Función para mostrar las mejores películas en el HTML
-function mostrarMejoresPeliculas(peliculas) {
-    const contenedor = document.getElementById('mejores-peliculas');
+// Función genérica para renderizar películas
+function mostrarPeliculas(peliculas, contenedorId) {
+    const contenedor = document.getElementById(contenedorId);
     contenedor.innerHTML = ''; // Limpiar contenido existente
 
     if (peliculas.length === 0) {
@@ -31,15 +55,14 @@ function mostrarMejoresPeliculas(peliculas) {
         return;
     }
 
-    const mejoresPeliculas = peliculas.slice(0, 5); // Seleccionar las primeras 5 películas
-
-    mejoresPeliculas.forEach(pelicula => {
+    peliculas.forEach(pelicula => {
         const tarjeta = document.createElement('div');
-        tarjeta.classList.add('movie');
+        tarjeta.classList.add('pelicula');
         tarjeta.innerHTML = `
             <img src="/imagenes/${pelicula.imagenUrl}" alt="${pelicula.titulo}">
-            <div class="play-icon" data-video-url="${pelicula.videoUrl}" onclick="openVideo(this)">▶</div>
-            <p>${pelicula.titulo}</p>
+            <p class="pelicula__titulo">${pelicula.titulo}</p>
+            <p class="pelicula__detalle"><strong>Duración:</strong> ${pelicula.duracion} minutos</p>
+            <p class="pelicula__detalle"><strong>Director:</strong> ${pelicula.director}</p>
         `;
 
         // Agregar evento para guardar la película seleccionada en el localStorage
@@ -63,22 +86,8 @@ function mostrarMejoresPeliculas(peliculas) {
     });
 }
 
-function obtenerPeliculaSeleccionada() {
-    const peliculaSeleccionada = localStorage.getItem('peliculaSeleccionada');
-    if (peliculaSeleccionada) {
-        return JSON.parse(peliculaSeleccionada);
-    }
-    return null; // Si no hay ninguna película seleccionada
-}
-
-// Ejemplo: Mostrar la película seleccionada en la consola
-const pelicula = obtenerPeliculaSeleccionada();
-if (pelicula) {
-    console.log('Película seleccionada:', pelicula);
-} else {
-    console.log('No se ha seleccionado ninguna película.');
-}
-
-
-// Llamar la función al cargar el DOM
-document.addEventListener('DOMContentLoaded', cargarMejoresPeliculas);
+// Cargar las películas al cargar la página
+document.addEventListener('DOMContentLoaded', () => {
+    cargarMejoresPeliculas(); // Cargar las mejores películas
+    cargarTodasLasPeliculas(); // Cargar todas las películas
+});
