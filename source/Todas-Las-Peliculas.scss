@@ -180,20 +180,159 @@ header {
     }
   }
 }
+// "Mejores Películas" Section (Mobile-First)
+// Variables
+$color-fondo: #0c1a33;
+$color-titulo: #ffffff;
+$color-linea: #4a89dc;
+$color-texto: #cccccc;
+$color-tarjeta-fondo: #102a4c;
+$border-radius: 8px;
+$font-size-titulo: 1.2em;
+$font-size-pelicula: 0.9em;
+$padding-galeria: 10px;
+$gap-galeria: 20px;
+$button-color: #4a89dc;
+$text-color: #ffffff;
+
+
+.galeria {
+  margin-top: 20px;
+  width: 100%;
+  padding: $padding-galeria;
+  text-align: center;
+
+  &__titulo {
+    color: $color-titulo;
+    font-size: $font-size-titulo;
+    margin-bottom: 15px;
+
+    &:after {
+      content: "";
+      display: block;
+      width: 60px;
+      height: 2px;
+      background-color: $color-linea;
+      margin: 10px auto 0;
+    }
+  }
+
+  &__contenedor {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: $gap-galeria;
+
+    .tarjeta {
+      background-color: $color-tarjeta-fondo;
+      padding: 8px;
+      border-radius: $border-radius;
+      text-align: center;
+
+      img {
+        width: 100%;
+        border-radius: $border-radius;
+      }
+
+      p {
+        font-size: $font-size-pelicula;
+        color: $color-texto;
+      }
+    }
+  }
+}
+
 .all-movies {
-  color: $text-color;
+  color: $color-titulo;
   border: none;
-  padding: 10px 20px;
-  font-size: 20px;
+  padding: 8px 16px;
+  font-size: 0.9em;
   cursor: pointer;
   text-transform: uppercase;
   text-decoration: none;
+  margin-top: 20px;
 
   &:hover {
-    background-color: $hover-color;
-    
+    background-color: lighten($button-color, 10%);
   }
 }
+
+.movies {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+  margin: 30px 0;
+
+  .movie {
+    position: relative;
+    text-align: center;
+    color: $text-color;
+
+    img {
+      width: 100%;
+      max-width: 260px;
+      border-radius: 8px;
+    }
+
+    p {
+      margin-top: 10px;
+      font-size: 18px;
+      text-transform: uppercase;
+    }
+
+    .play-icon {
+      position: absolute;
+      top: 10px;
+      left: 10px;
+      background-color: $button-color;
+      color: $text-color;
+      font-size: 18px;
+      padding: 5px 10px;
+      border-radius: 50%;
+      cursor: pointer;
+      transition: background-color 0.3s;
+
+      &:hover {
+        background-color: lighten($button-color, 15%);
+      }
+    }
+  }
+}
+
+/* Estilos para pantallas grandes */
+@media (min-width: 768px) {
+  $font-size-titulo: 1.5em;
+  $font-size-pelicula: 1em;
+
+  .galeria {
+    margin-top: 40px;
+
+    &__contenedor {
+      grid-template-columns: repeat(4, 1fr); // Más columnas en pantallas grandes
+      gap: 30px;
+    }
+  }
+
+  .movies {
+    flex-direction: row;
+    justify-content: center;
+
+    .movie img {
+      width: 260px;
+      height: 315px;
+    }
+
+    .movie p {
+      font-size: 20px;
+    }
+  }
+
+  .all-movies {
+    font-size: 1em;
+    padding: 10px 20px;
+  }
+}
+
 //TODAS LAS PELICULA
 // Variables
 
