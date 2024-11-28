@@ -7,7 +7,7 @@ $font-size: 16px;
 $icon-font-size: 20px;
 $gap-large: 150px;
 $gap-medium: 15px;
-$header-height: 60px; 
+$header-height: 90px; 
 $button-color: #007bff; 
 $font-size-titulo: 1.5em;
 $font-size-pelicula: 1em;
@@ -40,7 +40,7 @@ body {
   justify-content: center;
   align-items: center;
   height: 100%;
-  margin-top: 60px; // Ajuste para el header fijo
+  margin-top: 90px; // Ajuste para el header fijo
 }
 
 // Variables del Header
