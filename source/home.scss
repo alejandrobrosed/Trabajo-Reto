@@ -1,3 +1,4 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
 // Variables
 $primary-color: #0A1C3A;
 $text-color: #fff;
@@ -17,7 +18,7 @@ $section-spacing: 140px; // Increased spacing between sections
 }
 
 body {
-  font-family: Arial, sans-serif;
+  font-family:  'Roboto', sans-serif;
   background-color: $primary-color;
   background-size: cover;
   background-position: center;
@@ -143,6 +144,7 @@ header {
 
       .nav-links {
         display: flex; // Mostrar enlaces en fila
+        justify-content: center;
         flex-direction: row;
         position: static;
         transform: none;

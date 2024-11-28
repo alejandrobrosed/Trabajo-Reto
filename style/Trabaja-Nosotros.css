@@ -82,6 +82,7 @@ header nav .icons a:hover {
   }
   header nav .nav-links {
     display: flex;
+    justify-content: center;
     flex-direction: row;
     position: static;
     transform: none;
@@ -99,7 +100,7 @@ header nav .icons a:hover {
 }
 body {
   font-family: Arial, sans-serif;
-  background-color: #0a0e27;
+  background-color: #0A1C3A;
   color: #ffffff;
   margin: 0;
   padding: 0;

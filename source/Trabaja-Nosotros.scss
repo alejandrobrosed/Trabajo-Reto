@@ -114,6 +114,7 @@ header {
 
       .nav-links {
         display: flex; // Mostrar enlaces en fila
+        justify-content: center;
         flex-direction: row;
         position: static;
         transform: none;
@@ -137,7 +138,7 @@ header {
 }
 body {
   font-family: Arial, sans-serif;
-  background-color: #0a0e27;
+  background-color: #0A1C3A;
   color: #ffffff;
   margin: 0;
   padding: 0;

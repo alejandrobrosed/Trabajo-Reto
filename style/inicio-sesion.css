@@ -99,6 +99,7 @@ header nav .icons a:hover {
   }
   header nav .nav-links {
     display: flex;
+    justify-content: center;
     flex-direction: row;
     position: static;
     transform: none;

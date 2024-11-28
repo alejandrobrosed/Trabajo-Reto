@@ -144,6 +144,7 @@ header {
 
       .nav-links {
         display: flex; // Mostrar enlaces en fila
+        justify-content: center;
         flex-direction: row;
         position: static;
         transform: none;
@@ -175,7 +176,7 @@ header {
   margin-top: $header-height;
 
   .about {
-    margin-top: 20px;
+    margin-top: 40px;
     margin-bottom: 40px;
 
     h1 {

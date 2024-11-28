@@ -142,6 +142,7 @@ header {
 
       .nav-links {
         display: flex; // Mostrar enlaces en fila
+        justify-content: center;
         flex-direction: row;
         position: static;
         transform: none;
