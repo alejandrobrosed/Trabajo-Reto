@@ -77,20 +77,20 @@ function populateSeats(seatsData) {
         seatElement.classList.add('seat');
 
         // Asignar clases según el estado
-        if (seat.Estado === "Ocupado") {
+        if (seat.estado === "Ocupado") {
             seatElement.classList.add('occupied');
-        } else if (seat.Estado === "Disponible") {
+        } else if (seat.estado === "Disponible") {
             seatElement.classList.add('available');
         }
 
         // Asignar clases adicionales para asientos VIP
-        if (seat.Fila === "VIP") {
+        if (seat.fila === "VIP") {
             seatElement.classList.add('vip');
         }
 
         // Asignar los datos para la fila y número como atributos `data-`
-        seatElement.setAttribute('data-fila', seat.Fila);
-        seatElement.setAttribute('data-numero', seat.Numero);
+        seatElement.setAttribute('data-fila', seat.fila);
+        seatElement.setAttribute('data-numero', seat.numero);
 
         // Agregar evento para seleccionar el asiento
         seatElement.addEventListener('click', () => toggleSeatSelection(seatElement));
