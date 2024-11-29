@@ -84,7 +84,7 @@ function populateSeats(seatsData) {
         }
 
         // Asignar clases adicionales para asientos VIP
-        if (seat.fila === "VIP") {
+        if (seat.estado === "VIP") {
             seatElement.classList.add('vip');
         }
 

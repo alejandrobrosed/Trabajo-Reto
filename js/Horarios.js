@@ -50,7 +50,7 @@ function mostrarHorarios(horarios) {
                 localStorage.setItem('horarioSeleccionado', JSON.stringify(horarioSeleccionado));
                 
                 // Redirigir a la página principal
-                window.location.href = '/home'; // Cambia '/home' por la URL de tu página principal
+                window.location.href = '/html/Entradas.html'; // Cambia '/home' por la URL de tu página principal
             });
 
             contenedor.appendChild(boton);
