@@ -1,3 +1,4 @@
+@charset "UTF-8";
 * {
   margin: 0;
   padding: 0;
@@ -256,7 +257,7 @@ header nav .icons a:hover {
 }
 .galeria__contenedor {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
+  grid-template-columns: 1fr;
   gap: 20px;
 }
 
@@ -278,6 +279,23 @@ header nav .icons a:hover {
   color: #ffffff;
   font-size: 0.9em;
   margin-top: 10px;
+}
+
+/* Media Queries para pantallas más grandes */
+@media (min-width: 600px) {
+  .galeria__contenedor {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+@media (min-width: 900px) {
+  .galeria__contenedor {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+@media (min-width: 1200px) {
+  .galeria__contenedor {
+    grid-template-columns: repeat(4, 1fr);
+  }
 }
 
 /*# sourceMappingURL=Todas-Las-Peliculas.css.map */
