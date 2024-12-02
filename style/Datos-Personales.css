@@ -1,0 +1,155 @@
+body {
+  font-family: "Arial", sans-serif;
+  background-color: #0a1626;
+  color: #ffffff;
+  margin: 0;
+  padding: 0;
+}
+
+.container {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+.back-link {
+  color: #00a8ff;
+  text-decoration: none;
+  font-size: 14px;
+  margin-bottom: 20px;
+  display: inline-block;
+}
+
+.title {
+  text-align: center;
+  font-size: 24px;
+  margin: 10px 0;
+}
+
+.description {
+  text-align: center;
+  font-size: 16px;
+  margin-bottom: 30px;
+}
+
+.personal-data,
+.purchase-details {
+  background-color: #112240;
+  padding: 20px;
+  border-radius: 10px;
+  margin-bottom: 20px;
+}
+
+.personal-data h2,
+.purchase-details h2 {
+  font-size: 20px;
+  margin-bottom: 20px;
+  border-bottom: 1px solid #00a8ff;
+  padding-bottom: 10px;
+}
+
+.form-group {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
+.input-container {
+  flex: 1 1 calc(50% - 20px);
+}
+
+label {
+  display: block;
+  margin-bottom: 5px;
+  font-size: 14px;
+}
+
+input,
+select {
+  width: 70%;
+  padding: 10px;
+  border: 1px solid #334a64;
+  border-radius: 5px;
+  background-color: #0e2239;
+  color: #ffffff;
+  font-size: 14px;
+}
+
+.ticket-details {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.total {
+  margin-top: 20px;
+}
+
+.total h3 {
+  font-size: 18px;
+}
+
+.price-summary {
+  display: flex;
+  justify-content: space-between;
+  font-size: 16px;
+  margin-top: 10px;
+}
+
+.acceptance {
+  margin-top: 20px;
+}
+
+.acceptance a {
+  color: #00a8ff;
+  text-decoration: underline;
+}
+
+.acceptance input {
+  margin-right: 10px;
+}
+
+.acceptance label {
+  font-size: 14px;
+}
+
+.btn-continuar {
+  display: inline-block;
+  padding: 10px 20px;
+  font-size: 16px;
+  font-weight: bold;
+  color: #ffffff;
+  background-color: #3020be;
+  border: none;
+  border-radius: 5px;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+.btn-continuar:hover {
+  background-color: #3020be;
+  transform: scale(1.05);
+}
+.btn-continuar:active {
+  background-color: #3020be;
+  transform: scale(1);
+}
+.btn-continuar:focus {
+  outline: none;
+  box-shadow: 0 0 4px #3020be;
+}
+@media (max-width: 768px) {
+  .btn-continuar {
+    font-size: 14px;
+    padding: 8px 16px;
+  }
+}
+
+.continuar {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+}
+
+/*# sourceMappingURL=Datos-Personales.css.map */

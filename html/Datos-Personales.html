@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Resumen de tu compra</title>
+  <link rel="stylesheet" href="/style/Datos-Personales.css">
+</head>
+<body>
+  <div class="container">
+    <a href="/html/Home.html" class="back-link">← Atrás</a>
+    <h1 class="title">RESUMEN DE TU COMPRA</h1>
+    <p class="description">
+      Por favor, revisa bien los detalles que aparecen a continuación. 
+      ¿Es correcta tu dirección de correo electrónico? Ahí es donde te enviaremos tus entradas después del pago.
+    </p>
+
+    <section class="personal-data">
+      <h2>DATOS PERSONALES</h2>
+      <div class="form-group">
+        <div class="input-container">
+          <label for="nombre">Nombre</label>
+          <input type="text" id="nombre" placeholder="Nombre">
+        </div>
+        <div class="input-container">
+          <label for="apellido">Apellido</label>
+          <input type="text" id="apellido" placeholder="Apellido">
+        </div>
+        <div class="input-container">
+          <label for="email">Correo electrónico</label>
+          <input type="email" id="email" placeholder="Correo electrónico">
+        </div>
+        <div class="input-container">
+          <label for="telefono">Teléfono</label>
+          <input type="tel" id="telefono" placeholder="Teléfono">
+        </div>
+      </div>
+    </section>
+
+    <section class="purchase-details">
+      <h2>DETALLES DE TU COMPRA</h2>
+      <div class="ticket-details">
+        <label for="ticket">Tus entradas</label>
+        <select id="ticket">
+          <option value="1x-Pack Familia">1x-Pack Familia</option>
+        </select>
+        <span class="ticket-price">7,90 €</span>
+      </div>
+      <div class="total">
+        <h3>Total</h3>
+        <p>Gastos de gestión, IVA y recargos incluidos <a href="#">ver detalles</a></p>
+        <div class="price-summary">
+          <span class="total-price">7,90 €</span>
+          <span class="extra-fee">0,85 €</span>
+        </div>
+      </div>
+      <div class="acceptance">
+        <input type="checkbox" id="terms" required>
+        <label for="terms">
+          Acepto la <a href="#">Política de Privacidad</a> y las <a href="#">Condiciones de Contratación</a>
+        </label>
+      </div>
+      <a href=""><button class="btn-continuar">Continuar</button></a>
+    </section>
+  </div>
+</body>
+</html>
