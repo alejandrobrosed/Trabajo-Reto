@@ -5,6 +5,13 @@ body {
   color: #ffffff;
 }
 
+#fecha-hora {
+  text-align: center;
+  font-size: 1rem;
+  margin: 10px 0 20px 0;
+  color: white;
+}
+
 .contenedor-principal {
   display: flex;
   flex-direction: column;
@@ -17,11 +24,13 @@ body {
 }
 .cabecera .titulo {
   font-size: 2rem;
-  margin: 0;
+  margin: 0 0 10px 0;
+  font-weight: bold;
 }
 .cabecera .subtitulo {
   font-size: 1.5rem;
-  margin: 10px 0;
+  margin: 5px 0 20px 0;
+  font-weight: lighter;
 }
 
 .contenido {
@@ -29,41 +38,38 @@ body {
   max-width: 600px;
 }
 .contenido .seccion-entradas {
-  background-color: #0a0a2a;
+  background-color: #050515;
   padding: 20px;
   border-radius: 8px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-}
-.contenido .seccion-entradas .introducir-codigo {
-  font-size: 1rem;
-  margin-bottom: 20px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
 }
 .contenido .seccion-entradas .tabla-entradas {
   display: flex;
   flex-direction: column;
-  gap: 10px;
+  gap: 15px;
 }
 .contenido .seccion-entradas .tabla-entradas .fila {
-  display: flex;
-  justify-content: space-between;
+  display: grid;
+  grid-template-columns: 2fr 1fr 2fr 1fr;
   align-items: center;
   background-color: #c0c0c0;
   padding: 10px;
   border-radius: 5px;
 }
 .contenido .seccion-entradas .tabla-entradas .fila .articulo {
-  flex: 2;
+  font-size: 1rem;
+  font-weight: bold;
 }
-.contenido .seccion-entradas .tabla-entradas .fila .precio,
-.contenido .seccion-entradas .tabla-entradas .fila .subtotal {
-  flex: 1;
+.contenido .seccion-entradas .tabla-entradas .fila .precio {
+  font-size: 1rem;
   text-align: center;
+  font-weight: bold;
 }
 .contenido .seccion-entradas .tabla-entradas .fila .cantidad {
-  flex: 1;
   display: flex;
   align-items: center;
-  justify-content: space-around;
+  justify-content: center;
+  gap: 10px;
 }
 .contenido .seccion-entradas .tabla-entradas .fila .cantidad .btn-menos,
 .contenido .seccion-entradas .tabla-entradas .fila .cantidad .btn-mas {
@@ -71,9 +77,11 @@ body {
   color: #ffffff;
   border: none;
   border-radius: 50%;
-  width: 25px;
-  height: 25px;
+  width: 30px;
+  height: 30px;
+  font-size: 1rem;
   cursor: pointer;
+  transition: background-color 0.3s;
 }
 .contenido .seccion-entradas .tabla-entradas .fila .cantidad .btn-menos:hover,
 .contenido .seccion-entradas .tabla-entradas .fila .cantidad .btn-mas:hover {
@@ -81,24 +89,37 @@ body {
 }
 .contenido .seccion-entradas .tabla-entradas .fila .cantidad .numero {
   font-size: 1rem;
+  width: 40px;
+  text-align: center;
+  font-weight: bold;
+}
+.contenido .seccion-entradas .tabla-entradas .fila .subtotal {
+  font-size: 1rem;
+  text-align: center;
+  font-weight: bold;
 }
 .contenido .seccion-entradas .total {
   margin-top: 20px;
   display: flex;
-  justify-content: space-around;
-}
-.contenido .seccion-entradas .total .etiqueta-total {
+  justify-content: space-between;
+  align-items: center;
+  font-size: 1.2rem;
   font-weight: bold;
 }
+.contenido .seccion-entradas .total .etiqueta-total {
+  color: white;
+}
 .contenido .seccion-entradas .total .precio-total {
-  font-size: 1.2rem;
+  font-size: 1.5rem;
+  color: #ffd700;
 }
 
 .pie {
-  margin-top: 350px;
+  margin-top: 50px;
   width: 100%;
   max-width: 600px;
   text-align: center;
+  font-size: 0.9rem;
 }
 .pie .menu {
   list-style: none;
@@ -120,7 +141,7 @@ body {
 .btn-continuar {
   display: inline-block;
   padding: 10px 20px;
-  font-size: 16px;
+  font-size: 1rem;
   font-weight: bold;
   color: #ffffff;
   background-color: #3020be;
@@ -131,7 +152,7 @@ body {
   transition: background-color 0.3s ease, transform 0.2s ease;
 }
 .btn-continuar:hover {
-  background-color: #3020be;
+  background-color: #5642d4;
   transform: scale(1.05);
 }
 .btn-continuar:active {
@@ -144,7 +165,7 @@ body {
 }
 @media (max-width: 768px) {
   .btn-continuar {
-    font-size: 14px;
+    font-size: 0.9rem;
     padding: 8px 16px;
   }
 }

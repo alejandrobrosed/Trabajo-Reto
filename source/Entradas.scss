@@ -9,6 +9,13 @@ body {
   color: $color-texto;
 }
 
+#fecha-hora {
+  text-align: center;
+  font-size: 1rem;
+  margin: 10px 0 20px 0;
+  color: lighten($color-texto, 20%);
+}
+
 .contenedor-principal {
   display: flex;
   flex-direction: column;
@@ -21,12 +28,14 @@ body {
 
   .titulo {
     font-size: 2rem;
-    margin: 0;
+    margin: 0 0 10px 0;
+    font-weight: bold;
   }
 
   .subtitulo {
     font-size: 1.5rem;
-    margin: 10px 0;
+    margin: 5px 0 20px 0;
+    font-weight: lighter;
   }
 }
 
@@ -35,44 +44,40 @@ body {
   max-width: 600px;
 
   .seccion-entradas {
-    background-color: $color-fondo;
+    background-color: darken($color-fondo, 5%);
     padding: 20px;
     border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-
-    .introducir-codigo {
-      font-size: 1rem;
-      margin-bottom: 20px;
-    }
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
 
     .tabla-entradas {
       display: flex;
       flex-direction: column;
-      gap: 10px;
+      gap: 15px;
 
       .fila {
-        display: flex;
-        justify-content: space-between;
+        display: grid;
+        grid-template-columns: 2fr 1fr 2fr 1fr;
         align-items: center;
         background-color: $color-resaltado;
         padding: 10px;
         border-radius: 5px;
 
         .articulo {
-          flex: 2;
+          font-size: 1rem;
+          font-weight: bold;
         }
 
-        .precio,
-        .subtotal {
-          flex: 1;
+        .precio {
+          font-size: 1rem;
           text-align: center;
+          font-weight: bold;
         }
 
         .cantidad {
-          flex: 1;
           display: flex;
           align-items: center;
-          justify-content: space-around;
+          justify-content: center;
+          gap: 10px;
 
           .btn-menos,
           .btn-mas {
@@ -80,9 +85,11 @@ body {
             color: $color-texto;
             border: none;
             border-radius: 50%;
-            width: 25px;
-            height: 25px;
+            width: 30px;
+            height: 30px;
+            font-size: 1rem;
             cursor: pointer;
+            transition: background-color 0.3s;
 
             &:hover {
               background-color: lighten($color-fondo, 10%);
@@ -91,7 +98,16 @@ body {
 
           .numero {
             font-size: 1rem;
+            width: 40px;
+            text-align: center;
+            font-weight: bold;
           }
+        }
+
+        .subtotal {
+          font-size: 1rem;
+          text-align: center;
+          font-weight: bold;
         }
       }
     }
@@ -99,24 +115,29 @@ body {
     .total {
       margin-top: 20px;
       display: flex;
-      justify-content: space-around;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 1.2rem;
+      font-weight: bold;
 
       .etiqueta-total {
-        font-weight: bold;
+        color: lighten($color-texto, 20%);
       }
 
       .precio-total {
-        font-size: 1.2rem;
+        font-size: 1.5rem;
+        color: #ffd700; // Oro para destacar el total.
       }
     }
   }
 }
 
 .pie {
-  margin-top: 350px;
+  margin-top: 50px;
   width: 100%;
   max-width: 600px;
   text-align: center;
+  font-size: 0.9rem;
 
   .menu {
     list-style: none;
@@ -138,10 +159,11 @@ body {
     }
   }
 }
+
 .btn-continuar {
   display: inline-block;
   padding: 10px 20px;
-  font-size: 16px;
+  font-size: 1rem;
   font-weight: bold;
   color: #ffffff;
   background-color: #3020be;
@@ -152,7 +174,7 @@ body {
   transition: background-color 0.3s ease, transform 0.2s ease;
 
   &:hover {
-    background-color: #3020be;
+    background-color: #5642d4;
     transform: scale(1.05);
   }
 
@@ -167,7 +189,7 @@ body {
   }
 
   @media (max-width: 768px) {
-    font-size: 14px;
+    font-size: 0.9rem;
     padding: 8px 16px;
   }
 }

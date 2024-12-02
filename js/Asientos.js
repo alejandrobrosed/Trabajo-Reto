@@ -1,41 +1,47 @@
 // URL base del API
-const apiUrl = "https://localhost:5000/api/Asiento";
+const apiUrl = "http://localhost:5000/api/Asiento";
 
 // Contenedor de asientos
 const seatsContainer = document.querySelector(".seats");
 // Lista de asientos seleccionados
 let selectedSeats = []; // Arreglo para almacenar asientos seleccionados
 
+// Función para guardar los asientos seleccionados en localStorage
+function guardarAsientosEnLocalStorage() {
+    localStorage.setItem('asientosSeleccionados', JSON.stringify(selectedSeats));
+    console.log("Asientos seleccionados guardados en localStorage:", selectedSeats);
+}
+
+// Función para cargar los asientos seleccionados desde localStorage
+function cargarAsientosDesdeLocalStorage() {
+    const storedSeats = localStorage.getItem('asientosSeleccionados');
+    if (storedSeats) {
+        selectedSeats = JSON.parse(storedSeats);
+        console.log("Asientos seleccionados cargados desde localStorage:", selectedSeats);
+    }
+}
+
 function toggleSeatSelection(seatElement) {
-    // Obtener los valores de fila y número de los atributos de datos
     const seatRow = seatElement.getAttribute('data-fila');
     const seatNumber = seatElement.getAttribute('data-numero');
 
-    // Verificar si los valores se obtienen correctamente
-    console.log(`Fila: ${seatRow}, Número: ${seatNumber}`);
-
-    // Verificar si los valores son correctos
     if (!seatRow || !seatNumber) {
         console.error('Error: No se pudo obtener el atributo data-fila o data-numero');
         return;
     }
 
-    // Crear el ID del asiento basado en fila y número
     const seatId = `${seatRow}-${seatNumber}`;
-    console.log(`ID del asiento: ${seatId}`);
 
     if (selectedSeats.includes(seatId)) {
-        // Si ya está seleccionado, quitarlo
         selectedSeats = selectedSeats.filter(seat => seat !== seatId);
         seatElement.classList.remove('selected');
     } else {
-        // Si no está seleccionado, agregarlo
         selectedSeats.push(seatId);
         seatElement.classList.add('selected');
     }
 
-    // Actualizar el texto de las butacas seleccionadas
     updateSelectedSeats();
+    guardarAsientosEnLocalStorage(); // Guardar los cambios en localStorage
 }
 
 function updateSelectedSeats() {
@@ -59,7 +65,7 @@ async function loadSeatsFromBackend() {
         }
 
         const seatsData = await response.json();
-        console.log("Datos de asientos cargados:", seatsData); // Verificar los datos
+        console.log("Datos de asientos cargados:", seatsData);
         populateSeats(seatsData);
     } catch (error) {
         console.error("Error al cargar los asientos:", error);
@@ -69,33 +75,34 @@ async function loadSeatsFromBackend() {
 
 // Poblar los asientos en el DOM
 function populateSeats(seatsData) {
-    console.log("Datos de asientos:", seatsData); // Verifica que todos los asientos estén aquí
     seatsContainer.innerHTML = ""; // Limpiar el contenedor antes de agregar nuevos asientos
 
     seatsData.forEach(seat => {
         const seatElement = document.createElement('div');
         seatElement.classList.add('seat');
 
-        // Asignar clases según el estado
         if (seat.estado === "Ocupado") {
             seatElement.classList.add('occupied');
         } else if (seat.estado === "Disponible") {
             seatElement.classList.add('available');
         }
 
-        // Asignar clases adicionales para asientos VIP
         if (seat.estado === "VIP") {
             seatElement.classList.add('vip');
         }
 
-        // Asignar los datos para la fila y número como atributos `data-`
         seatElement.setAttribute('data-fila', seat.fila);
         seatElement.setAttribute('data-numero', seat.numero);
 
-        // Agregar evento para seleccionar el asiento
+        // Crear el ID del asiento
+        const seatId = `${seat.fila}-${seat.numero}`;
+        // Marcar como seleccionado si está en selectedSeats
+        if (selectedSeats.includes(seatId)) {
+            seatElement.classList.add('selected');
+        }
+
         seatElement.addEventListener('click', () => toggleSeatSelection(seatElement));
 
-        // Agregar asiento al contenedor
         seatsContainer.appendChild(seatElement);
     });
 }
@@ -131,5 +138,12 @@ async function sendSelectedSeatsToBackend() {
     }
 }
 
+// Navegar a la página de confirmación
+function irAPaginaDeConfirmacion() {
+    guardarAsientosEnLocalStorage(); // Asegurarse de guardar antes de navegar
+    window.location.href = "confirmacion.html"; // Cambia la URL según sea necesario
+}
+
 // Cargar asientos al inicializar la página
+cargarAsientosDesdeLocalStorage();
 loadSeatsFromBackend();
