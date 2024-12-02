@@ -117,4 +117,42 @@ body {
   text-decoration: underline;
 }
 
+.btn-continuar {
+  display: inline-block;
+  padding: 10px 20px;
+  font-size: 16px;
+  font-weight: bold;
+  color: #ffffff;
+  background-color: #3020be;
+  border: none;
+  border-radius: 5px;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+.btn-continuar:hover {
+  background-color: #3020be;
+  transform: scale(1.05);
+}
+.btn-continuar:active {
+  background-color: #3020be;
+  transform: scale(1);
+}
+.btn-continuar:focus {
+  outline: none;
+  box-shadow: 0 0 4px #3020be;
+}
+@media (max-width: 768px) {
+  .btn-continuar {
+    font-size: 14px;
+    padding: 8px 16px;
+  }
+}
+
+.continuar {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+}
+
 /*# sourceMappingURL=Entradas.css.map */
