@@ -1,5 +1,5 @@
 // URL base del API
-const apiUrl = "https://localhost:7259/api/Asiento";
+const apiUrl = "https://localhost:5000/api/Asiento";
 
 // Contenedor de asientos
 const seatsContainer = document.querySelector(".seats");

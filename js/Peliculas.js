@@ -1,6 +1,6 @@
 // Llamada al endpoint para cargar todas las películas
 function cargarTodasLasPeliculas() {
-    fetch('https://localhost:7259/api/PeliculaPrincipal', {
+    fetch('http://localhost:5000/api/PeliculaPrincipal', {
         method: 'GET',
         headers: {
             'Content-Type': 'application/json'
@@ -23,7 +23,7 @@ function cargarTodasLasPeliculas() {
 
 // Llamada al endpoint para cargar las mejores películas
 function cargarMejoresPeliculas() {
-    fetch('https://localhost:7259/api/PeliculaPrincipal', {
+    fetch('http://localhost:5000/api/PeliculaPrincipal', {
         method: 'GET',
         headers: {
             'Content-Type': 'application/json'

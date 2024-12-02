@@ -1,7 +1,7 @@
 async function cargarHorarios() {
     try {
         // Llamada al endpoint de horarios
-        const response = await fetch('https://localhost:7259/api/Horario'); // Cambia por tu URL real
+        const response = await fetch('http://localhost:5000/api/Horario'); // Cambia por tu URL real
         if (!response.ok) {
             throw new Error('Error al cargar los horarios');
         }
