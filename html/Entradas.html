@@ -4,31 +4,30 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Venta de Entradas</title>
-  <link rel="stylesheet" href="/style/Entradas.css">
+  <link rel="stylesheet" href="/style/Entradas.css"> <!-- CSS compilado desde SCSS -->
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
 </head>
 <body>
-  <header>
-    <h1>Venta de Entradas</h1>
-    <p id="fecha-hora"></p>
+  <header class="header">
+    <h1 class="titulo">Venta de Entradas</h1>
+    <p id="fecha-hora" class="fecha-hora"></p>
   </header>
-  <main>
-    <div class="contenedor">
+  <main class="contenedor">
+    <section class="entradas">
       <div class="tabla-entradas"></div>
-      <!-- Aquí se generarán las filas dinámicamente -->
 
-      <!-- Contenedor para mostrar los asientos seleccionados -->
       <div class="asientos-seleccionados">
-        <h2>Asientos seleccionados:</h2>
-        <p id="selected-seats-confirmation">No se seleccionaron asientos.</p>
+        <h2 class="asientos-titulo">Asientos seleccionados:</h2>
+        <p id="selected-seats-confirmation" class="asientos-confirmacion">No se seleccionaron asientos.</p>
       </div>
 
       <div class="total">
-        <h2>Total: <span class="precio-total">0,00 €</span></h2>
+        <h2 class="total-titulo">Total: <span class="precio-total">0,00 €</span></h2>
         <button class="btn-comprar">Comprar</button>
       </div>
-    </div>
+    </section>
   </main>
-  <footer>
+  <footer class="footer">
     <p>&copy; 2024 CineAPI. Todos los derechos reservados.</p>
   </footer>
   <script src="/js/Entradas.js"></script>

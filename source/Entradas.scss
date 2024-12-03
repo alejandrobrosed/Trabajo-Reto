@@ -1,202 +1,188 @@
-$color-fondo: #0a0a2a;
-$color-texto: #ffffff;
-$color-resaltado: #c0c0c0;
+// Variables
+$primary-color: #ffc107;
+$background-dark: #0b0d1c;
+$background-light: #1d1f33;
+$background-lighter: #26283e;
+$text-color: #e4e6f0;
+$text-muted: #9a9baf;
+$button-hover: #5c5e78;
+
+// Mixins
+@mixin flex-center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+@mixin transition-all {
+  transition: all 0.3s ease;
+}
+
+// General Styles
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
 
 body {
-  margin: 0;
-  font-family: Arial, sans-serif;
-  background-color: $color-fondo;
-  color: $color-texto;
+  font-family: 'Roboto', sans-serif;
+  background-color: $background-dark;
+  color: $text-color;
+  line-height: 1.6;
 }
 
-#fecha-hora {
-  text-align: center;
-  font-size: 1rem;
-  margin: 10px 0 20px 0;
-  color: lighten($color-texto, 20%);
-}
-
-.contenedor-principal {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+.header {
   padding: 20px;
-}
-
-.cabecera {
   text-align: center;
+  border-bottom: 1px solid lighten($background-lighter, 10%);
 
   .titulo {
     font-size: 2rem;
-    margin: 0 0 10px 0;
-    font-weight: bold;
+    color: #fff;
   }
 
-  .subtitulo {
-    font-size: 1.5rem;
-    margin: 5px 0 20px 0;
-    font-weight: lighter;
+  .fecha-hora {
+    font-size: 1rem;
+    color: $text-muted;
   }
 }
 
-.contenido {
-  width: 100%;
-  max-width: 600px;
+.contenedor {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 20px;
 
-  .seccion-entradas {
-    background-color: darken($color-fondo, 5%);
+  .entradas {
+    background-color: $background-light;
+    border-radius: 10px;
     padding: 20px;
-    border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+    margin-top: 20px;
 
     .tabla-entradas {
-      display: flex;
-      flex-direction: column;
-      gap: 15px;
+      background: $background-lighter;
+      padding: 10px;
+      border-radius: 10px;
+      margin-bottom: 20px;
 
       .fila {
         display: grid;
-        grid-template-columns: 2fr 1fr 2fr 1fr;
+        grid-template-columns: 3fr 1fr 2fr 2fr;
         align-items: center;
-        background-color: $color-resaltado;
-        padding: 10px;
-        border-radius: 5px;
+        padding: 15px 10px;
+        border-bottom: 1px solid lighten($background-lighter, 10%);
 
         .articulo {
-          font-size: 1rem;
-          font-weight: bold;
+          font-weight: 700;
+          color: $text-color;
         }
 
-        .precio {
-          font-size: 1rem;
-          text-align: center;
-          font-weight: bold;
+        .precio, .subtotal {
+          color: $primary-color;
         }
 
         .cantidad {
-          display: flex;
-          align-items: center;
-          justify-content: center;
+          @include flex-center;
           gap: 10px;
 
-          .btn-menos,
-          .btn-mas {
-            background-color: $color-fondo;
-            color: $color-texto;
+          .btn-menos, .btn-mas {
+            background-color: darken($background-lighter, 10%);
             border: none;
-            border-radius: 50%;
-            width: 30px;
-            height: 30px;
-            font-size: 1rem;
+            color: #fff;
+            padding: 10px;
+            border-radius: 5px;
             cursor: pointer;
-            transition: background-color 0.3s;
+            @include transition-all;
 
             &:hover {
-              background-color: lighten($color-fondo, 10%);
+              background-color: $button-hover;
             }
           }
 
           .numero {
-            font-size: 1rem;
-            width: 40px;
-            text-align: center;
-            font-weight: bold;
+            font-size: 1.2rem;
+            padding: 0 10px;
           }
         }
+      }
+    }
 
-        .subtotal {
-          font-size: 1rem;
-          text-align: center;
-          font-weight: bold;
+    .asientos-seleccionados {
+      background: $background-lighter;
+      border-radius: 10px;
+      padding: 20px;
+      margin-bottom: 20px;
+
+      .asientos-titulo {
+        font-size: 1.5rem;
+        margin-bottom: 10px;
+      }
+
+      .asientos-confirmacion {
+        font-size: 1rem;
+        color: $text-muted;
+      }
+    }
+
+    .total {
+      @include flex-center;
+      justify-content: space-between;
+      background-color: $background-lighter;
+      padding: 20px;
+      border-radius: 10px;
+
+      .total-titulo {
+        font-size: 1.5rem;
+      }
+
+      .precio-total {
+        font-weight: 700;
+        color: $primary-color;
+      }
+
+      .btn-comprar {
+        background-color: $primary-color;
+        color: $background-dark;
+        border: none;
+        padding: 15px 30px;
+        font-size: 1rem;
+        border-radius: 10px;
+        cursor: pointer;
+        @include transition-all;
+
+        &:hover {
+          background-color: darken($primary-color, 10%);
+          color: #fff;
+        }
+      }
+    }
+  }
+}
+
+.footer {
+  text-align: center;
+  padding: 20px;
+  border-top: 1px solid lighten($background-lighter, 10%);
+  color: $text-muted;
+  margin-top: 20px;
+}
+
+// Media Queries for Responsiveness
+@media (max-width: 768px) {
+  .entradas {
+    .tabla-entradas {
+      .fila {
+        grid-template-columns: 2fr 1fr 1fr 1fr;
+
+        .cantidad {
+          gap: 5px;
         }
       }
     }
 
     .total {
-      margin-top: 20px;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      font-size: 1.2rem;
-      font-weight: bold;
-
-      .etiqueta-total {
-        color: lighten($color-texto, 20%);
-      }
-
-      .precio-total {
-        font-size: 1.5rem;
-        color: #ffd700; // Oro para destacar el total.
-      }
+      flex-direction: column;
+      gap: 15px;
     }
   }
-}
-
-.pie {
-  margin-top: 50px;
-  width: 100%;
-  max-width: 600px;
-  text-align: center;
-  font-size: 0.9rem;
-
-  .menu {
-    list-style: none;
-    padding: 0;
-    margin: 10px 0;
-
-    li {
-      display: inline;
-      margin: 0 10px;
-
-      a {
-        color: $color-texto;
-        text-decoration: none;
-
-        &:hover {
-          text-decoration: underline;
-        }
-      }
-    }
-  }
-}
-
-.btn-continuar {
-  display: inline-block;
-  padding: 10px 20px;
-  font-size: 1rem;
-  font-weight: bold;
-  color: #ffffff;
-  background-color: #3020be;
-  border: none;
-  border-radius: 5px;
-  text-transform: uppercase;
-  cursor: pointer;
-  transition: background-color 0.3s ease, transform 0.2s ease;
-
-  &:hover {
-    background-color: #5642d4;
-    transform: scale(1.05);
-  }
-
-  &:active {
-    background-color: #3020be;
-    transform: scale(1);
-  }
-
-  &:focus {
-    outline: none;
-    box-shadow: 0 0 4px #3020be;
-  }
-
-  @media (max-width: 768px) {
-    font-size: 0.9rem;
-    padding: 8px 16px;
-  }
-}
-
-// Contenedor para centrar el botón
-.continuar {
-  display: flex;
-  justify-content: center;
-  margin-top: 20px;
 }

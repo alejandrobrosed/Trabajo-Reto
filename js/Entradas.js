@@ -2,12 +2,11 @@ document.addEventListener("DOMContentLoaded", async () => {
   const tablaEntradas = document.querySelector(".tabla-entradas");
   if (!tablaEntradas) {
     console.error("No se encontró el elemento con la clase 'tabla-entradas'.");
-    return; // Salimos para evitar más errores
+    return;
   }
 
   console.log("Elemento tabla-entradas encontrado:", tablaEntradas);
 
-  // Mostrar fecha y hora actual
   const fechaHoraElement = document.getElementById("fecha-hora");
   const actualizarFechaHora = () => {
     const ahora = new Date();
@@ -22,32 +21,27 @@ document.addEventListener("DOMContentLoaded", async () => {
     fechaHoraElement.textContent = ahora.toLocaleDateString("es-ES", opciones);
   };
   actualizarFechaHora();
-  setInterval(actualizarFechaHora, 60000); // Actualizar cada minuto
+  setInterval(actualizarFechaHora, 60000);
 
   async function cargarEntradas() {
     try {
       const response = await fetch("http://localhost:5000/api/Entrada");
 
-      // Verifica que la respuesta sea válida
       if (!response.ok) {
         throw new Error(`Error en la API: ${response.status} ${response.statusText}`);
       }
 
       const datos = await response.json();
+      console.log("Datos completos recibidos de la API:", JSON.stringify(datos, null, 2));
 
-      // Revisa si `datos` es un array válido
       if (!Array.isArray(datos)) {
         throw new Error("La respuesta de la API no es una lista válida.");
       }
 
-      console.log("Datos recibidos de la API:", datos);
-
       datos.forEach((entrada) => {
-        // Validar que el precio sea un número
-        const precio = entrada.Precio || 0; // Usar 0 si el precio no está definido
-        const tipo = entrada.Tipo || "Sin definir"; // Usar la propiedad Tipo directamente
+        const precio = typeof entrada.precio === "number" ? entrada.precio : 0;
+        const tipo = typeof entrada.tipo === "string" ? entrada.tipo : "Sin definir";
 
-        // Crear las filas dinámicamente
         const fila = document.createElement("div");
         fila.classList.add("fila");
         fila.dataset.precio = precio;
@@ -66,15 +60,12 @@ document.addEventListener("DOMContentLoaded", async () => {
         tablaEntradas.appendChild(fila);
       });
 
-      // Asignar eventos a los botones después de agregar las filas
       asignarEventosBotones();
     } catch (error) {
       console.error("Error al cargar las entradas:", error);
 
-      // Opcional: muestra un mensaje de error al usuario
       const errorElemento = document.createElement("p");
-      errorElemento.textContent =
-        "Hubo un error al cargar las entradas. Intenta más tarde.";
+      errorElemento.textContent = "Hubo un error al cargar las entradas. Intenta más tarde.";
       errorElemento.style.color = "red";
       tablaEntradas.appendChild(errorElemento);
     }
@@ -89,13 +80,11 @@ document.addEventListener("DOMContentLoaded", async () => {
         const precio = parseFloat(fila.dataset.precio);
         const cantidad = parseInt(fila.querySelector(".numero").textContent);
         const subtotal = precio * cantidad;
-        fila.querySelector(".subtotal").textContent =
-          subtotal.toFixed(2) + " €";
+        fila.querySelector(".subtotal").textContent = subtotal.toFixed(2) + " €";
         total += subtotal;
       });
 
-      document.querySelector(".precio-total").textContent =
-        total.toFixed(2) + " €";
+      document.querySelector(".precio-total").textContent = total.toFixed(2) + " €";
     };
 
     document.querySelectorAll(".btn-mas").forEach((boton) => {
@@ -119,30 +108,13 @@ document.addEventListener("DOMContentLoaded", async () => {
 
   function mostrarAsientosSeleccionados() {
     const storedSeats = localStorage.getItem('asientosSeleccionados');
-    if (storedSeats) {
+    const seatsContainer = document.getElementById("selected-seats-confirmation");
+    if (storedSeats && seatsContainer) {
       const selectedSeats = JSON.parse(storedSeats);
-      const selectedSeatsText = selectedSeats.join(", ");
-      console.log("Asientos seleccionados:", selectedSeatsText);
-
-      // Mostrar los asientos seleccionados en el elemento correspondiente
-      const seatsContainer = document.getElementById("selected-seats-confirmation");
-      if (seatsContainer) {
-        seatsContainer.innerText = selectedSeatsText;
-      } else {
-        console.error("No se encontró el elemento con ID 'selected-seats-confirmation'.");
-      }
-    } else {
-      console.log("No se encontraron asientos seleccionados.");
-      const seatsContainer = document.getElementById("selected-seats-confirmation");
-      if (seatsContainer) {
-        seatsContainer.innerText = "No se seleccionaron asientos.";
-      }
+      seatsContainer.innerText = selectedSeats.length > 0 ? selectedSeats.join(", ") : "No se seleccionaron asientos.";
     }
   }
 
-  // Llamar a la función para mostrar asientos seleccionados al cargar la página
   mostrarAsientosSeleccionados();
-
-  // Cargar las entradas al iniciar
   cargarEntradas();
 });
