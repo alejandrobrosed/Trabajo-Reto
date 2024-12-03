@@ -1,50 +1,43 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Horarios</title>
+  <title>Horarios Mejorados</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
   <link rel="stylesheet" href="/style/Horarios.css">
 </head>
-<body>
 
+<body>
   <div class="container">
-    <!-- Columna 1: Imagen -->
     <div class="column image-column">
-      <img src="/imagenes/01.jpg" alt="El llanto">
+      <img id="imagen-pelicula" src="" alt="Imagen de la película seleccionada">
     </div>
-    
-    <!-- Columna 2: Sinopsis e información -->
+
     <div class="column synopsis-column">
-      <h1>EL LLANTO</h1>
+      <h1 id="titulo-pelicula">Título de la película</h1>
       <p><strong>Sinopsis:</strong></p>
-      <p>Años después de presenciar la muerte del admirado héroe Máximo a manos de su tío, Lucio (Paul Mescal) se ve forzado a entrar en el Coliseo tras ser testigo de la conquista de su hogar por parte de los tiránicos emperadores que dirigen Roma con puño de hierro. Con un corazón desbordante de furia y el futuro del imperio en juego, Lucio debe rememorar su pasado en busca de la fuerza y el honor que devuelvan al pueblo la gloria perdida de Roma.</p>
+      <p id="sinopsis-pelicula">Sinopsis de la película...</p>
       <br>
-      <!-- Información adicional -->
-      <ul>
-        <li><strong>Director:</strong> Ridley Scott</li>
-        <li><strong>Actores:</strong> Paul Mescal, Denzel Washington, Connie Nielsen, Joseph Quinn, Derek Jacobi, Fred Hechinger, Lior Raz, Pedro Pascal</li>
-        <li><strong>Duración:</strong> 2h 27m</li>
-        <li><strong>Fecha de Estreno:</strong> 15 noviembre 2024</li>
-        <li><strong>Géneros:</strong> Acción, Aventura, Drama</li>
-        <li><strong>Clasificación:</strong> No recomendada para menores de 16 años</li>
+      <ul id="info-adicional">
+        <li><i class="fas fa-film"></i> <strong>Director:</strong> <span id="director-pelicula"></span></li>
+        <li><i class="fas fa-users"></i> <strong>Actores:</strong> <span id="actores-pelicula"></span></li>
+        <li><i class="fas fa-clock"></i> <strong>Duración:</strong> <span id="duracion-pelicula"></span></li>
+        <li><i class="fas fa-calendar-alt"></i> <strong>Fecha de Estreno:</strong> <span id="fecha-estreno-pelicula"></span></li>
+        <li><i class="fas fa-tags"></i> <strong>Géneros:</strong> <span id="generos-pelicula"></span></li>
+        <li><i class="fas fa-exclamation-triangle"></i> <strong>Clasificación:</strong> <span id="clasificacion-pelicula"></span></li>
       </ul>
 
-      <!-- Horarios -->
       <div class="horarios">
-        <h2>Horarios</h2>
+        <h2>Horarios Disponibles</h2>
         <div class="botones">
-          <button class="horario">16:45 - Sala 1</button>
-          <button class="horario">17:45 - Sala 2</button>
-          <button class="horario">19:00 - Sala 3 <span class="tag">iSense</span></button>
-          <button class="horario">20:00 - Sala 1</button>
-          <button class="horario">21:00 - Sala 2</button>
-          <button class="horario">21:30 - Sala 3 <span class="tag">VOSE</span></button>
-          <button class="horario">22:10 - Sala 1 <span class="tag">VOSE</span></button>
+          <!-- Los botones se generan dinámicamente aquí -->
         </div>
       </div>
     </div>
   </div>
   <script src="/js/Horarios.js"></script>
 </body>
+
 </html>

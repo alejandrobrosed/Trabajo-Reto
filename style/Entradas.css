@@ -1,179 +1,147 @@
-body {
+* {
   margin: 0;
-  font-family: Arial, sans-serif;
-  background-color: #0a0a2a;
-  color: #ffffff;
+  padding: 0;
+  box-sizing: border-box;
 }
 
-#fecha-hora {
-  text-align: center;
-  font-size: 1rem;
-  margin: 10px 0 20px 0;
-  color: white;
+body {
+  font-family: "Roboto", sans-serif;
+  background-color: #0b0d1c;
+  color: #e4e6f0;
+  line-height: 1.6;
 }
 
-.contenedor-principal {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+.header {
   padding: 20px;
-}
-
-.cabecera {
   text-align: center;
+  border-bottom: 1px solid rgb(53.58, 56.4, 87.42);
 }
-.cabecera .titulo {
+.header .titulo {
   font-size: 2rem;
-  margin: 0 0 10px 0;
-  font-weight: bold;
+  color: #fff;
 }
-.cabecera .subtitulo {
-  font-size: 1.5rem;
-  margin: 5px 0 20px 0;
-  font-weight: lighter;
+.header .fecha-hora {
+  font-size: 1rem;
+  color: #9a9baf;
 }
 
-.contenido {
-  width: 100%;
-  max-width: 600px;
-}
-.contenido .seccion-entradas {
-  background-color: #050515;
+.contenedor {
+  max-width: 800px;
+  margin: 0 auto;
   padding: 20px;
-  border-radius: 8px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
 }
-.contenido .seccion-entradas .tabla-entradas {
-  display: flex;
-  flex-direction: column;
-  gap: 15px;
+.contenedor .entradas {
+  background-color: #1d1f33;
+  border-radius: 10px;
+  padding: 20px;
+  margin-top: 20px;
 }
-.contenido .seccion-entradas .tabla-entradas .fila {
-  display: grid;
-  grid-template-columns: 2fr 1fr 2fr 1fr;
-  align-items: center;
-  background-color: #c0c0c0;
+.contenedor .entradas .tabla-entradas {
+  background: #26283e;
   padding: 10px;
-  border-radius: 5px;
+  border-radius: 10px;
+  margin-bottom: 20px;
 }
-.contenido .seccion-entradas .tabla-entradas .fila .articulo {
-  font-size: 1rem;
-  font-weight: bold;
-}
-.contenido .seccion-entradas .tabla-entradas .fila .precio {
-  font-size: 1rem;
-  text-align: center;
-  font-weight: bold;
-}
-.contenido .seccion-entradas .tabla-entradas .fila .cantidad {
-  display: flex;
+.contenedor .entradas .tabla-entradas .fila {
+  display: grid;
+  grid-template-columns: 3fr 1fr 2fr 2fr;
   align-items: center;
+  padding: 15px 10px;
+  border-bottom: 1px solid rgb(53.58, 56.4, 87.42);
+}
+.contenedor .entradas .tabla-entradas .fila .articulo {
+  font-weight: 700;
+  color: #e4e6f0;
+}
+.contenedor .entradas .tabla-entradas .fila .precio, .contenedor .entradas .tabla-entradas .fila .subtotal {
+  color: #ffc107;
+}
+.contenedor .entradas .tabla-entradas .fila .cantidad {
+  display: flex;
   justify-content: center;
+  align-items: center;
   gap: 10px;
 }
-.contenido .seccion-entradas .tabla-entradas .fila .cantidad .btn-menos,
-.contenido .seccion-entradas .tabla-entradas .fila .cantidad .btn-mas {
-  background-color: #0a0a2a;
-  color: #ffffff;
+.contenedor .entradas .tabla-entradas .fila .cantidad .btn-menos, .contenedor .entradas .tabla-entradas .fila .cantidad .btn-mas {
+  background-color: rgb(18.62, 19.6, 30.38);
   border: none;
-  border-radius: 50%;
-  width: 30px;
-  height: 30px;
-  font-size: 1rem;
-  cursor: pointer;
-  transition: background-color 0.3s;
-}
-.contenido .seccion-entradas .tabla-entradas .fila .cantidad .btn-menos:hover,
-.contenido .seccion-entradas .tabla-entradas .fila .cantidad .btn-mas:hover {
-  background-color: #141453;
-}
-.contenido .seccion-entradas .tabla-entradas .fila .cantidad .numero {
-  font-size: 1rem;
-  width: 40px;
-  text-align: center;
-  font-weight: bold;
-}
-.contenido .seccion-entradas .tabla-entradas .fila .subtotal {
-  font-size: 1rem;
-  text-align: center;
-  font-weight: bold;
-}
-.contenido .seccion-entradas .total {
-  margin-top: 20px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  font-size: 1.2rem;
-  font-weight: bold;
-}
-.contenido .seccion-entradas .total .etiqueta-total {
-  color: white;
-}
-.contenido .seccion-entradas .total .precio-total {
-  font-size: 1.5rem;
-  color: #ffd700;
-}
-
-.pie {
-  margin-top: 50px;
-  width: 100%;
-  max-width: 600px;
-  text-align: center;
-  font-size: 0.9rem;
-}
-.pie .menu {
-  list-style: none;
-  padding: 0;
-  margin: 10px 0;
-}
-.pie .menu li {
-  display: inline;
-  margin: 0 10px;
-}
-.pie .menu li a {
-  color: #ffffff;
-  text-decoration: none;
-}
-.pie .menu li a:hover {
-  text-decoration: underline;
-}
-
-.btn-continuar {
-  display: inline-block;
-  padding: 10px 20px;
-  font-size: 1rem;
-  font-weight: bold;
-  color: #ffffff;
-  background-color: #3020be;
-  border: none;
+  color: #fff;
+  padding: 10px;
   border-radius: 5px;
-  text-transform: uppercase;
   cursor: pointer;
-  transition: background-color 0.3s ease, transform 0.2s ease;
+  transition: all 0.3s ease;
 }
-.btn-continuar:hover {
-  background-color: #5642d4;
-  transform: scale(1.05);
+.contenedor .entradas .tabla-entradas .fila .cantidad .btn-menos:hover, .contenedor .entradas .tabla-entradas .fila .cantidad .btn-mas:hover {
+  background-color: #5c5e78;
 }
-.btn-continuar:active {
-  background-color: #3020be;
-  transform: scale(1);
+.contenedor .entradas .tabla-entradas .fila .cantidad .numero {
+  font-size: 1.2rem;
+  padding: 0 10px;
 }
-.btn-continuar:focus {
-  outline: none;
-  box-shadow: 0 0 4px #3020be;
+.contenedor .entradas .asientos-seleccionados {
+  background: #26283e;
+  border-radius: 10px;
+  padding: 20px;
+  margin-bottom: 20px;
 }
-@media (max-width: 768px) {
-  .btn-continuar {
-    font-size: 0.9rem;
-    padding: 8px 16px;
-  }
+.contenedor .entradas .asientos-seleccionados .asientos-titulo {
+  font-size: 1.5rem;
+  margin-bottom: 10px;
 }
-
-.continuar {
+.contenedor .entradas .asientos-seleccionados .asientos-confirmacion {
+  font-size: 1rem;
+  color: #9a9baf;
+}
+.contenedor .entradas .total {
   display: flex;
   justify-content: center;
+  align-items: center;
+  justify-content: space-between;
+  background-color: #26283e;
+  padding: 20px;
+  border-radius: 10px;
+}
+.contenedor .entradas .total .total-titulo {
+  font-size: 1.5rem;
+}
+.contenedor .entradas .total .precio-total {
+  font-weight: 700;
+  color: #ffc107;
+}
+.contenedor .entradas .total .btn-comprar {
+  background-color: #ffc107;
+  color: #0b0d1c;
+  border: none;
+  padding: 15px 30px;
+  font-size: 1rem;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+.contenedor .entradas .total .btn-comprar:hover {
+  background-color: rgb(211, 158.25, 0);
+  color: #fff;
+}
+
+.footer {
+  text-align: center;
+  padding: 20px;
+  border-top: 1px solid rgb(53.58, 56.4, 87.42);
+  color: #9a9baf;
   margin-top: 20px;
+}
+
+@media (max-width: 768px) {
+  .entradas .tabla-entradas .fila {
+    grid-template-columns: 2fr 1fr 1fr 1fr;
+  }
+  .entradas .tabla-entradas .fila .cantidad {
+    gap: 5px;
+  }
+  .entradas .total {
+    flex-direction: column;
+    gap: 15px;
+  }
 }
 
 /*# sourceMappingURL=Entradas.css.map */

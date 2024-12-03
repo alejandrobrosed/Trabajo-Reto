@@ -1,3 +1,5 @@
+@use 'sass:color'; // Importar el módulo color
+
 // Variables
 $primary-color: #ffc107;
 $background-dark: #0b0d1c;
@@ -35,7 +37,7 @@ body {
 .header {
   padding: 20px;
   text-align: center;
-  border-bottom: 1px solid lighten($background-lighter, 10%);
+  border-bottom: 1px solid color.scale($background-lighter, $lightness: 10%);
 
   .titulo {
     font-size: 2rem;
@@ -70,7 +72,7 @@ body {
         grid-template-columns: 3fr 1fr 2fr 2fr;
         align-items: center;
         padding: 15px 10px;
-        border-bottom: 1px solid lighten($background-lighter, 10%);
+        border-bottom: 1px solid color.scale($background-lighter, $lightness: 10%);
 
         .articulo {
           font-weight: 700;
@@ -86,7 +88,7 @@ body {
           gap: 10px;
 
           .btn-menos, .btn-mas {
-            background-color: darken($background-lighter, 10%);
+            background-color: color.adjust($background-lighter, $lightness: -10%);
             border: none;
             color: #fff;
             padding: 10px;
@@ -151,7 +153,7 @@ body {
         @include transition-all;
 
         &:hover {
-          background-color: darken($primary-color, 10%);
+          background-color: color.adjust($primary-color, $lightness: -10%);
           color: #fff;
         }
       }
@@ -162,7 +164,7 @@ body {
 .footer {
   text-align: center;
   padding: 20px;
-  border-top: 1px solid lighten($background-lighter, 10%);
+  border-top: 1px solid color.scale($background-lighter, $lightness: 10%);
   color: $text-muted;
   margin-top: 20px;
 }

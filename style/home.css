@@ -44,7 +44,7 @@ header nav .menu-toggle {
   cursor: pointer;
 }
 header nav .menu-toggle:hover {
-  color: #75a5e4;
+  color: rgb(116.7361111111, 164.8611111111, 228.2638888889);
 }
 header nav .nav-links {
   list-style: none;
@@ -88,7 +88,7 @@ header nav .icons a {
   text-decoration: none;
 }
 header nav .icons a:hover {
-  color: #75a5e4;
+  color: rgb(116.7361111111, 164.8611111111, 228.2638888889);
 }
 
 @media (min-width: 768px) {
@@ -280,7 +280,7 @@ header nav .icons a:hover {
   margin-top: 20px;
 }
 .all-movies:hover {
-  background-color: #75a5e4;
+  background-color: rgb(116.7361111111, 164.8611111111, 228.2638888889);
 }
 
 .movies {
@@ -318,7 +318,7 @@ header nav .icons a:hover {
   transition: background-color 0.3s;
 }
 .movies .movie .play-icon:hover {
-  background-color: #8ab3e8;
+  background-color: rgb(138.1041666667, 178.7916666667, 232.3958333333);
 }
 
 /* Estilos para pantallas grandes */

@@ -64,6 +64,7 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
+  box-sizing: border-box;
 }
 .seat-selection .seats .seat.vip::after {
   content: "⭐";

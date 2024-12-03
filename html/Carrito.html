@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/style/Carrito.css">
+    <title>Resumen de tu Compra</title>
+</head>
+<body>
+    <div class="purchase-summary">
+        <h2>RESUMEN DE TU COMPRA</h2>
+        <p>Por favor, revisa bien los detalles que aparecen a continuación. ¿Es correcta tu dirección de correo electrónico? Ahí es donde te enviaremos tus entradas después del pago.</p>
+        
+        <div class="personal-info">
+            <h3>DATOS PERSONALES</h3>
+            <form>
+                <div class="form-group">
+                    <label for="nombre">Nombre</label>
+                    <input type="text" id="nombre" name="nombre">
+                </div>
+                <div class="form-group">
+                    <label for="apellido">Apellido</label>
+                    <input type="text" id="apellido" name="apellido">
+                </div>
+                <div class="form-group">
+                    <label for="email">Correo electrónico</label>
+                    <input type="email" id="email" name="email">
+                </div>
+                <div class="form-group">
+                    <label for="telefono">Teléfono</label>
+                    <input type="tel" id="telefono" name="telefono">
+                </div>
+            </form>
+        </div>
+
+        <div class="purchase-details">
+            <h3>DETALLES DE TU COMPRA</h3>
+            <div class="ticket-info">
+                <p>Tus entradas</p>
+                <p>2x Normal</p>
+                <p>19,80 €</p>
+            </div>
+            <div class="total">
+                <p>Total</p>
+                <p>19,80 €</p>
+                <p>Gastos de gestión, IVA y recargos incluidos</p>
+            </div>
+            <div class="accept-terms">
+                <input type="checkbox" id="terms">
+                <label for="terms">Acepto la <a href="#">Política de Privacidad</a> y las <a href="#">Condiciones de Contratación</a></label>
+            </div>
+        </div>
+
+        <button class="continue-button">Continuar</button>
+    </div>
+</body>
+</html>

@@ -5,10 +5,8 @@ document.addEventListener("DOMContentLoaded", async () => {
     return;
   }
 
-  console.log("Elemento tabla-entradas encontrado:", tablaEntradas);
-
-  const fechaHoraElement = document.getElementById("fecha-hora");
   const actualizarFechaHora = () => {
+    const fechaHoraElement = document.getElementById("fecha-hora");
     const ahora = new Date();
     const opciones = {
       weekday: "long",
@@ -23,10 +21,16 @@ document.addEventListener("DOMContentLoaded", async () => {
   actualizarFechaHora();
   setInterval(actualizarFechaHora, 60000);
 
+  // Obtener el número de asientos seleccionados
+  function obtenerNumeroDeAsientosSeleccionados() {
+    const storedSeats = localStorage.getItem('asientosSeleccionados');
+    return storedSeats ? JSON.parse(storedSeats).length : 0;
+  }
+
+  // Cargar entradas desde la API
   async function cargarEntradas() {
     try {
       const response = await fetch("http://localhost:5000/api/Entrada");
-
       if (!response.ok) {
         throw new Error(`Error en la API: ${response.status} ${response.statusText}`);
       }
@@ -38,12 +42,13 @@ document.addEventListener("DOMContentLoaded", async () => {
         throw new Error("La respuesta de la API no es una lista válida.");
       }
 
-      datos.forEach((entrada) => {
+      datos.forEach((entrada, index) => {
         const precio = typeof entrada.precio === "number" ? entrada.precio : 0;
         const tipo = typeof entrada.tipo === "string" ? entrada.tipo : "Sin definir";
 
         const fila = document.createElement("div");
         fila.classList.add("fila");
+        fila.dataset.index = index;
         fila.dataset.precio = precio;
 
         fila.innerHTML = `
@@ -60,10 +65,12 @@ document.addEventListener("DOMContentLoaded", async () => {
         tablaEntradas.appendChild(fila);
       });
 
+      // Restaurar entradas después de cargarlas
+      restaurarEntradasSeleccionadas();
       asignarEventosBotones();
+      actualizarDisponibilidadDeEntradas();
     } catch (error) {
       console.error("Error al cargar las entradas:", error);
-
       const errorElemento = document.createElement("p");
       errorElemento.textContent = "Hubo un error al cargar las entradas. Intenta más tarde.";
       errorElemento.style.color = "red";
@@ -71,27 +78,88 @@ document.addEventListener("DOMContentLoaded", async () => {
     }
   }
 
-  const asignarEventosBotones = () => {
-    const actualizarPrecios = () => {
-      const filas = document.querySelectorAll(".fila");
-      let total = 0;
+  // Guardar entradas seleccionadas en LocalStorage
+  function guardarEntradasSeleccionadas() {
+    const entradas = [];
+    document.querySelectorAll(".fila").forEach((fila) => {
+      const tipo = fila.querySelector(".articulo").textContent.trim();
+      const cantidad = parseInt(fila.querySelector(".numero").textContent);
+      const precio = parseFloat(fila.dataset.precio);
+      if (cantidad > 0) {
+        entradas.push({ tipo, cantidad, precio });
+      }
+    });
 
-      filas.forEach((fila) => {
-        const precio = parseFloat(fila.dataset.precio);
-        const cantidad = parseInt(fila.querySelector(".numero").textContent);
-        const subtotal = precio * cantidad;
-        fila.querySelector(".subtotal").textContent = subtotal.toFixed(2) + " €";
-        total += subtotal;
+    console.log("Guardando en LocalStorage:", entradas);
+    localStorage.setItem("entradasSeleccionadas", JSON.stringify(entradas));
+  }
+
+  // Restaurar entradas seleccionadas desde LocalStorage
+  function restaurarEntradasSeleccionadas() {
+    const storedEntradas = localStorage.getItem("entradasSeleccionadas");
+    if (storedEntradas) {
+      const entradas = JSON.parse(storedEntradas);
+      console.log("Restaurando desde LocalStorage:", entradas);
+      entradas.forEach((entrada) => {
+        // Buscar la fila que coincida con el tipo de entrada
+        const fila = Array.from(document.querySelectorAll(".fila")).find(
+          (f) => f.querySelector(".articulo").textContent.trim() === entrada.tipo
+        );
+        if (fila) {
+          const numeroElement = fila.querySelector(".numero");
+          numeroElement.textContent = entrada.cantidad;
+          actualizarPrecios(); // Actualizar los precios después de restaurar las cantidades
+        }
       });
+    }
+  }
 
-      document.querySelector(".precio-total").textContent = total.toFixed(2) + " €";
-    };
+  // Definir la función actualizarPrecios de manera global
+  function actualizarPrecios() {
+    const filas = document.querySelectorAll(".fila");
+    let total = 0;
 
+    filas.forEach((fila) => {
+      const precio = parseFloat(fila.dataset.precio);
+      const cantidad = parseInt(fila.querySelector(".numero").textContent);
+      const subtotal = precio * cantidad;
+      fila.querySelector(".subtotal").textContent = subtotal.toFixed(2) + " €";
+      total += subtotal;
+    });
+
+    document.querySelector(".precio-total").textContent = total.toFixed(2) + " €";
+
+    // Guardar las entradas seleccionadas cada vez que se actualizan los precios
+    guardarEntradasSeleccionadas();
+  }
+
+  // Actualizar la disponibilidad de entradas según los asientos seleccionados
+  function actualizarDisponibilidadDeEntradas() {
+    const numeroAsientosSeleccionados = obtenerNumeroDeAsientosSeleccionados();
+
+    // Restringir la cantidad de entradas disponibles
+    document.querySelectorAll(".fila").forEach((fila) => {
+      const btnMas = fila.querySelector(".btn-mas");
+      const numeroEntradasActual = Array.from(document.querySelectorAll(".numero")).reduce((total, elem) => {
+        return total + parseInt(elem.textContent);
+      }, 0);
+
+      // Deshabilitar el botón de incremento si ya se ha alcanzado el número de asientos seleccionados
+      btnMas.disabled = numeroEntradasActual >= numeroAsientosSeleccionados;
+    });
+
+    actualizarPrecios();
+  }
+
+  const asignarEventosBotones = () => {
     document.querySelectorAll(".btn-mas").forEach((boton) => {
       boton.addEventListener("click", () => {
         const numero = boton.parentElement.querySelector(".numero");
         numero.textContent = parseInt(numero.textContent) + 1;
+        
+        // Actualizar precios y guardar en LocalStorage después de cada incremento
         actualizarPrecios();
+        actualizarDisponibilidadDeEntradas();
       });
     });
 
@@ -100,12 +168,16 @@ document.addEventListener("DOMContentLoaded", async () => {
         const numero = boton.parentElement.querySelector(".numero");
         if (parseInt(numero.textContent) > 0) {
           numero.textContent = parseInt(numero.textContent) - 1;
+
+          // Actualizar precios y guardar en LocalStorage después de cada decremento
           actualizarPrecios();
+          actualizarDisponibilidadDeEntradas();
         }
       });
     });
   };
 
+  // Mostrar los asientos seleccionados (no afecta a entradas)
   function mostrarAsientosSeleccionados() {
     const storedSeats = localStorage.getItem('asientosSeleccionados');
     const seatsContainer = document.getElementById("selected-seats-confirmation");
@@ -114,6 +186,14 @@ document.addEventListener("DOMContentLoaded", async () => {
       seatsContainer.innerText = selectedSeats.length > 0 ? selectedSeats.join(", ") : "No se seleccionaron asientos.";
     }
   }
+
+  // Evento para el botón "Comprar"
+  document.querySelector(".btn-comprar").addEventListener("click", () => {
+    // Guardar los datos actuales en LocalStorage antes de redirigir
+    guardarEntradasSeleccionadas();
+    // Redirigir a la página de inicio
+    window.location.href = "Carrito.html"; // Cambia esta URL según la ubicación de tu página principal
+  });
 
   mostrarAsientosSeleccionados();
   cargarEntradas();

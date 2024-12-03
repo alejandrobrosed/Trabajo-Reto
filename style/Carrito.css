@@ -1,0 +1,136 @@
+body {
+  background-color: #0a1e3a;
+  font-family: Arial, sans-serif;
+  color: #ffffff;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+}
+
+.purchase-summary {
+  background-color: #1c2a4a;
+  padding: 30px;
+  border-radius: 10px;
+  width: 500px;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.7);
+  text-align: center;
+}
+.purchase-summary .back-link {
+  color: #2298ff;
+  text-decoration: none;
+  font-size: 14px;
+  margin-bottom: 20px;
+  display: inline-block;
+}
+.purchase-summary .back-link:hover {
+  text-decoration: underline;
+}
+.purchase-summary h2 {
+  margin-bottom: 15px;
+  color: #ffffff;
+}
+.purchase-summary .instructions {
+  font-size: 14px;
+  color: #c0c8d6;
+}
+.purchase-summary .personal-info, .purchase-summary .purchase-details {
+  margin-top: 25px;
+}
+.purchase-summary .personal-info h3, .purchase-summary .purchase-details h3 {
+  font-size: 16px;
+  margin-bottom: 10px;
+  text-align: left;
+  color: #ffffff;
+}
+.purchase-summary .personal-info .form-group, .purchase-summary .purchase-details .form-group {
+  display: flex;
+  flex-direction: column;
+  text-align: left;
+  margin-bottom: 15px;
+}
+.purchase-summary .personal-info .form-group label, .purchase-summary .purchase-details .form-group label {
+  font-size: 12px;
+  margin-bottom: 5px;
+  color: #ffffff;
+}
+.purchase-summary .personal-info .form-group input, .purchase-summary .purchase-details .form-group input {
+  padding: 10px;
+  border: 1px solid #3e5068;
+  border-radius: 5px;
+  background-color: #243b5a;
+  color: #ffffff;
+}
+.purchase-summary .personal-info .ticket-info, .purchase-summary .purchase-details .ticket-info {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 0;
+  border-bottom: 1px solid #3e5068;
+  margin-bottom: 15px;
+}
+.purchase-summary .personal-info .ticket-info label, .purchase-summary .purchase-details .ticket-info label {
+  font-size: 14px;
+  color: #ffffff;
+}
+.purchase-summary .personal-info .ticket-info select, .purchase-summary .purchase-details .ticket-info select {
+  padding: 10px;
+  border: 1px solid #3e5068;
+  border-radius: 5px;
+  background-color: #243b5a;
+  color: #ffffff;
+}
+.purchase-summary .personal-info .total, .purchase-summary .purchase-details .total {
+  padding: 15px 0;
+  text-align: left;
+  border-bottom: 1px solid #3e5068;
+  margin-bottom: 20px;
+}
+.purchase-summary .personal-info .total p, .purchase-summary .purchase-details .total p {
+  margin: 0;
+  font-size: 14px;
+  color: #ffffff;
+}
+.purchase-summary .personal-info .total a, .purchase-summary .purchase-details .total a {
+  color: #2298ff;
+  text-decoration: none;
+}
+.purchase-summary .personal-info .total a:hover, .purchase-summary .purchase-details .total a:hover {
+  text-decoration: underline;
+}
+.purchase-summary .personal-info .accept-terms, .purchase-summary .purchase-details .accept-terms {
+  display: flex;
+  align-items: center;
+  margin-top: 20px;
+}
+.purchase-summary .personal-info .accept-terms input, .purchase-summary .purchase-details .accept-terms input {
+  margin-right: 10px;
+}
+.purchase-summary .personal-info .accept-terms label, .purchase-summary .purchase-details .accept-terms label {
+  font-size: 12px;
+  color: #c0c8d6;
+}
+.purchase-summary .personal-info .accept-terms label a, .purchase-summary .purchase-details .accept-terms label a {
+  color: #2298ff;
+  text-decoration: none;
+}
+.purchase-summary .personal-info .accept-terms label a:hover, .purchase-summary .purchase-details .accept-terms label a:hover {
+  text-decoration: underline;
+}
+.purchase-summary .continue-button {
+  margin-top: 25px;
+  background-color: #007bff;
+  color: #ffffff;
+  padding: 12px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-weight: bold;
+}
+.purchase-summary .continue-button:hover {
+  background-color: rgb(0, 98.4, 204);
+}
+
+/*# sourceMappingURL=Carrito.css.map */

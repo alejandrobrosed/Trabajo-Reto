@@ -1,3 +1,4 @@
+// Función para cargar los horarios desde el backend
 async function cargarHorarios() {
     try {
         // Llamada al endpoint de horarios
@@ -17,6 +18,104 @@ async function cargarHorarios() {
     }
 }
 
+// Función para cargar la película seleccionada desde el localStorage y mostrar su información
+async function cargarPeliculaSeleccionada() {
+    const peliculaSeleccionada = obtenerPeliculaSeleccionada();
+    if (!peliculaSeleccionada) {
+        console.error('No se ha seleccionado ninguna película.');
+        return;
+    }
+
+    // Depuración: Mostrar todos los datos de la película seleccionada
+    console.log('Datos de la película seleccionada:', peliculaSeleccionada);
+
+    try {
+        // Obtener la imagen almacenada y ajustar la URL si es necesario
+        const imgElement = document.getElementById('imagen-pelicula');
+        let imagenUrl = peliculaSeleccionada.imagenUrl;
+
+        if (!imagenUrl) {
+            console.error('No se encontró una imagen URL para la película.');
+        } else {
+            // Depuración: Mostrar URL de la imagen
+            console.log('URL de la imagen almacenada:', imagenUrl);
+        }
+
+        // Si la URL no empieza con 'http' o 'https', entonces la tratamos como relativa
+        if (!imagenUrl.startsWith('http') && !imagenUrl.startsWith('/')) {
+            imagenUrl = `/imagenes/${imagenUrl}`;
+        }
+
+        // Asignar la URL corregida al elemento de la imagen
+        imgElement.src = imagenUrl;
+        imgElement.alt = peliculaSeleccionada.titulo || 'Imagen no disponible';
+
+        // Asignar el resto de la información de la película
+        document.getElementById('titulo-pelicula').textContent = peliculaSeleccionada.titulo || 'Título no disponible';
+
+        // Depuración: Mostrar el valor de la sinopsis
+        console.log('Sinopsis almacenada:', peliculaSeleccionada.sinopsis);
+
+        // Verificar si la sinopsis está definida y no es una cadena vacía
+        if (peliculaSeleccionada.sinopsis && peliculaSeleccionada.sinopsis.trim() !== '') {
+            document.getElementById('sinopsis-pelicula').textContent = peliculaSeleccionada.sinopsis;
+        } else {
+            document.getElementById('sinopsis-pelicula').textContent = 'Sinopsis no disponible';
+            console.warn('Sinopsis no encontrada o está vacía.');
+        }
+
+        document.getElementById('director-pelicula').textContent = peliculaSeleccionada.director || 'Director no disponible';
+
+        // Verificar que "actores" esté definido y sea un array antes de usar .join()
+        if (Array.isArray(peliculaSeleccionada.actores)) {
+            document.getElementById('actores-pelicula').textContent = peliculaSeleccionada.actores.join(', ');
+        } else {
+            document.getElementById('actores-pelicula').textContent = 'Actores no disponibles';
+        }
+
+        document.getElementById('duracion-pelicula').textContent = peliculaSeleccionada.duracion || 'Duración no disponible';
+        document.getElementById('fecha-estreno-pelicula').textContent = peliculaSeleccionada.fechaEstreno || 'Fecha de estreno no disponible';
+
+        // Verificar que "generos" esté definido y sea un array antes de usar .join()
+        if (Array.isArray(peliculaSeleccionada.generos)) {
+            document.getElementById('generos-pelicula').textContent = peliculaSeleccionada.generos.join(', ');
+        } else {
+            document.getElementById('generos-pelicula').textContent = 'Géneros no disponibles';
+        }
+
+        document.getElementById('clasificacion-pelicula').textContent = peliculaSeleccionada.clasificacion || 'Clasificación no disponible';
+
+    } catch (error) {
+        console.error('Error en la solicitud de la película:', error);
+    }
+}
+
+
+
+// Función para obtener la película seleccionada desde el localStorage
+function obtenerPeliculaSeleccionada() {
+    const peliculaSeleccionada = localStorage.getItem('peliculaSeleccionada');
+    if (peliculaSeleccionada) {
+        const pelicula = JSON.parse(peliculaSeleccionada);
+        if (pelicula.titulo) {
+            return pelicula;
+        } else {
+            console.error('La película seleccionada no tiene un título válido:', pelicula);
+            return null;
+        }
+    }
+    console.error('No se ha seleccionado ninguna película en el localStorage.');
+    return null;
+}
+
+// Ejecutar cuando el DOM esté cargado
+document.addEventListener('DOMContentLoaded', () => {
+    cargarHorarios();
+    cargarPeliculaSeleccionada(); // Llamada para cargar la información de la película seleccionada
+});
+
+
+// Función para mostrar los horarios en la página
 function mostrarHorarios(horarios) {
     const contenedor = document.querySelector('.botones'); // Asegúrate de que exista en el HTML
     if (!contenedor) {
@@ -31,7 +130,7 @@ function mostrarHorarios(horarios) {
         return;
     }
 
-    // Crear botones dinámicos
+    // Crear botones dinámicos para los horarios
     horarios.forEach(horario => {
         if (horario.horaInicio && horario.horaFin) {
             const boton = document.createElement('button');
@@ -49,8 +148,8 @@ function mostrarHorarios(horarios) {
                 // Guardar en localStorage
                 localStorage.setItem('horarioSeleccionado', JSON.stringify(horarioSeleccionado));
                 
-                // Redirigir a la página principal
-                window.location.href = '/html/Asientos.html'; // Cambia '/home' por la URL de tu página principal
+                // Redirigir a la página principal (asegúrate de que la ruta sea correcta)
+                window.location.href = '/html/Asientos.html';
             });
 
             contenedor.appendChild(boton);
@@ -60,22 +159,25 @@ function mostrarHorarios(horarios) {
     });
 }
 
+// Función para obtener la película seleccionada desde el localStorage
 function obtenerPeliculaSeleccionada() {
     const peliculaSeleccionada = localStorage.getItem('peliculaSeleccionada');
     if (peliculaSeleccionada) {
-        return JSON.parse(peliculaSeleccionada);
+        const pelicula = JSON.parse(peliculaSeleccionada);
+        if (pelicula.titulo) {
+            return pelicula;
+        } else {
+            console.error('La película seleccionada no tiene un título válido:', pelicula);
+            return null;
+        }
     }
-    return null; // Si no hay ninguna película seleccionada
+    console.error('No se ha seleccionado ninguna película en el localStorage.');
+    return null;
 }
-
-// Ejemplo: Mostrar la película seleccionada en la consola
-const pelicula = obtenerPeliculaSeleccionada();
-if (pelicula) {
-    console.log('Película seleccionada:', pelicula);
-} else {
-    console.log('No se ha seleccionado ninguna película.');
-}
-
 
 // Ejecutar cuando el DOM esté cargado
-document.addEventListener('DOMContentLoaded', cargarHorarios);
+document.addEventListener('DOMContentLoaded', () => {
+    cargarHorarios();
+    cargarPeliculaSeleccionada(); // Llamada para cargar la información de la película seleccionada
+});
+

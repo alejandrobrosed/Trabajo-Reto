@@ -144,6 +144,59 @@ function irAPaginaDeConfirmacion() {
     window.location.href = "confirmacion.html"; // Cambia la URL según sea necesario
 }
 
+// Cargar película y horario seleccionados
+function cargarInfoSeleccionada() {
+    const peliculaSeleccionada = JSON.parse(localStorage.getItem('peliculaSeleccionada'));
+    const horarioSeleccionado = JSON.parse(localStorage.getItem('horarioSeleccionado'));
+
+    if (!peliculaSeleccionada || !horarioSeleccionado) {
+        alert('Por favor selecciona una película y un horario primero.');
+        window.location.href = '/html/Peliculas.html';
+        return;
+    }
+
+    document.getElementById('info-pelicula').textContent = peliculaSeleccionada.titulo;
+    document.getElementById('info-horario').textContent = `${horarioSeleccionado.horaInicio} - ${horarioSeleccionado.horaFin}`;
+}
+
+// Consolidar y enviar la reserva
+function enviarReserva() {
+    const peliculaSeleccionada = JSON.parse(localStorage.getItem('peliculaSeleccionada'));
+    const horarioSeleccionado = JSON.parse(localStorage.getItem('horarioSeleccionado'));
+    const asientosSeleccionados = JSON.parse(localStorage.getItem('asientosSeleccionados'));
+
+    const reserva = {
+        pelicula: peliculaSeleccionada,
+        horario: horarioSeleccionado,
+        asientos: asientosSeleccionados
+    };
+
+    fetch('/api/reservas', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(reserva)
+    })
+    .then(response => {
+        if (response.ok) {
+            alert('Reserva confirmada');
+            localStorage.clear(); // Limpiar datos después de la confirmación
+        } else {
+            alert('Hubo un problema con la reserva');
+        }
+    })
+    .catch(error => console.error('Error al enviar la reserva:', error));
+}
+
+// Inicializar la página
+document.addEventListener('DOMContentLoaded', () => {
+    cargarInfoSeleccionada();
+    cargarAsientosDesdeLocalStorage();
+    loadSeatsFromBackend();
+});
+
+
 // Cargar asientos al inicializar la página
 cargarAsientosDesdeLocalStorage();
 loadSeatsFromBackend();
