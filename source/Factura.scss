@@ -1,0 +1,65 @@
+body {
+    font-family: 'Arial', sans-serif;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #f4f4f9;
+    height: 100vh;
+}
+
+.invoice-container {
+    background: #ffffff;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    width: 80%;
+    max-width: 500px;
+    padding: 20px;
+    text-align: center;
+
+    .header {
+        h1 {
+            color: #333333;
+            font-size: 1.8rem;
+            margin-bottom: 10px;
+        }
+    }
+
+    .content {
+        margin: 20px 0;
+        p {
+            font-size: 1rem;
+            color: #666666;
+            line-height: 1.5;
+        }
+    }
+
+    .details {
+        margin: 20px 0;
+        text-align: left;
+        p {
+            font-size: 0.9rem;
+            color: #444444;
+            strong {
+                color: #000;
+            }
+        }
+    }
+
+    .footer {
+        margin-top: 20px;
+        font-size: 0.8rem;
+        color: #999999;
+
+        a {
+            color: #007bff;
+            text-decoration: none;
+
+            &:hover {
+                text-decoration: underline;
+            }
+        }
+    }
+}

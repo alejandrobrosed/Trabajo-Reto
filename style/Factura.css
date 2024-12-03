@@ -1,0 +1,59 @@
+body {
+  font-family: "Arial", sans-serif;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #f4f4f9;
+  height: 100vh;
+}
+
+.invoice-container {
+  background: #ffffff;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  width: 80%;
+  max-width: 500px;
+  padding: 20px;
+  text-align: center;
+}
+.invoice-container .header h1 {
+  color: #333333;
+  font-size: 1.8rem;
+  margin-bottom: 10px;
+}
+.invoice-container .content {
+  margin: 20px 0;
+}
+.invoice-container .content p {
+  font-size: 1rem;
+  color: #666666;
+  line-height: 1.5;
+}
+.invoice-container .details {
+  margin: 20px 0;
+  text-align: left;
+}
+.invoice-container .details p {
+  font-size: 0.9rem;
+  color: #444444;
+}
+.invoice-container .details p strong {
+  color: #000;
+}
+.invoice-container .footer {
+  margin-top: 20px;
+  font-size: 0.8rem;
+  color: #999999;
+}
+.invoice-container .footer a {
+  color: #007bff;
+  text-decoration: none;
+}
+.invoice-container .footer a:hover {
+  text-decoration: underline;
+}
+
+/*# sourceMappingURL=Factura.css.map */
