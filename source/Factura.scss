@@ -5,15 +5,17 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    background-color: #f4f4f9;
+    background-color: #10141e; // Fondo oscuro similar al diseño
     height: 100vh;
+    color: #f4f4f9; // Texto claro para resaltar en fondo oscuro
+    flex-direction: column;
 }
 
 .invoice-container {
-    background: #ffffff;
-    border: 1px solid #ddd;
+    background: #1c2130; // Fondo del contenedor
+    border: 1px solid #2e3647; // Borde similar al diseño
     border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
     width: 80%;
     max-width: 500px;
     padding: 20px;
@@ -21,7 +23,7 @@ body {
 
     .header {
         h1 {
-            color: #333333;
+            color: #f4f4f9; // Color claro
             font-size: 1.8rem;
             margin-bottom: 10px;
         }
@@ -31,7 +33,7 @@ body {
         margin: 20px 0;
         p {
             font-size: 1rem;
-            color: #666666;
+            color: #c2c8d4; // Color secundario claro
             line-height: 1.5;
         }
     }
@@ -41,9 +43,9 @@ body {
         text-align: left;
         p {
             font-size: 0.9rem;
-            color: #444444;
+            color: #e3e6ef; // Texto claro
             strong {
-                color: #000;
+                color: #ffffff; // Resaltado fuerte
             }
         }
     }
@@ -54,12 +56,38 @@ body {
         color: #999999;
 
         a {
-            color: #007bff;
+            color: #ffaa00; // Color del enlace similar al botón
             text-decoration: none;
 
             &:hover {
                 text-decoration: underline;
             }
+        }
+    }
+}
+
+.back-home {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+
+    button {
+        background-color: #ffaa00; // Color principal del botón
+        color: #1c2130; // Texto oscuro para contraste
+        border: none;
+        border-radius: 5px;
+        padding: 10px 20px;
+        font-size: 1rem;
+        cursor: pointer;
+        transition: background-color 0.3s, transform 0.2s;
+
+        &:hover {
+            background-color: #d48800; // Hover más oscuro
+            transform: scale(1.05); // Ligeramente más grande
+        }
+
+        &:active {
+            transform: scale(1); // Restablecer al hacer clic
         }
     }
 }

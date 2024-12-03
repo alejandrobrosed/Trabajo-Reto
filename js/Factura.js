@@ -63,4 +63,9 @@ document.addEventListener("DOMContentLoaded", async () => {
     } catch (error) {
         console.error("Error de red al guardar la factura:", error);
     }
+
+    // Redirigir al home
+    document.getElementById("backHomeButton").addEventListener("click", () => {
+        window.location.href = "Home.html"; // Cambia esta ruta si es necesario
+    });
 });
