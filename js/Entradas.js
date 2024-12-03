@@ -65,8 +65,6 @@ document.addEventListener("DOMContentLoaded", async () => {
         tablaEntradas.appendChild(fila);
       });
 
-      // Restaurar entradas después de cargarlas
-      restaurarEntradasSeleccionadas();
       asignarEventosBotones();
       actualizarDisponibilidadDeEntradas();
     } catch (error) {
@@ -92,26 +90,6 @@ document.addEventListener("DOMContentLoaded", async () => {
 
     console.log("Guardando en LocalStorage:", entradas);
     localStorage.setItem("entradasSeleccionadas", JSON.stringify(entradas));
-  }
-
-  // Restaurar entradas seleccionadas desde LocalStorage
-  function restaurarEntradasSeleccionadas() {
-    const storedEntradas = localStorage.getItem("entradasSeleccionadas");
-    if (storedEntradas) {
-      const entradas = JSON.parse(storedEntradas);
-      console.log("Restaurando desde LocalStorage:", entradas);
-      entradas.forEach((entrada) => {
-        // Buscar la fila que coincida con el tipo de entrada
-        const fila = Array.from(document.querySelectorAll(".fila")).find(
-          (f) => f.querySelector(".articulo").textContent.trim() === entrada.tipo
-        );
-        if (fila) {
-          const numeroElement = fila.querySelector(".numero");
-          numeroElement.textContent = entrada.cantidad;
-          actualizarPrecios(); // Actualizar los precios después de restaurar las cantidades
-        }
-      });
-    }
   }
 
   // Definir la función actualizarPrecios de manera global

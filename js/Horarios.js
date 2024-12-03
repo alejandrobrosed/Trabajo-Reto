@@ -65,24 +65,8 @@ async function cargarPeliculaSeleccionada() {
         }
 
         document.getElementById('director-pelicula').textContent = peliculaSeleccionada.director || 'Director no disponible';
-
-        // Verificar que "actores" esté definido y sea un array antes de usar .join()
-        if (Array.isArray(peliculaSeleccionada.actores)) {
-            document.getElementById('actores-pelicula').textContent = peliculaSeleccionada.actores.join(', ');
-        } else {
-            document.getElementById('actores-pelicula').textContent = 'Actores no disponibles';
-        }
-
         document.getElementById('duracion-pelicula').textContent = peliculaSeleccionada.duracion || 'Duración no disponible';
         document.getElementById('fecha-estreno-pelicula').textContent = peliculaSeleccionada.fechaEstreno || 'Fecha de estreno no disponible';
-
-        // Verificar que "generos" esté definido y sea un array antes de usar .join()
-        if (Array.isArray(peliculaSeleccionada.generos)) {
-            document.getElementById('generos-pelicula').textContent = peliculaSeleccionada.generos.join(', ');
-        } else {
-            document.getElementById('generos-pelicula').textContent = 'Géneros no disponibles';
-        }
-
         document.getElementById('clasificacion-pelicula').textContent = peliculaSeleccionada.clasificacion || 'Clasificación no disponible';
 
     } catch (error) {

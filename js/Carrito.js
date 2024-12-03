@@ -1,6 +1,7 @@
 document.addEventListener("DOMContentLoaded", () => {
     // Obtener datos de entradas seleccionadas desde localStorage
     const entradasSeleccionadas = JSON.parse(localStorage.getItem("entradasSeleccionadas")) || [];
+    const asientosSeleccionados = JSON.parse(localStorage.getItem("asientosSeleccionados")) || [];
     
     // Actualizar detalles de la compra en el DOM
     const detallesCompraContainer = document.querySelector(".ticket-info");
@@ -16,9 +17,14 @@ document.addEventListener("DOMContentLoaded", () => {
             entradasHTML += `<p>${cantidad}x ${tipo} (${precio.toFixed(2)} € c/u)</p>`;
         });
 
+        // Añadir los asientos seleccionados al resumen
+        if (asientosSeleccionados.length > 0) {
+            entradasHTML += `<p><strong>Asientos seleccionados:</strong> ${asientosSeleccionados.join(", ")}</p>`;
+        }
+
         // Actualizar la información en la sección de detalles de entradas
         detallesCompraContainer.innerHTML = `
-            <p>${entradasHTML}</p>
+            ${entradasHTML}
             <p><strong>Total: ${total.toFixed(2)} €</strong></p>
         `;
 
@@ -37,6 +43,17 @@ document.addEventListener("DOMContentLoaded", () => {
             <p>Gastos de gestión, IVA y recargos incluidos</p>
         `;
     }
+
+    // Restaurar los datos personales si ya fueron ingresados
+    const nombre = localStorage.getItem("clienteNombre");
+    const apellido = localStorage.getItem("clienteApellido");
+    const email = localStorage.getItem("clienteEmail");
+    const telefono = localStorage.getItem("clienteTelefono");
+
+    if (nombre) document.getElementById("nombre").value = nombre;
+    if (apellido) document.getElementById("apellido").value = apellido;
+    if (email) document.getElementById("email").value = email;
+    if (telefono) document.getElementById("telefono").value = telefono;
 
     // Manejar la redirección del botón "Continuar"
     const continuarButton = document.querySelector(".continue-button");

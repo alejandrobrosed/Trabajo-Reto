@@ -16,9 +16,7 @@
             <p>Revisa tu correo para descargar tus entradas.</p>
         </div>
         <div class="details">
-            <p><strong>Nombre del Cliente:</strong> [Nombre]</p>
-            <p><strong>Número de Pedido:</strong> [Número de Pedido]</p>
-            <p><strong>Fecha:</strong> [Fecha]</p>
+            <!-- Los detalles de la factura se generarán aquí dinámicamente mediante JavaScript -->
         </div>
         <div class="footer">
             <p>Si tienes alguna consulta, no dudes en contactarnos en <a href="mailto:soporte@tuempresa.com">soporte@tuempresa.com</a>.</p>
@@ -30,5 +28,87 @@
     </div>
     
     <script src="/js/Factura.js"></script>
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            // Marcar los asientos seleccionados en la factura como ocupados
+            const asientosSeleccionados = JSON.parse(localStorage.getItem("asientosSeleccionados")) || [];
+            if (asientosSeleccionados.length > 0) {
+                marcarAsientosComoOcupados(asientosSeleccionados);
+            }
+        });
+    
+        async function marcarAsientosComoOcupados(asientos) {
+            try {
+                // Marcar cada asiento como ocupado uno por uno
+                for (const asiento of asientos) {
+                    const [fila, numero] = asiento.split("-");
+                    
+                    // Buscar el asiento en el backend para obtener su ID
+                    const asientoId = await obtenerIdAsiento(fila, numero);
+                    if (!asientoId) {
+                        console.error(`No se encontró el asiento con fila: ${fila}, número: ${numero}`);
+                        continue;
+                    }
+    
+                    // Datos a enviar para la actualización del estado del asiento
+                    const asientoData = {
+                        id: asientoId,
+                        fila: fila.trim(),
+                        numero: parseInt(numero),
+                        estado: "Ocupado"
+                    };
+    
+                    // Hacer la solicitud PUT al endpoint correspondiente con el ID del asiento
+                    const response = await fetch(`http://localhost:5000/api/Asiento/${asientoId}`, {
+                        method: "PUT",
+                        headers: {
+                            "Content-Type": "application/json"
+                        },
+                        body: JSON.stringify(asientoData)
+                    });
+    
+                    if (!response.ok) {
+                        const errorResponse = await response.json();
+                        console.error("Error al marcar el asiento como ocupado:", errorResponse);
+    
+                        if (errorResponse.errors) {
+                            for (const [key, value] of Object.entries(errorResponse.errors)) {
+                                console.error(`Error en el campo "${key}": ${value}`);
+                            }
+                        }
+    
+                        throw new Error(`Error al marcar el asiento ${fila}-${numero} como ocupado.`);
+                    }
+                }
+                console.log("Todos los asientos marcados como ocupados con éxito");
+            } catch (error) {
+                console.error("Error al marcar los asientos como ocupados:", error);
+            }
+        }
+    
+        // Función para obtener el ID del asiento desde el backend
+        async function obtenerIdAsiento(fila, numero) {
+            try {
+                const response = await fetch("http://localhost:5000/api/Asiento");
+                if (!response.ok) {
+                    throw new Error("Error al obtener los asientos del backend");
+                }
+    
+                const asientos = await response.json();
+                const asientoEncontrado = asientos.find(
+                    asiento => asiento.fila === fila && asiento.numero === parseInt(numero)
+                );
+    
+                return asientoEncontrado ? asientoEncontrado.id : null;
+            } catch (error) {
+                console.error("Error al obtener el ID del asiento:", error);
+                return null;
+            }
+        }
+    </script>
+    
+    
+    
+    
 </body>
 </html>
