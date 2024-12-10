@@ -114,9 +114,22 @@ function mostrarHorarios(horarios) {
         return;
     }
 
+    // Obtener la fecha y hora actual
+    const ahora = new Date();
+
     // Crear botones dinámicos para los horarios
     horarios.forEach(horario => {
         if (horario.horaInicio && horario.horaFin) {
+            // Combinar la fecha actual con la hora del horario
+            const [horaInicioHoras, horaInicioMinutos] = horario.horaInicio.split(':').map(Number);
+            const horarioInicio = new Date(ahora.getFullYear(), ahora.getMonth(), ahora.getDate(), horaInicioHoras, horaInicioMinutos);
+
+            if (horarioInicio < ahora) {
+                // Si el horario ya pasó, no lo mostramos
+                console.log(`El horario ${horario.horaInicio} - ${horario.horaFin} ya se ha pasado la hora.`);
+                return;
+            }
+
             const boton = document.createElement('button');
             boton.classList.add('horario');
             boton.textContent = `${horario.horaInicio} - ${horario.horaFin}`;
@@ -131,7 +144,7 @@ function mostrarHorarios(horarios) {
 
                 // Guardar en localStorage
                 localStorage.setItem('horarioSeleccionado', JSON.stringify(horarioSeleccionado));
-                
+
                 // Redirigir a la página principal (asegúrate de que la ruta sea correcta)
                 window.location.href = '/html/Asientos.html';
             });
@@ -142,6 +155,7 @@ function mostrarHorarios(horarios) {
         }
     });
 }
+
 
 // Función para obtener la película seleccionada desde el localStorage
 function obtenerPeliculaSeleccionada() {
