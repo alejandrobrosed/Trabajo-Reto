@@ -75,7 +75,6 @@ async function cargarPeliculaSeleccionada() {
 }
 
 
-
 // Función para obtener la película seleccionada desde el localStorage
 function obtenerPeliculaSeleccionada() {
     const peliculaSeleccionada = localStorage.getItem('peliculaSeleccionada');
@@ -128,13 +127,6 @@ function mostrarHorarios(horarios) {
                 // Si el horario ya pasó, no lo mostramos
                 console.log(`El horario ${horario.horaInicio} - ${horario.horaFin} ya se ha pasado la hora.`);
                 return;
-
-
-
-
-
-
-
                 
             }
 
@@ -181,9 +173,84 @@ function obtenerPeliculaSeleccionada() {
     return null;
 }
 
+
+
+
+// Función para cargar los horarios desde el backend
+async function cargarOpinion() {
+    try {
+        // Llamada al endpoint de opiniones
+        const response = await fetch('http://localhost:5000/api/Opinion'); // Cambia por tu URL real
+        if (!response.ok) {
+            throw new Error('Error al cargar las opiniones');
+        }
+
+        // Convertir la respuesta en JSON
+        const opiniones = await response.json();
+        console.log('Opiniones obtenidas:', opiniones);
+
+        // Mostrar los opiniones en la página
+        mostrarOpiniones(opiniones);
+    } catch (error) {
+        console.error('Error en la solicitud de las opiniones:', error);
+    }
+
+}
+
+function mostrarOpiniones(opiniones) {
+    console.log('opiniones-----------------',opiniones)
+    const contenedor = document.querySelector('.botones'); // Asegúrate de que exista en el HTML
+    if (!contenedor) {
+        console.error('Contenedor de horarios no encontrado en el DOM');
+        return;
+    }
+
+    contenedor.innerHTML = ''; // Limpiar contenido existente
+
+    if (!opiniones || opiniones.length === 0) {
+        contenedor.innerHTML = '<p>No hay horarios disponibles.</p>';
+        return;
+    }
+
+ // Crear botones dinámicos para los horarios
+ opiniones.forEach(opinion => {
+    console.log('opinion-----',opinion)
+    if (opinion.nombre && opinion.calificacion) {   
+        console.log('nombre y calificacion-----',opinion)
+
+        const boton = document.createElement('button');
+        boton.classList.add('opinion');
+        boton.textContent = `${opinion.nombre} - ${opinion.calificacion}`;
+        console.log('boton-----',boton)
+
+
+        /* // Agregar evento para guardar en localStorage y redirigir
+         boton.addEventListener('click', () => {
+            const opinionSeleccionado = {
+                nombre: opinion.nombre,
+                descripcion: opinion.descripcion,
+                calificacion: opinion.calificacion
+            };
+
+            // Guardar en localStorage
+            localStorage.setItem('opinionSeleccionado', JSON.stringify(opinionSeleccionado));
+
+            // Redirigir a la página principal (asegúrate de que la ruta sea correcta)
+            window.location.href = '/html/Asientos.html';
+        });
+*/
+        contenedor.appendChild(boton);
+        
+    } else {
+        console.warn('Horario inválido:', horario);
+    }
+});
+}
+
 // Ejecutar cuando el DOM esté cargado
 document.addEventListener('DOMContentLoaded', () => {
     cargarHorarios();
-    cargarPeliculaSeleccionada(); // Llamada para cargar la información de la película seleccionada
+    cargarPeliculaSeleccionada();
+    cargarOpinion(); // Llamada para cargar la información de la película seleccionada
 });
 

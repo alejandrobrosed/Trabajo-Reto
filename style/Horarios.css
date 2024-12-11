@@ -133,4 +133,65 @@ body {
   text-transform: uppercase;
 }
 
+.personal-data,
+.purchase-details {
+  background-color: #0a1626;
+  padding: 20px;
+  border-radius: 10px;
+  margin-bottom: 20px;
+  margin-top: 10px;
+}
+
+.personal-data h2,
+.purchase-details h2 {
+  font-size: 20px;
+  margin-bottom: 20px;
+  border-bottom: 1px solid #00a8ff;
+  padding-bottom: 10px;
+}
+
+input,
+select {
+  width: 70%;
+  padding: 10px;
+  border: 1px solid #334a64;
+  border-radius: 5px;
+  background-color: #0e2239;
+  color: #ffffff;
+  font-size: 14px;
+}
+
+.btn-continuar {
+  display: inline-block;
+  padding: 10px 20px;
+  font-size: 16px;
+  font-weight: bold;
+  color: #ffffff;
+  background-color: #3020be;
+  border: none;
+  border-radius: 5px;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+  margin-top: 10px;
+}
+.btn-continuar:hover {
+  background-color: #3020be;
+  transform: scale(1.05);
+}
+.btn-continuar:active {
+  background-color: #3020be;
+  transform: scale(1);
+}
+.btn-continuar:focus {
+  outline: none;
+  box-shadow: 0 0 4px #3020be;
+}
+@media (max-width: 768px) {
+  .btn-continuar {
+    font-size: 14px;
+    padding: 8px 16px;
+  }
+}
+
 /*# sourceMappingURL=Horarios.css.map */
