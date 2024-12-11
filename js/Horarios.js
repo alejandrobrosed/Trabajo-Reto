@@ -128,6 +128,14 @@ function mostrarHorarios(horarios) {
                 // Si el horario ya pasó, no lo mostramos
                 console.log(`El horario ${horario.horaInicio} - ${horario.horaFin} ya se ha pasado la hora.`);
                 return;
+
+
+
+
+
+
+
+                
             }
 
             const boton = document.createElement('button');
